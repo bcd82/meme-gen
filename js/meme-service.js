@@ -63,11 +63,10 @@ const addText = () => {
     }
 
     if (gMeme.lines.length === 1)
-        newLine.pos.y = 300;
-    if (gMeme.lines.length === 2)
-        newLine.pos.y = 500;
-    if (gMeme.lines.length > 2) return;
-
+    newLine.pos.y = 500;
+    if (gMeme.lines.length >= 2)
+    newLine.pos.y = 300;
+    
     gMeme.selectedLineIdx++;
     gMeme.lines.push(newLine)
     renderCanvas()
