@@ -10,15 +10,15 @@ const onInit = () => {
 
 const renderImgs = () => {
     const strHTMLs = gImgs.map((img) => {
-            return `        
+        return `        
             <div class="meme-card" onclick="onClickImg(${img.id})">
             <img src="./imgs/square/${img.id}.jpg" />
             </div>`
-        })
-    document.querySelector('.gallery').innerHTML =strHTMLs.join('');
+    })
+    document.querySelector('.gallery').innerHTML = strHTMLs.join('');
 }
 
-const onClickImg = (id) =>{
+const onClickImg = (id) => {
     setMeme(id);
     document.querySelector('input[type=text]').value = gMeme.lines[0].txt;
 }
@@ -36,5 +36,7 @@ const onAddText = () => {
 const onSwitchText = () => {
     switchText();
     document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
-
+}
+const onDeleteText = () => {
+    deleteText()
 }

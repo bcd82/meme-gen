@@ -35,7 +35,6 @@ const createImgs = () => {
 
 const setMeme = (id) => {
     memeInit()
-    console.log(gMeme)
     // set gMeme
     gMeme.selectedImgId = id;
     //display image on canvas
@@ -50,7 +49,6 @@ const changeText = (val) => {
 }
 
 const addText = () => {
-
     const newLine = {
         txt: 'Change me(me)',
         size: 55,
@@ -73,12 +71,20 @@ const addText = () => {
     renderCanvas()
 }
 
-const switchText = () => { 
-    if (gMeme.selectedLineIdx === 2 ){
+const switchText = () => {
+    console.log(gMeme.selectedLineIdx)
+    if (gMeme.lines.length === gMeme.selectedLineIdx +1) {
         gMeme.selectedLineIdx = 0;
-    
-    } else { 
+
+    } else {
         gMeme.selectedLineIdx++;
     }
+    renderCanvas()
+}
+
+const deleteText = () => {
+    console.log(gMeme.selectedLineIdx)
+    gMeme.lines.splice(gMeme.lines[gMeme.selectedLineIdx], 1)
+    gMeme.selectedLineIdx = 0;
     renderCanvas()
 }
