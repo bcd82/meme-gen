@@ -51,3 +51,7 @@ const onFontResize = (diff) => {
 const onChangeFont = (font) => {
     changeFont(font)
 }
+const onChangeColor = color => {
+    changeColor(color)
+    renderCanvas()
+}

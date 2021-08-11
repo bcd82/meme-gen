@@ -9,11 +9,11 @@ const canvasInit = () => {
     // addListeners()
 }
 
-const resizeCanvas = () => {
-    const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
-}
+// const resizeCanvas = () => {
+//     const elContainer = document.querySelector('.canvas-container')
+//     gElCanvas.width = elContainer.offsetWidth
+//     gElCanvas.height = elContainer.offsetHeight
+// }
 
 const setMemeImg = url => {
     const image = new Image();
