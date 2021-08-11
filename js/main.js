@@ -25,23 +25,18 @@ const onClickImg = (id) => {
 
 const onChangeText = (val) => {
     changeText(val)
+    document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
 
 }
 
 const onAddText = () => {
     addText();
-    setInputVal()
+    document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
 }
 const onSwitchText = () => {
     switchText();
-    setInputVal()
+    document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
 }
 const onDeleteText = () => {
     deleteText()
-}
-
-const setInputVal = () => {
-    let val = document.querySelector('input[type=text]').value;
-    if (gMeme.lines.length == 1 ) return;
-    val = gMeme.lines[gMeme.selectedLineIdx].txt;
 }
