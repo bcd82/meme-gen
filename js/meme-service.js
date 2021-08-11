@@ -93,3 +93,5 @@ const deleteText = () => {
 
     renderCanvas()
 }
+
+const getMeme = () => gMeme;

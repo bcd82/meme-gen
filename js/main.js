@@ -34,8 +34,10 @@ const onAddText = () => {
     document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
 }
 const onSwitchText = () => {
+    let meme = getMeme()
+    if(!meme.lines.length) return
     switchText();
-    document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
+    document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 }
 const onDeleteText = () => {
     deleteText()
