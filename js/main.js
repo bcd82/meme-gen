@@ -48,3 +48,6 @@ const onDeleteText = () => {
 const onFontResize = (diff) => {
     resizeFont(diff)
 }
+const onChangeFont = (font) => {
+    changeFont(font)
+}

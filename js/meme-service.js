@@ -98,3 +98,7 @@ const resizeFont = diff => {
     gMeme.lines[gMeme.selectedLineIdx].size += diff;
     renderCanvas()
 }
+const changeFont = font => {
+    gMeme.lines[gMeme.selectedLineIdx].font = font;
+    renderCanvas()
+}
