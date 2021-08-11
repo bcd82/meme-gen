@@ -4,6 +4,8 @@ const gKeyWords = {};
 const gImgs = []
 let gIdx = 1;
 let gMeme = {};
+let gFilterBy = ''
+
 
 
 const memeInit = () => {
@@ -119,4 +121,26 @@ const toggleStroke = () => {
 const switchAlign = alignTo => {
     gMeme.lines[gMeme.selectedLineIdx].align = alignTo
     renderCanvas()
+}
+
+const getKeywordMap = () => {
+    gImgs.forEach((img) => {
+        img.keyWords.forEach(kw => {
+            gKeyWords[kw] ? gKeyWords[kw]++ : gKeyWords[kw] = 1;
+        })
+    })
+    return gKeyWords
+}
+
+const setFilter = filterBy => {
+    gFilterBy = filterBy;
+    renderImgs()
+}
+
+const getFilteredImgs = filter => {
+    return gImgs.filter(img => {
+        let kwsStr = img.keyWords.join()
+        if (kwsStr.includes(filter))
+        return true
+    })
 }
