@@ -37,6 +37,10 @@ const onAddText = () => {
     document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 }
 
+const onMoveText = diff => { 
+    moveText(diff)
+}
+
 const onSwitchText = () => {
     let meme = getMeme()
     if (!meme.lines.length) return
@@ -62,3 +66,5 @@ const onChangeColor = color => {
 }
 
 const onToggleStroke = () => toggleStroke()
+
+const onSwitchAlign = (alignTo) => switchAlign(alignTo)

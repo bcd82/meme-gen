@@ -31,24 +31,33 @@ const renderTexts = () => {
     const lines = memes.lines;
     lines.forEach((line, idx) => {
         gCtx.font = `${line.size}px ${line.font}`;
-        if (idx === memes.selectedLineIdx) {
-            gCtx.fillStyle = 'pink';
-            // let width = gCtx.measureText(line.text).width
-            gCtx.fillRect(0, line.pos.y + line.size * 0.2, gElCanvas.width, 5);
-            gCtx.fillRect(0, line.pos.y - line.size, gElCanvas.width, 5);
+        let x = line.pos.x ;
+        let rectDiff = 0;
+        let width = gCtx.measureText(line.txt).width
+        if(line.align === 'center') {
+            x = 250;
+            rectDiff = -width/2
+        }else if (line.align === 'right'){
+            x = 545
+            rectDiff = -width
         }
+        if (idx === memes.selectedLineIdx) {
+            gCtx.fillStyle = 'red';
+            gCtx.fillRect(x + rectDiff, line.pos.y + line.size * 0.15, width, 5);
+            gCtx.fillRect(x + rectDiff, line.pos.y - line.size, width, 5);
+        }
+        gCtx.textAlign = line.align;
         gCtx.fillStyle = line.color;
         gCtx.fillSize = line.size;
         gCtx.lineWidth = 8;
-        gCtx.textAlign = line.align;
         if (line.stroke)
-            gCtx.strokeText(line.txt, line.pos.x, line.pos.y);
-        gCtx.fillText(line.txt, line.pos.x, line.pos.y);
+            gCtx.strokeText(line.txt, x, line.pos.y);
+        gCtx.fillText(line.txt, x, line.pos.y);
     })
 }
-const saveCanvas = () => {
-    gCtx.save()
-}
-const restoreCanvas = () => {
-    gCtx.restore()
-}
+// const saveCanvas = () => {
+//     gCtx.save()
+// }
+// const restoreCanvas = () => {
+//     gCtx.restore()
+// }

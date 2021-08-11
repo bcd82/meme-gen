@@ -63,12 +63,17 @@ const addText = () => {
     }
 
     if (gMeme.lines.length === 1)
-    newLine.pos.y = 500;
+        newLine.pos.y = 500;
     if (gMeme.lines.length >= 2)
-    newLine.pos.y = 300;
-    
+        newLine.pos.y = 300;
+
     gMeme.selectedLineIdx++;
     gMeme.lines.push(newLine)
+    renderCanvas()
+}
+
+const moveText = diff => {
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += diff;
     renderCanvas()
 }
 
@@ -88,7 +93,6 @@ const deleteText = () => {
         gMeme.selectedLineIdx = -1;
     else
         gMeme.selectedLineIdx = 0;
-
     renderCanvas()
 }
 
@@ -109,5 +113,10 @@ const changeColor = color => {
 
 const toggleStroke = () => {
     gMeme.lines[gMeme.selectedLineIdx].stroke = !gMeme.lines[gMeme.selectedLineIdx].stroke;
+    renderCanvas()
+}
+
+const switchAlign = alignTo => {
+    gMeme.lines[gMeme.selectedLineIdx].align = alignTo
     renderCanvas()
 }

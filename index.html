@@ -35,14 +35,16 @@
             </div>
             <div class="tools">
                 <input oninput="onChangeText(this.value)" type="text" />
+                <button onclick="onMoveText(-5)">up</button>
+                <button onclick="onMoveText(5)">down</button>
                 <button onclick="onSwitchText()">switch</button>
                 <button onclick="onAddText()">add</button>
                 <button onclick="onDeleteText()" >delete</button>
                 <button onclick="onFontResize(2)" >font+</button>
                 <button onclick="onFontResize(-2)" >font-</button>
-                <button onclick="" disabled>align-left</button>
-                <button onclick="" disabled>align-right</button>
-                <button onclick="" disabled>center</button>
+                <button onclick="onSwitchAlign('left')" >align-left</button>
+                <button onclick="onSwitchAlign('center')" >center</button>
+                <button onclick="onSwitchAlign('right')" >align-right</button>
                 <select onchange="onChangeFont(this.value)">
                     <option value="impact">Impact</option>
                     <option value="arial">Arial</option>
