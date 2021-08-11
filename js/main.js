@@ -4,6 +4,7 @@ const onInit = () => {
     console.log('init...')
     createImgs()
     renderImgs()
+    canvasInit()
 }
 
 const renderImgs = () => {
@@ -18,4 +19,5 @@ const renderImgs = () => {
 
 const onClickImg = (id) =>{
     console.log(`img #${id} clicked`)
+    setMeme(id);
 }

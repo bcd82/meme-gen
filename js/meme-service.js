@@ -21,17 +21,19 @@ const createImgs = () => {
         gImgs.push({
             url: `../imgs/square/${i+1}.jpg`,
             id: gIdx++,
-            keyWords: getRandomKW(),
+            keyWords: getRandomKWs(),
         })
     }
 }
 
-const getRandomKW = () => {
-    let keyWordBank = ['funny', 'meme-y','true','scary','stupid','goofy','photo'];
-    
-    return [keyWordBank.splice(getRandomInt(0,keyWordBank.length),1)[0],keyWordBank.splice(getRandomInt(0,keyWordBank.length),1)[0]]
-}
+
 
 const setMeme = (id) => {
+    console.log(gMeme)
+    // set gMeme
     gMeme.selectedImgId = id;
+    //display image on canvas
+    const img = gImgs.find(img=> img.id === id)
+    setMemeImg(img.url)
+    //open editor
 }
