@@ -23,11 +23,8 @@ const setMemeImg = url => {
 }
 
 const renderCanvas = () => {
- 
         gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height);
-        renderTexts()
-        saveCanvas()
-    ;
+        renderTexts();
 }
 const renderTexts = () => {
     const lines = gMeme.lines;
@@ -40,7 +37,6 @@ const renderTexts = () => {
         gCtx.strokeText(line.txt, line.pos.x, line.pos.y);
         gCtx.fillText(line.txt, line.pos.x, line.pos.y);
         console.log(line.txt)
-
     })
 }
 const saveCanvas = () => {

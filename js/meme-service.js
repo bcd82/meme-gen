@@ -24,7 +24,7 @@ const memeInit = () =>{
 const createImgs = () => {
     for (let i = 0; i < 18; i++) {
         gImgs.push({
-            url: `../imgs/square/${i+1}.jpg`,
+            url: `./imgs/square/${i+1}.jpg`,
             id: gIdx++,
             keyWords: getRandomKWs(),
         })
@@ -32,6 +32,7 @@ const createImgs = () => {
 }
 
 const setMeme = (id) => {
+    memeInit()
     console.log(gMeme)
     // set gMeme
     gMeme.selectedImgId = id;
