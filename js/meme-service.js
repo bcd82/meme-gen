@@ -3,19 +3,23 @@
 const gKeyWords = {};
 const gImgs = []
 let gIdx = 1;
-let gMeme = {
-    selectedImgId: 1,
-    selectedLineIdx: 0,
-
-    lines: [{
-        txt: 'Change me(me)!',
-        size: 24,
-        align: 'left',
-        color: 'white'
-    }]
-};
+let gMeme = {};
 
 
+const memeInit = () =>{
+    gMeme = {
+        selectedImgId: 1,
+        selectedLineIdx: 0,
+        lines: [{
+            txt: 'Change me(me)!',
+            size: 44,
+            align: 'left',
+            color: 'white',
+            font:'impact',
+            pos: {x:10,y:100}
+        }]
+    };
+}
 const createImgs = () => {
     for (let i = 0; i < 18; i++) {
         gImgs.push({
@@ -25,8 +29,6 @@ const createImgs = () => {
         })
     }
 }
-
-
 
 const setMeme = (id) => {
     console.log(gMeme)

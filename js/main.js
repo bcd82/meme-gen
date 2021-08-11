@@ -5,6 +5,8 @@ const onInit = () => {
     createImgs()
     renderImgs()
     canvasInit()
+    memeInit()
+
 }
 
 const renderImgs = () => {

@@ -1,6 +1,7 @@
 'use strict'
 let gElCanvas;
 let gCtx;
+let gImg;
 
 const canvasInit = () => {
     gElCanvas = document.querySelector('canvas')
@@ -15,9 +16,36 @@ const resizeCanvas = () => {
 }
 
 const setMemeImg = url => {
-    const image = new Image(); 
-    image.onload = () => {
-        gCtx.drawImage(image, 0, 0, gElCanvas.width, gElCanvas.height);
-    }; 
+    const image = new Image();
     image.src = url;
+    gImg = image;
+    renderCanvas()
+}
+
+const renderCanvas = () => {
+ 
+        gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height);
+        renderTexts()
+        saveCanvas()
+    ;
+}
+const renderTexts = () => {
+    const lines = gMeme.lines;
+    lines.forEach((line)=> {
+        gCtx.font = `${line.size}px ${line.font}`;
+        // gCtx.fillText(line.txt, 110, 150);
+        
+        gCtx.fillStyle = line.color;
+        gCtx.fillSize = line.size;
+        gCtx.strokeText(line.txt, line.pos.x, line.pos.y);
+        gCtx.fillText(line.txt, line.pos.x, line.pos.y);
+        console.log(line.txt)
+
+    })
+}
+const saveCanvas = () => {
+    gCtx.save()
+}
+const restoreCanvas = () => {
+    gCtx.restore()
 }
