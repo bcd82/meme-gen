@@ -20,18 +20,21 @@ const renderImgs = () => {
 
 const onClickImg = (id) => {
     setMeme(id);
-    document.querySelector('input[type=text]').value = gMeme.lines[0].txt;
+    let meme = getMeme()
+    document.querySelector('input[type=text]').value = meme.lines[0].txt;
 }
 
-const onChangeText = (val) => {
+const onChangeText = (val) => {    
     changeText(val)
-    document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
+    let meme = getMeme()
+    document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 
 }
 
 const onAddText = () => {
     addText();
-    document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
+    let meme = getMeme()
+    document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 }
 const onSwitchText = () => {
     let meme = getMeme()
