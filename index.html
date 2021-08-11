@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +11,12 @@
 <script src="./js/meme-service"></script>
 <script src="./js/canvas-service.js"></script>
 <script src="./js/main.js"></script>
+
 <body onload="onInit()">
     <header>
+        <div class="main-header main-layout">
         <div class="logo">
-
+            <img src="./imgs/Logo2.png" alt="logo"/>
         </div>
         <nav>
             <ul>
@@ -21,20 +24,78 @@
                 <li>About</li>
             </ul>
         </nav>
-    </header>
-    <div class="top-bar">
-        
     </div>
-    <main>
-        <div class="gallery">
-
+    </header>
+    <div class="top-bar main-layout">
+        <input>
+        words
+    </div>
+    <main class="main-content">
+        <div class="gallery main-layout">
+            <div class="meme-card">
+                <img src="./imgs/square/1.jpg"/>
+            </div>
+            <div class="meme-card">
+                <img src="./imgs/square/1.jpg"/>
+            </div>
+            <div class="meme-card">
+                <img src="./imgs/square/1.jpg"/>
+            </div>
+            <div class="meme-card">
+                <img src="./imgs/square/1.jpg"/>
+            </div>
+            <div class="meme-card">
+                <img src="./imgs/square/1.jpg"/>
+            </div>
+            <div class="meme-card">
+                <img src="./imgs/square/1.jpg"/>
+            </div>
+            <div class="meme-card">
+                <img src="./imgs/square/1.jpg"/>
+            </div>
+            <div class="meme-card">
+                <img src="./imgs/square/1.jpg"/>
+            </div>
+            <div class="meme-card">
+                <img src="./imgs/square/1.jpg"/>
+            </div>
         </div>
     </main>
-    <section class="about-me">
+    <section class="about-me main-layout">
 
     </section>
     <footer>
-        
+        <div class="logo">
+            <img src="./imgs/Logo2.png" alt="logo"/>
+        </div>
+        <p>All Rights Reserved BCD 2021 </p>
     </footer>
+    <div class="editor" hidden>
+        <div class="editor-container">
+            <div class="canvas-container">
+                <canvas width:400 height:400></canvas>
+            </div>
+        </div>
+        <div class="tools">
+            <input type="text" />
+            <button onclick="">switch</button>
+            <button onclick="">add</button>
+            <button onclick="">delete</button>
+            <button onclick="">font+</button>
+            <button onclick="">font-</button>
+            <button onclick="">align-left</button>
+            <button onclick="">align-right</button>
+            <button onclick="">center</button>
+            <select onchange="">
+                <option value="impact">Impact</option>
+                <option value="arial">Arial</option>
+            </select>
+            <button onclick="">stroke</button>
+            <input type="color" onchange=""></button>
+            <div class="stickers"></div>
+            <button onclick="">Share</button>
+        </div>
+    </div>
 </body>
+
 </html>
