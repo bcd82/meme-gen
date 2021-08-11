@@ -45,7 +45,7 @@ const setMeme = (id) => {
 }
 
 const changeText = (val) => {
-    gMeme.lines[ gMeme.selectedLineIdx].txt = val;
+    gMeme.lines[gMeme.selectedLineIdx].txt = val;
     renderCanvas()
 }
 
@@ -70,5 +70,15 @@ const addText = () => {
     if (gMeme.lines.length > 2) return;
     gMeme.selectedLineIdx++;
     gMeme.lines.push(newLine)
+    renderCanvas()
+}
+
+const switchText = () => { 
+    if (gMeme.selectedLineIdx === 2 ){
+        gMeme.selectedLineIdx = 0;
+    
+    } else { 
+        gMeme.selectedLineIdx++;
+    }
     renderCanvas()
 }

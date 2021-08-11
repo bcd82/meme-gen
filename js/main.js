@@ -32,3 +32,6 @@ const onChangeText = (val) => {
 const onAddText = () => {
     addText();
 }
+const onSwitchText = () => {
+    switchText();
+}
