@@ -52,6 +52,8 @@ const changeText = (val) => {
 }
 
 const addText = () => {
+    let line = gMeme.lines.find(line => line.isActive === true)
+    line.isActive = false;
     const newLine = {
         txt: 'Change me(me)',
         size: 55,
@@ -68,7 +70,7 @@ const addText = () => {
     if (gMeme.lines.length === 1)
         newLine.pos.y = 250;
     if (gMeme.lines.length === 2)
-        newLine.pos.y = 400;
+        newLine.pos.y = 450;
     if (gMeme.lines.length > 2) return;
 
     gMeme.lines.push(newLine)
