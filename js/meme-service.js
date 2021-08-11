@@ -134,7 +134,7 @@ const getKeywordMap = () => {
 
 const setFilter = filterBy => {
     gFilterBy = filterBy;
-    // gKeyWords[filterBy]++;
+    gKeyWords[filterBy]++;
 
 }
 

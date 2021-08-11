@@ -90,9 +90,8 @@ const onCloseEditor = () => {
 }
 
 const onFilterByWord = (elWord) => {
-    let fontSize = elWord.style.fontSize.replace(/\D/g,''); 
-    console.log(fontSize)
-    elWord.style.fontSize = `${+fontSize + 1}px `
+    let fontSize = +elWord.style.fontSize.replace(/\D/g,''); 
+    elWord.style.fontSize = `${fontSize + 1}px `
     const word = elWord.textContent;
     setFilter(word);
     renderImgs()
