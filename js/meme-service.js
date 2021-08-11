@@ -16,7 +16,6 @@ const memeInit = () => {
             align: 'center',
             color: 'white',
             font: 'impact',
-            isActive: true,
             pos: {
                 x: gElCanvas.width / 2,
                 y: 100
@@ -46,21 +45,18 @@ const setMeme = (id) => {
 }
 
 const changeText = (val) => {
-    let line = gMeme.lines.find(line => line.isActive === true)
-    line.txt = val;
+    gMeme.lines[ gMeme.selectedLineIdx].txt = val;
     renderCanvas()
 }
 
 const addText = () => {
-    let line = gMeme.lines.find(line => line.isActive === true)
-    line.isActive = false;
+
     const newLine = {
         txt: 'Change me(me)',
         size: 55,
         align: 'center',
         color: 'white',
         font: 'impact',
-        isActive: true,
         pos: {
             x: gElCanvas.width / 2,
             y: 100
@@ -72,7 +68,7 @@ const addText = () => {
     if (gMeme.lines.length === 2)
         newLine.pos.y = 450;
     if (gMeme.lines.length > 2) return;
-
+    gMeme.selectedLineIdx++;
     gMeme.lines.push(newLine)
     renderCanvas()
 }
