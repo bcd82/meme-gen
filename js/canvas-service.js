@@ -42,9 +42,11 @@ const renderTexts = () => {
             rectDiff = -width
         }
         if (idx === memes.selectedLineIdx) {
-            gCtx.fillStyle = 'red';
-            gCtx.fillRect(x + rectDiff, line.pos.y + line.size * 0.15, width, 5);
-            gCtx.fillRect(x + rectDiff, line.pos.y - line.size, width, 5);
+            gCtx.fillStyle = '#ff7f00';
+            gCtx.fillRect(x + rectDiff, line.pos.y + line.size * 0.15, width, 8);
+            gCtx.fillRect(x + rectDiff, line.pos.y - line.size, width, 8);
+            gCtx.fillRect(x + rectDiff, line.pos.y -10 - line.size, width, 5);
+            gCtx.fillRect(x + rectDiff, line.pos.y +10 + line.size * 0.2, width, 5);
         }
         gCtx.textAlign = line.align;
         gCtx.fillStyle = line.color;
