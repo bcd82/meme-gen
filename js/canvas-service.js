@@ -31,13 +31,13 @@ const renderTexts = () => {
     const lines = memes.lines;
     lines.forEach((line, idx) => {
         gCtx.font = `${line.size}px ${line.font}`;
-        let x = line.pos.x ;
+        let x = line.pos.x;
         let rectDiff = 0;
         let width = gCtx.measureText(line.txt).width
-        if(line.align === 'center') {
+        if (line.align === 'center') {
             x = 275;
-            rectDiff = -width/2
-        }else if (line.align === 'right'){
+            rectDiff = -width / 2
+        } else if (line.align === 'right') {
             x = 545
             rectDiff = -width
         }
@@ -45,8 +45,8 @@ const renderTexts = () => {
             gCtx.fillStyle = '#ff7f00';
             gCtx.fillRect(x + rectDiff, line.pos.y + line.size * 0.15, width, 8);
             gCtx.fillRect(x + rectDiff, line.pos.y - line.size, width, 8);
-            gCtx.fillRect(x + rectDiff, line.pos.y -10 - line.size, width, 5);
-            gCtx.fillRect(x + rectDiff, line.pos.y +10 + line.size * 0.2, width, 5);
+            gCtx.fillRect(x + rectDiff, line.pos.y - 10 - line.size, width, 5);
+            gCtx.fillRect(x + rectDiff, line.pos.y + 10 + line.size * 0.2, width, 5);
         }
         gCtx.textAlign = line.align;
         gCtx.fillStyle = line.color;

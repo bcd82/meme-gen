@@ -5,5 +5,6 @@ function getRandomInt(min, max) {
 }
 const getRandomKWs = () => {
     let keyWordBank = ['funny', 'meme-y', 'true', 'scary', 'stupid', 'goofy', 'photo'];
-    return [keyWordBank.splice(getRandomInt(0, keyWordBank.length), 1)[0], keyWordBank.splice(getRandomInt(0, keyWordBank.length), 1)[0]]
+    return [keyWordBank.splice(getRandomInt(0, keyWordBank.length), 1)[0],
+     keyWordBank.splice(getRandomInt(0, keyWordBank.length), 1)[0]]
 }

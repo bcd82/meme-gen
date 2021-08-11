@@ -11,7 +11,7 @@ const onInit = () => {
 
 const renderImgs = () => {
     let imgsToRender = gImgs;
-    if(gFilterBy){
+    if (gFilterBy) {
         imgsToRender = getFilteredImgs(gFilterBy)
     }
     const strHTMLs = imgsToRender.map((img) => {
@@ -28,7 +28,7 @@ const renderWords = () => {
     const strHTMLs = []
     for (const key in words) {
         strHTMLs.push(`
-        <p onclick="onFilterByWord(this)" style="font-size:${1 + ((words[key] * 2.5) / 16)}rem">${key}</p>
+        <p onclick="onFilterByWord(this)" style="font-size:${16 + (words[key] * 2)}px">${key}</p>
         `)
     }
     document.querySelector('.keywords').innerHTML = strHTMLs.join('');
@@ -89,7 +89,11 @@ const onCloseEditor = () => {
     document.querySelector('body').classList.remove('editor-open')
 }
 
-const onFilterByWord = (elWord) => { 
+const onFilterByWord = (elWord) => {
+    let fontSize = elWord.style.fontSize.replace(/\D/g,''); 
+    console.log(fontSize)
+    elWord.style.fontSize = `${+fontSize + 1}px `
     const word = elWord.textContent;
     setFilter(word);
+    renderImgs()
 }

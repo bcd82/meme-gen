@@ -134,13 +134,14 @@ const getKeywordMap = () => {
 
 const setFilter = filterBy => {
     gFilterBy = filterBy;
-    renderImgs()
+    // gKeyWords[filterBy]++;
+
 }
 
 const getFilteredImgs = filter => {
     return gImgs.filter(img => {
         let kwsStr = img.keyWords.join()
         if (kwsStr.includes(filter))
-        return true
+            return true
     })
 }
