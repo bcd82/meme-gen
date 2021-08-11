@@ -43,6 +43,8 @@ const setMeme = (id) => {
     //open editor
 }
 
+const getMeme = () => gMeme;
+
 const changeText = (val) => {
     gMeme.lines[gMeme.selectedLineIdx].txt = val;
     renderCanvas()
@@ -66,7 +68,7 @@ const addText = () => {
     if (gMeme.lines.length === 2)
         newLine.pos.y = 500;
     if (gMeme.lines.length > 2) return;
-    
+
     gMeme.selectedLineIdx++;
     gMeme.lines.push(newLine)
     renderCanvas()
@@ -74,7 +76,7 @@ const addText = () => {
 
 const switchText = () => {
     console.log(gMeme.selectedLineIdx)
-    if (gMeme.lines.length === gMeme.selectedLineIdx +1) {
+    if (gMeme.lines.length === gMeme.selectedLineIdx + 1) {
         gMeme.selectedLineIdx = 0;
 
     } else {
@@ -86,12 +88,13 @@ const switchText = () => {
 const deleteText = () => {
     console.log(gMeme.selectedLineIdx)
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
-    if( !gMeme.lines.length){
+    if (!gMeme.lines.length) {
         gMeme.selectedLineIdx = -1;
-    }
-    else gMeme.selectedLineIdx =0;
+    } else gMeme.selectedLineIdx = 0;
 
     renderCanvas()
 }
-
-const getMeme = () => gMeme;
+const resizeFont = diff => {
+    gMeme.lines[gMeme.selectedLineIdx].size += diff;
+    renderCanvas()
+}

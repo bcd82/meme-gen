@@ -45,3 +45,6 @@ const onSwitchText = () => {
 const onDeleteText = () => {
     deleteText()
 }
+const onFontResize = (diff) => {
+    resizeFont(diff)
+}
