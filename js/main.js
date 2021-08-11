@@ -22,8 +22,13 @@ const renderImgs = () => {
 const onClickImg = (id) =>{
     console.log(`img #${id} clicked`)
     setMeme(id);
+    document.querySelector('input[type=text]').value = gMeme.lines[0].txt;
 }
 
 const onChangeText = (val) => {
     changeText(val)
+}
+
+const onAddText = () => {
+    addText();
 }
