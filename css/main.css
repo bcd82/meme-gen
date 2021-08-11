@@ -240,6 +240,13 @@ footer {
     background-color: #ffffff;
     border: none;
     cursor: pointer;
+    transition: padding .2s;
+}
+.editor .tool-btn:hover {
+    padding:8px;
+}
+.up,.down,.switch,.add,.del { 
+    align-self: start;
 }
 
 .editor .tools .text-input {
