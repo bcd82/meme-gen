@@ -23,25 +23,26 @@ const setMemeImg = url => {
 }
 
 const renderCanvas = () => {
-        gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height);
-        renderTexts();
+    gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height);
+    renderTexts();
 }
 const renderTexts = () => {
-    const lines = gMeme.lines;
-    lines.forEach((line , idx)=> {
+    const memes = getMeme();
+    const lines = memes.lines;
+    lines.forEach((line, idx) => {
         gCtx.font = `${line.size}px ${line.font}`;
-        if (idx === gMeme.selectedLineIdx) { 
+        if (idx === memes.selectedLineIdx) {
             gCtx.fillStyle = 'pink';
-            let width = gCtx.measureText(line.text).width
-            console.log(width)     
-            gCtx.fillRect(0  , line.pos.y + line.size * 0.2, gElCanvas.width, 5);      
-            gCtx.fillRect(0  , line.pos.y - line.size, gElCanvas.width, 5);      
-          }
+            // let width = gCtx.measureText(line.text).width
+            gCtx.fillRect(0, line.pos.y + line.size * 0.2, gElCanvas.width, 5);
+            gCtx.fillRect(0, line.pos.y - line.size, gElCanvas.width, 5);
+        }
         gCtx.fillStyle = line.color;
         gCtx.fillSize = line.size;
         gCtx.lineWidth = 8;
         gCtx.textAlign = line.align;
-        gCtx.strokeText(line.txt, line.pos.x, line.pos.y);
+        if (line.stroke)
+            gCtx.strokeText(line.txt, line.pos.x, line.pos.y);
         gCtx.fillText(line.txt, line.pos.x, line.pos.y);
     })
 }

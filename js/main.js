@@ -24,7 +24,7 @@ const onClickImg = (id) => {
     document.querySelector('input[type=text]').value = meme.lines[0].txt;
 }
 
-const onChangeText = (val) => {    
+const onChangeText = (val) => {
     changeText(val)
     let meme = getMeme()
     document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
@@ -36,22 +36,29 @@ const onAddText = () => {
     let meme = getMeme()
     document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 }
+
 const onSwitchText = () => {
     let meme = getMeme()
-    if(!meme.lines.length) return
+    if (!meme.lines.length) return
     switchText();
     document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 }
+
 const onDeleteText = () => {
     deleteText()
 }
+
 const onFontResize = (diff) => {
     resizeFont(diff)
 }
+
 const onChangeFont = (font) => {
     changeFont(font)
 }
+
 const onChangeColor = color => {
     changeColor(color)
     renderCanvas()
 }
+
+const onToggleStroke = () => toggleStroke()

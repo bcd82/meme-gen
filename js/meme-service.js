@@ -16,6 +16,7 @@ const memeInit = () => {
             align: 'left',
             color: 'white',
             font: 'impact',
+            stroke: true,
             pos: {
                 x: 10,
                 y: 100
@@ -54,6 +55,7 @@ const addText = () => {
         align: 'left',
         color: 'white',
         font: 'impact',
+        stroke: true,
         pos: {
             x: 10,
             y: 100
@@ -83,21 +85,30 @@ const switchText = () => {
 
 const deleteText = () => {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
-    if (!gMeme.lines.length) {
+    if (!gMeme.lines.length)
         gMeme.selectedLineIdx = -1;
-    } else gMeme.selectedLineIdx = 0;
+    else
+        gMeme.selectedLineIdx = 0;
 
     renderCanvas()
 }
+
 const resizeFont = diff => {
     gMeme.lines[gMeme.selectedLineIdx].size += diff;
     renderCanvas()
 }
+
 const changeFont = font => {
     gMeme.lines[gMeme.selectedLineIdx].font = font;
     renderCanvas()
 }
+
 const changeColor = color => {
     gMeme.lines[gMeme.selectedLineIdx].color = color;
+    renderCanvas()
+}
+
+const toggleStroke = () => {
+    gMeme.lines[gMeme.selectedLineIdx].stroke = !gMeme.lines[gMeme.selectedLineIdx].stroke;
     renderCanvas()
 }
