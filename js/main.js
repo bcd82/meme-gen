@@ -35,4 +35,6 @@ const onAddText = () => {
 }
 const onSwitchText = () => {
     switchText();
+    document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
+
 }
