@@ -85,10 +85,11 @@ const switchText = () => {
 
 const deleteText = () => {
     console.log(gMeme.selectedLineIdx)
-    gMeme.lines.splice(gMeme.lines[gMeme.selectedLineIdx], 1)
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     if( !gMeme.lines.length){
         gMeme.selectedLineIdx = -1;
     }
+    else gMeme.selectedLineIdx =0;
 
     renderCanvas()
 }
