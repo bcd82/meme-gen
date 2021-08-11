@@ -40,8 +40,8 @@ const onClickImg = id => {
     document.querySelector('body').classList.add('editor-open')
 }
 
-const onChangeText = val => {
-    changeText(val)
+const onChangeText = str => {
+    changeText(str)
     let meme = getMeme()
     document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 
@@ -68,20 +68,18 @@ const onDeleteText = () => {
     deleteText()
 }
 
-const onFontResize = (diff) => {
+const onFontResize = diff => {
     resizeFont(diff)
 }
 
-const onChangeFont = (font) => {
-    changeFont(font)
-}
+const onChangeFont = font => changeFont(font)
 
 const onChangeColor = color => {
     changeColor(color)
     renderCanvas()
 }
 
-const onToggleStroke = () => toggleStroke()
+const onChangeStroke = color => changeStroke(color)
 
 const onSwitchAlign = (alignTo) => switchAlign(alignTo)
 
@@ -90,9 +88,13 @@ const onCloseEditor = () => {
 }
 
 const onFilterByWord = (elWord) => {
-    let fontSize = +elWord.style.fontSize.replace(/\D/g,''); 
+    let fontSize = +elWord.style.fontSize.replace(/\D/g, '');
     elWord.style.fontSize = `${fontSize + 1}px `
     const word = elWord.textContent;
     setFilter(word);
     renderImgs()
+}
+
+const onSearchFilter = str => {
+
 }

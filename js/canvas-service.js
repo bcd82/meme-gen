@@ -51,9 +51,9 @@ const renderTexts = () => {
         gCtx.textAlign = line.align;
         gCtx.fillStyle = line.color;
         gCtx.fillSize = line.size;
+        gCtx.strokeStyle = line.strokeClr;
         gCtx.lineWidth = 8;
-        if (line.stroke)
-            gCtx.strokeText(line.txt, x, line.pos.y);
+        gCtx.strokeText(line.txt, x, line.pos.y);
         gCtx.fillText(line.txt, x, line.pos.y);
     })
 }

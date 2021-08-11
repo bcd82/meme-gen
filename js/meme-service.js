@@ -18,7 +18,7 @@ const memeInit = () => {
             align: 'center',
             color: 'white',
             font: 'impact',
-            stroke: true,
+            strokeClr: 'black',
             pos: {
                 x: 10,
                 y: 100
@@ -57,7 +57,7 @@ const addText = () => {
         align: 'center',
         color: 'white',
         font: 'impact',
-        stroke: true,
+        strokeClr: 'black',
         pos: {
             x: 10,
             y: 100
@@ -113,8 +113,8 @@ const changeColor = color => {
     renderCanvas()
 }
 
-const toggleStroke = () => {
-    gMeme.lines[gMeme.selectedLineIdx].stroke = !gMeme.lines[gMeme.selectedLineIdx].stroke;
+const changeStroke = (color) => {
+    gMeme.lines[gMeme.selectedLineIdx].strokeClr =  color;
     renderCanvas()
 }
 

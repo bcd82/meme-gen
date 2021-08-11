@@ -227,7 +227,6 @@ footer {
     width: 100%;
     gap: 0px 20px;
     height: 550px;
-    border: 1px solid red;
 
 }
 
@@ -240,6 +239,7 @@ footer {
     border-radius: 12px;
     background-color: #ffffff;
     border: none;
+    cursor: pointer;
 }
 
 .editor .tools .text-input {
@@ -269,7 +269,7 @@ footer {
 .editor input[type=color] {
     visibility: hidden;
     position: absolute;
-    top: 250px;
+    top: 550px;
     transform: translateX(550%);
 
 }
@@ -279,9 +279,3 @@ body.editor-open .editor {
     pointer-events: all;
 }
 
-
-
-
-.editor .canvas-container {
-    border: 1px solid white;
-}

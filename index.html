@@ -68,14 +68,17 @@
                         <option value="impact">Impact</option>
                         <option value="arial">Arial</option>
                     </select>
-                    <button class="tool-btn stroke"  onclick="onToggleStroke()">
+                    <!-- <button class="tool-btn stroke"  onclick="onToggleStroke()">
                         <img src="./imgs/ICONS/text stroke.png" alt="">
-                    </button>
+                    </button> -->
+                    <label for="stroke" class="tool-btn stroke">
+                        <img src="./imgs/ICONS/text stroke.png">
+                    </label>
+                    <input id="stroke" type="color" onchange="onChangeStroke(this.value)">
                     <label for="color" class="tool-btn">
                         <img src="./imgs/ICONS/paint-board-and-brush.png">
                     </label>
                     <input id="color"type="color" onchange="onChangeColor(this.value)">
-                </button>
                     <div class="stickers"></div>
                     <button class="tool-btn share"  onclick="" >Share</button>
                 </div>
