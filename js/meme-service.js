@@ -11,12 +11,13 @@ const memeInit = () =>{
         selectedImgId: 1,
         selectedLineIdx: 0,
         lines: [{
-            txt: 'Change me(me)!',
-            size: 44,
-            align: 'left',
+            txt: 'Change me(me)',
+            size: 55,
+            align: 'center',
             color: 'white',
             font:'impact',
-            pos: {x:10,y:100}
+            isActive:true,
+            pos: {x:gElCanvas.width /2,y:50}
         }]
     };
 }
@@ -38,4 +39,10 @@ const setMeme = (id) => {
     const img = gImgs.find(img=> img.id === id)
     setMemeImg(img.url)
     //open editor
+}
+
+const changeText = (val)=>{
+    let line = gMeme.lines.find(line => line.isActive === true)
+    line.txt = val;
+    renderCanvas()
 }

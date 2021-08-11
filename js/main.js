@@ -23,3 +23,7 @@ const onClickImg = (id) =>{
     console.log(`img #${id} clicked`)
     setMeme(id);
 }
+
+const onChangeText = (val) => {
+    changeText(val)
+}
