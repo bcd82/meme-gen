@@ -66,6 +66,7 @@ const addText = () => {
     if (gMeme.lines.length === 2)
         newLine.pos.y = 500;
     if (gMeme.lines.length > 2) return;
+    
     gMeme.selectedLineIdx++;
     gMeme.lines.push(newLine)
     renderCanvas()
@@ -85,6 +86,9 @@ const switchText = () => {
 const deleteText = () => {
     console.log(gMeme.selectedLineIdx)
     gMeme.lines.splice(gMeme.lines[gMeme.selectedLineIdx], 1)
-    gMeme.selectedLineIdx = 0;
+    if( !gMeme.lines.length){
+        gMeme.selectedLineIdx = -1;
+    }
+
     renderCanvas()
 }
