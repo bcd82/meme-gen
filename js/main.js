@@ -69,3 +69,7 @@ const onChangeColor = color => {
 const onToggleStroke = () => toggleStroke()
 
 const onSwitchAlign = (alignTo) => switchAlign(alignTo)
+
+const onCloseEditor = () => { 
+    document.querySelector('body').classList.remove('editor-open')
+}
