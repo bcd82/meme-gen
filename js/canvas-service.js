@@ -35,7 +35,7 @@ const renderTexts = () => {
         let rectDiff = 0;
         let width = gCtx.measureText(line.txt).width
         if(line.align === 'center') {
-            x = 250;
+            x = 275;
             rectDiff = -width/2
         }else if (line.align === 'right'){
             x = 545

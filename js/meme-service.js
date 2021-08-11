@@ -13,7 +13,7 @@ const memeInit = () => {
         lines: [{
             txt: 'Change me(me)',
             size: 55,
-            align: 'left',
+            align: 'center',
             color: 'white',
             font: 'impact',
             stroke: true,
@@ -52,7 +52,7 @@ const addText = () => {
     const newLine = {
         txt: 'Change me(me)',
         size: 55,
-        align: 'left',
+        align: 'center',
         color: 'white',
         font: 'impact',
         stroke: true,

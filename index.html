@@ -18,8 +18,8 @@
             </div>
             <nav>
                 <ul>
-                    <li>Gallery</li>
-                    <li>About</li>
+                    <li><a onclick="onCloseEditor()" class="active">Gallery</a></li>
+                    <li><a>About</a></li>
                 </ul>
             </nav>
         </div>
@@ -28,37 +28,38 @@
         <input>
         words
     </div>
-    <div class="editor ">
-        <div class="editor-container main-layout">
-            <div class="canvas-container">
-                <canvas width="550" height="550"></canvas>
-            </div>
-            <div class="tools">
-                <input oninput="onChangeText(this.value)" type="text" />
-                <button onclick="onMoveText(-5)">up</button>
-                <button onclick="onMoveText(5)">down</button>
-                <button onclick="onSwitchText()">switch</button>
-                <button onclick="onAddText()">add</button>
-                <button onclick="onDeleteText()" >delete</button>
-                <button onclick="onFontResize(2)" >font+</button>
-                <button onclick="onFontResize(-2)" >font-</button>
-                <button onclick="onSwitchAlign('left')" >align-left</button>
-                <button onclick="onSwitchAlign('center')" >center</button>
-                <button onclick="onSwitchAlign('right')" >align-right</button>
-                <select onchange="onChangeFont(this.value)">
-                    <option value="impact">Impact</option>
-                    <option value="arial">Arial</option>
-                </select>
-                <button onclick="onToggleStroke()">stroke</button>
-                <!-- <label for="color" >Color</label> -->
-                <input id="color"type="color" onchange="onChangeColor(this.value)" onchange="" ></button>
-                <div class="stickers"></div>
-                <button onclick="" disabled>Share</button>
-            </div>
-        </div>
 
-    </div>
     <main class="main-content">
+        <div class="editor ">
+            <div class="editor-container main-layout">
+                <div class="canvas-container">
+                    <canvas width="550" height="550"></canvas>
+                </div>
+                <div class="tools">
+                    <input oninput="onChangeText(this.value)" type="text" />
+                    <button onclick="onMoveText(-5)">up</button>
+                    <button onclick="onMoveText(5)">down</button>
+                    <button onclick="onSwitchText()">switch</button>
+                    <button onclick="onAddText()">add</button>
+                    <button onclick="onDeleteText()" >delete</button>
+                    <button onclick="onFontResize(2)" >font+</button>
+                    <button onclick="onFontResize(-2)" >font-</button>
+                    <button onclick="onSwitchAlign('left')" >align-left</button>
+                    <button onclick="onSwitchAlign('center')" >center</button>
+                    <button onclick="onSwitchAlign('right')" >align-right</button>
+                    <select onchange="onChangeFont(this.value)">
+                        <option value="impact">Impact</option>
+                        <option value="arial">Arial</option>
+                    </select>
+                    <button onclick="onToggleStroke()">stroke</button>
+                    <!-- <label for="color" >Color</label> -->
+                    <input id="color"type="color" onchange="onChangeColor(this.value)" onchange="" ></button>
+                    <div class="stickers"></div>
+                    <button onclick="" disabled>Share</button>
+                </div>
+            </div>
+    
+        </div>
         <div class="gallery main-layout">
 
         </div>

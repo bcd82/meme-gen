@@ -22,6 +22,7 @@ const onClickImg = (id) => {
     setMeme(id);
     let meme = getMeme()
     document.querySelector('input[type=text]').value = meme.lines[0].txt;
+    document.querySelector('body').classList.add('editor-open')
 }
 
 const onChangeText = (val) => {
