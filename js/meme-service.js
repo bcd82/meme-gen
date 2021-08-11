@@ -13,11 +13,11 @@ const memeInit = () => {
         lines: [{
             txt: 'Change me(me)',
             size: 55,
-            align: 'center',
+            align: 'left',
             color: 'white',
             font: 'impact',
             pos: {
-                x: gElCanvas.width / 2,
+                x: 10,
                 y: 100
             }
         }]
@@ -54,19 +54,19 @@ const addText = () => {
     const newLine = {
         txt: 'Change me(me)',
         size: 55,
-        align: 'center',
+        align: 'left',
         color: 'white',
         font: 'impact',
         pos: {
-            x: gElCanvas.width / 2,
+            x: 10,
             y: 100
         }
     }
 
     if (gMeme.lines.length === 1)
-        newLine.pos.y = 250;
+        newLine.pos.y = 300;
     if (gMeme.lines.length === 2)
-        newLine.pos.y = 450;
+        newLine.pos.y = 500;
     if (gMeme.lines.length > 2) return;
     gMeme.selectedLineIdx++;
     gMeme.lines.push(newLine)

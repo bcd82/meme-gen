@@ -1,7 +1,6 @@
 'use strict'
 
 const onInit = () => {
-    console.log('init...')
     createImgs()
     renderImgs()
     canvasInit()
@@ -20,17 +19,19 @@ const renderImgs = () => {
 }
 
 const onClickImg = (id) =>{
-    console.log(`img #${id} clicked`)
     setMeme(id);
     document.querySelector('input[type=text]').value = gMeme.lines[0].txt;
 }
 
 const onChangeText = (val) => {
     changeText(val)
+    document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
+
 }
 
 const onAddText = () => {
     addText();
+    document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
 }
 const onSwitchText = () => {
     switchText();
