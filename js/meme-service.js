@@ -13,7 +13,7 @@ const memeInit = () => {
     gMeme = {
         selectedImgId: 1,
         selectedLineIdx: 0,
-        id:makeId(),
+        id: makeId(),
         lines: [{
             txt: 'Change me',
             size: 55,
@@ -41,15 +41,15 @@ const createImgs = () => {
     }
 }
 
-const setMeme = (id ,isSaved) => {
+const setMeme = (id, isSaved) => {
     let img
-    if (isSaved){
-        gMeme = gSavedMemes.find(meme => meme.id == id )
+    if (isSaved) {
+        gMeme = gSavedMemes.find(meme => meme.id == id)
         img = gImgs.find(img => img.id === gMeme.selectedImgId)
     } else {
         memeInit()
         gMeme.selectedImgId = id;
-         img = gImgs.find(img => img.id === id)
+        img = gImgs.find(img => img.id === id)
     }
     setMemeImg(img.url)
 }
@@ -173,10 +173,14 @@ const getFilteredImgs = filter => {
     })
 }
 const saveMeme = () => {
-    gSavedMemes.push(gMeme)
-    saveToStorage('memeDb',gSavedMemes)
+    let memeIdx = gSavedMemes.findIndex(meme => meme.id === gMeme.id);
+    if (memeIdx > -1)
+        gSavedMemes[memeIdx] = gMeme;
+    else
+        gSavedMemes.push(gMeme)
+    saveToStorage('memeDb', gSavedMemes)
 }
-const loadSavedMemes= () => {
+const loadSavedMemes = () => {
     gSavedMemes = loadFromStorage('memeDb')
-    if (gSavedMemes === null ) gSavedMemes = []
+    if (gSavedMemes === null) gSavedMemes = []
 }
