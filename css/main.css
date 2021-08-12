@@ -403,6 +403,7 @@ body.editor-open .editor {
 .canvas-container {
     width: 310px;
     height: 310px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 @media (min-width :400px) {
