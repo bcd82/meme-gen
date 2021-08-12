@@ -17,7 +17,7 @@ const memeInit = () => {
             size: 55,
             align: 'center',
             color: 'white',
-            lineWidth: 0,
+            width: 0,
             font: 'impact',
             strokeClr: 'black',
             pos: {
@@ -58,7 +58,7 @@ const addText = () => {
         size: 55,
         align: 'center',
         color: 'white',
-        lineWidth: 0,
+        width: 0,
         font: 'impact',
         strokeClr: 'black',
         pos: {
@@ -141,7 +141,7 @@ const setFilter = filterBy => {
     gKeyWords[filterBy]++;
 
 }
-const setLineWidth = width => gMeme.lines[gMeme.selectedLineIdx].lineWidth = width;
+const setLineWidth = width => gMeme.lines[gMeme.selectedLineIdx].width = width;
 
 const setIsDrag = isDrag => {
     if (isDrag)

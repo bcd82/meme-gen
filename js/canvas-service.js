@@ -107,10 +107,38 @@ const onUp = () => {
     setIsDrag(false)
 }
 
-const dragLine = (pos) => { 
+const dragLine = (pos) => {
 
 }
 
-const getClickedLine = (pos) => { 
-    console.log('check if line clicked')
+const getClickedLine = (pos) => {
+    let lines = getMeme().lines
+    let clickedLine;
+    lines.forEach(line => {
+        if (line.align === 'left') {
+            if ((pos.x >= line.pos.x && pos.x <= line.pos.x + line.width) &&
+                (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
+                console.log(pos.x, line.pos.x)
+                return line;
+            }
+        }
+        if (line.align === 'center') {
+            if ((pos.x >= (line.pos.x + 275 - line.width / 2)) && (pos.x <= (line.pos.x + 275 + line.width / 2)) &&
+                (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
+                console.log(pos.x, line.pos.x)
+                clickedLine = line;
+            }
+
+        }
+        if (line.align === 'right') {
+            if ((pos.x >= (line.pos.x + 545 - line.width)) && (pos.x <= (line.pos.x + 545 + line.width )) &&
+                (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
+                console.log(pos.x, line.pos.x)
+                clickedLine = line;
+            }
+
+        }
+    })
+    return clickedLine;
+
 }
