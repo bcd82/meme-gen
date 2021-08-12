@@ -40,9 +40,13 @@ const createImgs = () => {
     }
 }
 
-const setMeme = (id) => {
-    memeInit()
-    gMeme.selectedImgId = id;
+const setMeme = (id,isSaved = false) => {
+    if(isSaved){
+        gMeme = gSavedMemes[gSavedMemes.findIndex(meme => meme.selectedImgId === id)]
+    } else {
+        memeInit()
+        gMeme.selectedImgId = id;
+    }
     const img = gImgs.find(img => img.id === id)
     setMemeImg(img.url)
 }

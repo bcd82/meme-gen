@@ -153,3 +153,8 @@ const getClickedLineIdx = (pos) => {
     })
     return clickedLineIdx;
 }
+
+const downloadCanvas = elLink => {
+    const data = gElCanvas.toDataURL()
+    elLink.href = data
+}

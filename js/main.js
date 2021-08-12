@@ -2,7 +2,7 @@
 
 const onInit = () => {
     createImgs()
-    renderImgs(gImgs)
+    renderImgs()
     canvasInit()
     addListeners()
     memeInit()
@@ -10,9 +10,10 @@ const onInit = () => {
 
 }
 
-const renderImgs = (imgs) => {
+const renderImgs = () => {
     // let imgsToRender = gImgs;
     let strHTMLs = []
+    let imgs = gImgs
     if (gFilterBy) {
         imgs = getFilteredImgs(gFilterBy)
     }
@@ -28,7 +29,21 @@ const renderImgs = (imgs) => {
     }
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
 }
-
+const renderSavedMemes = () =>{
+    let memes = gSavedMemes;
+    let strHTMLs = []
+    if (!memes || !memes.length || memes === null) {
+        strHTMLs[0] = `<h2> no images found 😔 </h2>`
+    } else {
+        strHTMLs = memes.map((meme) => {
+            return `        
+                    <div class="meme-card" onclick="onClickSavedMeme(${meme.selectedImgId})">
+                    <img src="./imgs/square/${meme.selectedImgId}.jpg" />
+                    </div>`
+        })
+    }
+    document.querySelector('.gallery').innerHTML = strHTMLs.join('');
+}
 
 const renderWords = () => {
     const words = getKeywordMap()
@@ -42,6 +57,12 @@ const renderWords = () => {
 }
 const onClickImg = id => {
     setMeme(id);
+    let meme = getMeme()
+    document.querySelector('input[type=text]').value = meme.lines[0].txt;
+    document.querySelector('body').classList.add('editor-open')
+}
+const onClickSavedMeme = id => {
+    setMeme(id,true);
     let meme = getMeme()
     document.querySelector('input[type=text]').value = meme.lines[0].txt;
     document.querySelector('body').classList.add('editor-open')
@@ -96,7 +117,7 @@ const onGalleryClick = (el) => {
     document.querySelector('body').classList.remove('editor-open')
     document.querySelectorAll('ul li a').forEach((el)=> el.classList.remove('active'))
     el.classList.add('active')
-    renderImgs(gImgs)
+    renderImgs()
 }
 
 const onFilterByWord = (elWord) => {
@@ -116,11 +137,12 @@ const onSearchFilter = str => {
 }
 const onSaveMeme =()=> {
     saveMeme()
+    loadSavedMemes()
 }
 const onShowSavedMemes = (el) => {
     document.querySelector('body').classList.remove('editor-open')
     document.querySelectorAll('ul li a').forEach((el)=> el.classList.remove('active'))
     el.classList.add('active')
     console.log(gSavedMemes)
-    renderImgs(gSavedMemes)
+    renderSavedMemes(gSavedMemes)
 }
