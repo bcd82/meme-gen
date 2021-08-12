@@ -593,4 +593,5 @@ body.show-share-menu .screen{
     .share-menu {
         display: none;
     }
+    .screen {display:none}
 }

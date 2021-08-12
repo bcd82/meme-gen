@@ -2,6 +2,7 @@
 let gElCanvas;
 let gCtx;
 let gImg;
+let gIsDownloading = false;
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 const canvasInit = () => {
@@ -44,7 +45,7 @@ const renderTexts = () => {
             x = gElCanvas.width - 5
             rectDiff = -width
         }
-        if (idx === memes.selectedLineIdx) {
+        if (idx === memes.selectedLineIdx && !gIsDownloading) {
             gCtx.fillStyle = '#ff7f00';
             gCtx.fillRect(x + rectDiff, line.pos.y + line.size * 0.15, width, 8);
             gCtx.fillRect(x + rectDiff, line.pos.y - line.size, width, 8);
@@ -155,6 +156,10 @@ const getClickedLineIdx = (pos) => {
 }
 
 const downloadCanvas = elLink => {
+    gIsDownloading = true;
+    renderCanvas()
     const data = gElCanvas.toDataURL()
     elLink.href = data
+    gIsDownloading = false;
+
 }
