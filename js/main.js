@@ -43,8 +43,6 @@ const renderSavedMemes = () => {
         })
     }
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
-    document.querySelectorAll('ul li a').forEach(el => el.classList.remove('active'))
-    document.querySelectorAll('ul li a').forEach(el => el.classList.remove('active'))
 }
 
 const renderWords = () => {
@@ -146,4 +144,13 @@ const onShowSavedMemes = (el) => {
     el.classList.add('active')
     console.log(gSavedMemes)
     renderSavedMemes(gSavedMemes)
+}
+const onToggleShare = () => { 
+    document.querySelector('body').classList.toggle('show-share-menu');
+}
+const closeScreen = () => { 
+    document.querySelector('body').classList.remove('show-share-menu')
+}
+const onDownloadCanvas = (el) => {
+    downloadCanvas(el)
 }
