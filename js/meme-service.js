@@ -83,12 +83,17 @@ const moveText = diff => {
     renderCanvas()
 }
 
-const switchText = () => {
-    if (gMeme.lines.length === gMeme.selectedLineIdx + 1) {
-        gMeme.selectedLineIdx = 0;
-
+const switchText = (idx) => {
+    if(idx) {
+        console.log(idx)
+        gMeme.selectedLineIdx = idx;
     } else {
-        gMeme.selectedLineIdx++;
+        if (gMeme.lines.length === gMeme.selectedLineIdx + 1) {
+            gMeme.selectedLineIdx = 0;
+    
+        } else {
+            gMeme.selectedLineIdx++;
+        }
     }
     renderCanvas()
 }

@@ -94,24 +94,28 @@ function getEvPos(ev) {
 
 const onDown = ev => {
     const pos = getEvPos(ev);
-    let line = getClickedLine(pos)
-    setIsDrag(true)
+    let lineIdx = getClickedLineIdx(pos)
+    console.log(lineIdx)
+    if (lineIdx > -1) { 
+        switchText(lineIdx)
+    }
+    // setIsDrag(true)
 }
 const onMove = ev => {
     if (!setIsDrag()) return;
     const pos = getEvPos(ev);
-    dragLine(pos)
+    // dragLine(pos)
 }
 
 const onUp = () => {
-    setIsDrag(false)
+    // setIsDrag(false)
 }
 
 const dragLine = (pos) => {
 
 }
 
-const getClickedLine = (pos) => {
+const getClickedLineIdx = (pos) => {
     let lines = getMeme().lines
     let clickedLineIdx;
     lines.forEach((line ,idx) => {
@@ -126,10 +130,8 @@ const getClickedLine = (pos) => {
         }
         if ((pos.x >= (adjustedX - adjustedWidth)) && (pos.x <= (adjustedX + adjustedWidth )) &&
                 (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
-                clickedLineIdx = line;
+                clickedLineIdx = idx;
             }
     })
-    console.log(clickedLineIdx)
     return clickedLineIdx;
-
 }
