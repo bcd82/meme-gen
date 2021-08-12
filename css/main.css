@@ -24,6 +24,14 @@
     font-family: mont-thin;
     src: url(../fonts/Montserrat-Thin.ttf);
 }
+@font-face { 
+    font-family: impact;
+    src: url(../fonts/impact.ttf)
+}
+@font-face { 
+    font-family: arial;
+    src: url(../fonts/arial.ttf)
+}
 
 * {
     box-sizing: border-box;

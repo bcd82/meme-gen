@@ -81,11 +81,6 @@ const addLine = () => {
     renderCanvas()
 }
 
-// const moveText = diff => {
-//     gMeme.lines[gMeme.selectedLineIdx].pos.y += diff;
-//     renderCanvas()
-// }
-
 const switchText = (idx) => {
     if(idx > -1) {
         gMeme.selectedLineIdx = idx;
