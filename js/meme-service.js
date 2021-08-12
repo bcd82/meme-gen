@@ -95,6 +95,7 @@ const switchText = (idx) => {
             gMeme.selectedLineIdx++;
         }
     }
+    document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
     renderCanvas()
 }
 
