@@ -86,10 +86,23 @@ function getEvPos(ev) {
     if (gTouchEvs.includes(ev.type)) {
         ev.preventDefault()
         ev = ev.changedTouches[0]
-        pos = {
-            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-            y: (ev.pageY - ev.target.offsetTop - ev.target.clientTop) 
-        }
+        var source = ev.touches ? ev.touches[0] : ev;
+        const {
+          clientX,
+          clientY
+        } = source;
+        const {
+          left,
+          top
+        } = gElCanvas.getBoundingClientRect();
+      
+        const x = clientX - left;
+        const y = clientY - top;
+      
+        return {
+          x,
+          y
+        };
     }
     return pos
 }
