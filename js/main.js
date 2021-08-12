@@ -14,7 +14,7 @@ const renderImgs = () => {
     // let imgsToRender = gImgs;
     let strHTMLs = []
     let imgs = gImgs
-    if (gFilterBy) {
+    if (gFilterBy && gFilterBy !== 'all') {
         imgs = getFilteredImgs(gFilterBy)
     }
     if (!imgs || !imgs.length || imgs === null) {
@@ -29,7 +29,7 @@ const renderImgs = () => {
     }
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
 }
-const renderSavedMemes = () =>{
+const renderSavedMemes = () => {
     let memes = gSavedMemes;
     let strHTMLs = []
     if (!memes || !memes.length || memes === null) {
@@ -43,15 +43,16 @@ const renderSavedMemes = () =>{
         })
     }
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
+    document.querySelectorAll('ul li a').forEach(el => el.classList.remove('active'))
+    document.querySelectorAll('ul li a').forEach(el => el.classList.remove('active'))
 }
 
 const renderWords = () => {
     const words = getKeywordMap()
-    const strHTMLs = []
+    const strHTMLs = ['<p class="active" onclick="onFilterByWord(this)" style="font-size:30px">all</p>`']
     for (const key in words) {
         strHTMLs.push(`
-        <p onclick="onFilterByWord(this)" style="font-size:${16 + (words[key] * 2)}px">${key}</p>
-        `)
+        <p onclick="onFilterByWord(this)" style="font-size:${16 + (words[key] * 2)}px">${key}</p>`)
     }
     document.querySelector('.keywords').innerHTML = strHTMLs.join('');
 }
@@ -62,7 +63,7 @@ const onClickImg = id => {
     document.querySelector('body').classList.add('editor-open')
 }
 const onClickSavedMeme = id => {
-    setMeme(id,true);
+    setMeme(id, true);
     let meme = getMeme()
     document.querySelector('input[type=text]').value = meme.lines[0].txt;
     document.querySelector('body').classList.add('editor-open')
@@ -114,7 +115,7 @@ const onSwitchAlign = (alignTo) => switchAlign(alignTo)
 
 const onGalleryClick = (el) => {
     document.querySelector('body').classList.remove('editor-open')
-    document.querySelectorAll('ul li a').forEach((el)=> el.classList.remove('active'))
+    document.querySelectorAll('ul li a').forEach((el) => el.classList.remove('active'))
     el.classList.add('active')
     renderImgs()
 }
@@ -134,14 +135,14 @@ const onSearchFilter = str => {
     setFilter(str)
     renderImgs()
 }
-const onSaveMeme =()=> {
+const onSaveMeme = () => {
     saveMeme()
     loadSavedMemes()
     renderSavedMemes()
 }
 const onShowSavedMemes = (el) => {
     document.querySelector('body').classList.remove('editor-open')
-    document.querySelectorAll('ul li a').forEach((el)=> el.classList.remove('active'))
+    document.querySelectorAll('ul li a').forEach((el) => el.classList.remove('active'))
     el.classList.add('active')
     console.log(gSavedMemes)
     renderSavedMemes(gSavedMemes)
