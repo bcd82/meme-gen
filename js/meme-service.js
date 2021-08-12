@@ -72,9 +72,9 @@ const addLine = () => {
     }
 
     if (gMeme.lines.length === 1)
-        newLine.pos.y = 500;
+        newLine.pos.y = gElCanvas.height - 50;
     if (gMeme.lines.length >= 2)
-        newLine.pos.y = 300;
+        newLine.pos.y = gElCanvas.height /2;
 
     gMeme.selectedLineIdx++;
     gMeme.lines.push(newLine)

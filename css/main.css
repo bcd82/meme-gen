@@ -57,7 +57,7 @@ body {
 }
 
 .main-layout {
-    max-width: 1100px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
@@ -157,6 +157,7 @@ ul {
     display: flex;
     gap: 20px;
     align-items: center;
+    overflow: hidden;
 }
 
 .keywords p {
@@ -228,7 +229,7 @@ footer {
 /* EDITOR */
 
 .editor {
-    position: absolute;
+    position: fixed;
     background-color: #e3e3e3;
     padding-top: 20px;
     /* opacity: 0; */
@@ -249,6 +250,8 @@ footer {
     gap: 20px;
     height: 100%;
     align-items: center;
+    flex-direction: column;
+
 }
 
 .editor .tools {
@@ -390,31 +393,43 @@ body.editor-open .editor {
 }
 
 .canvas-container {
-    width: 550px;
-    height: 550px;
+    width: 350px;
+    height: 350px;
 }
 
 /* desktop */
+@media (min-width :400px) {
 
+.canvas-container {
+    width: 400px;
+    height: 400px;
+}
+}
 @media (min-width :1000px) {
+    .main-layout {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
     .gallery {
-        margin-top: 20px;
+        padding-top: 20px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 20px;
         overflow-y: scroll;
         height: 80vh;
+        padding: none;
+
 
     }
-
+    .editor {
+        position: absolute;
+    }
     .editor .editor-container {
-        width: 100%;
-        display: flex;
+        flex-direction: row;
         gap: 20px;
-        align-items: center;
         height: 80vh;
     }
 
-    .canvas-container {
+    .editor .canvas-container {
         width: 550px;
         height: 550px;
     }

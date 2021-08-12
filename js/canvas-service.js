@@ -38,10 +38,10 @@ const renderTexts = () => {
         setLineWidth(width)
         
         if (line.align === 'center') {
-            x = 275;
+            x = gElCanvas.width /2 ;
             rectDiff = -width / 2
         } else if (line.align === 'right') {
-            x = 545
+            x = gElCanvas.width -5
             rectDiff = -width
         }
         if (idx === memes.selectedLineIdx) {
@@ -127,11 +127,11 @@ const getClickedLineIdx = (pos) => {
         let adjustedX = line.pos.x;
         let adjustedWidth = line.width;
         if (line.align === 'center') {
-            adjustedX = line.pos.x + 275;
+            adjustedX = line.pos.x + gElCanvas.width /2;
             adjustedWidth = line.width /2;
         }
         if (line.align === 'right') {
-            adjustedX = line.pos.x + 545;
+            adjustedX = line.pos.x + gElCanvas.width -5;
         }
         if ((pos.x >= (adjustedX - adjustedWidth)) && (pos.x <= (adjustedX + adjustedWidth )) &&
                 (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
