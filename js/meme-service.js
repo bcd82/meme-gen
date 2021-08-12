@@ -13,6 +13,7 @@ const memeInit = () => {
     gMeme = {
         selectedImgId: 1,
         selectedLineIdx: 0,
+        id:makeId(),
         lines: [{
             txt: 'Change me',
             size: 55,
@@ -25,7 +26,7 @@ const memeInit = () => {
                 x: 10,
                 y: 100
             },
-            drag: false
+            drag: false,
         }]
     };
     loadSavedMemes()
@@ -40,14 +41,16 @@ const createImgs = () => {
     }
 }
 
-const setMeme = (id,isSaved = false) => {
-    if(isSaved){
-        gMeme = gSavedMemes[gSavedMemes.findIndex(meme => meme.selectedImgId === id)]
+const setMeme = (id ,isSaved) => {
+    let img
+    if (isSaved){
+        gMeme = gSavedMemes.find(meme => meme.id == id )
+        img = gImgs.find(img => img.id === gMeme.selectedImgId)
     } else {
         memeInit()
         gMeme.selectedImgId = id;
+         img = gImgs.find(img => img.id === id)
     }
-    const img = gImgs.find(img => img.id === id)
     setMemeImg(img.url)
 }
 
@@ -74,7 +77,7 @@ const addLine = () => {
             x: 10,
             y: 100
         },
-        drag: false
+        drag: false,
     }
 
     if (gMeme.lines.length === 1)

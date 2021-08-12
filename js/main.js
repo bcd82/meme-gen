@@ -37,7 +37,7 @@ const renderSavedMemes = () =>{
     } else {
         strHTMLs = memes.map((meme) => {
             return `        
-                    <div class="meme-card" onclick="onClickSavedMeme(${meme.selectedImgId})">
+                    <div class="meme-card" onclick="onClickSavedMeme(${meme.id},true)">
                     <img src="./imgs/square/${meme.selectedImgId}.jpg" />
                     </div>`
         })
@@ -72,7 +72,6 @@ const onChangeText = str => {
     changeText(str)
     let meme = getMeme()
     document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
-
 }
 
 const onAddLine = () => {
@@ -138,6 +137,7 @@ const onSearchFilter = str => {
 const onSaveMeme =()=> {
     saveMeme()
     loadSavedMemes()
+    renderSavedMemes()
 }
 const onShowSavedMemes = (el) => {
     document.querySelector('body').classList.remove('editor-open')
