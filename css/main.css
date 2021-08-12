@@ -130,10 +130,9 @@ ul {
 /*        TOP-BAR           */
 .top-bar {
     font-family: mont-reg;
-    height: 100px;
-    max-height: 100px;
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    max-width: 100%;
     align-items: center;
     justify-content: space-between;
 }
@@ -155,14 +154,17 @@ ul {
 
 .keywords {
     display: flex;
-    gap: 20px;
+    gap: 5px;
     align-items: center;
-    overflow: hidden;
+    width:100%;
+    overflow-x: scroll;
+    padding: 10px 5px;
 }
 
 .keywords p {
     cursor: pointer;
     user-select: none;
+    transform: scale(0.9);
 }
 
 .keywords p.active {
@@ -414,6 +416,22 @@ body.editor-open .editor {
     .main-layout {
         max-width: 1100px;
         margin: 0 auto;
+    }
+    .top-bar {
+        height: 100px;
+        max-height: 100px;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .keywords {
+        gap: 20px;
+        width:60%;
+        overflow-x: unset;
+
+        padding: unset;
+
     }
     .gallery {
         padding-top: 20px;

@@ -60,10 +60,6 @@ const onAddLine = () => {
     document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 }
 
-const onMoveText = diff => {
-    moveText(diff)
-}
-
 const onSwitchText = () => {
     let meme = getMeme()
     if (!meme.lines.length) return
