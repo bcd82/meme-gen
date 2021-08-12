@@ -341,7 +341,9 @@ footer {
     grid-row: 4;
     grid-column: 5;
 }
-
+.tool-btn.bottom { 
+    align-self: end;
+}
 .editor .tools .text-input:focus {
     border: 2px solid #ff7f00;
 }
