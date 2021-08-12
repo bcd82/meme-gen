@@ -94,7 +94,7 @@ function getEvPos(ev) {
 
 const onDown = ev => {
     const pos = getEvPos(ev);
-    getClickedLine(pos)
+    let line = getClickedLine(pos)
     setIsDrag(true)
 }
 const onMove = ev => {
@@ -113,32 +113,23 @@ const dragLine = (pos) => {
 
 const getClickedLine = (pos) => {
     let lines = getMeme().lines
-    let clickedLine;
-    lines.forEach(line => {
-        if (line.align === 'left') {
-            if ((pos.x >= line.pos.x && pos.x <= line.pos.x + line.width) &&
-                (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
-                console.log(pos.x, line.pos.x)
-                return line;
-            }
-        }
+    let clickedLineIdx;
+    lines.forEach((line ,idx) => {
+        let adjustedX = line.pos.x;
+        let adjustedWidth = line.width;
         if (line.align === 'center') {
-            if ((pos.x >= (line.pos.x + 275 - line.width / 2)) && (pos.x <= (line.pos.x + 275 + line.width / 2)) &&
-                (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
-                console.log(pos.x, line.pos.x)
-                clickedLine = line;
-            }
-
+            adjustedX = line.pos.x + 275;
+            adjustedWidth = line.width /2;
         }
         if (line.align === 'right') {
-            if ((pos.x >= (line.pos.x + 545 - line.width)) && (pos.x <= (line.pos.x + 545 + line.width )) &&
-                (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
-                console.log(pos.x, line.pos.x)
-                clickedLine = line;
-            }
-
+            adjustedX = line.pos.x + 545;
         }
+        if ((pos.x >= (adjustedX - adjustedWidth)) && (pos.x <= (adjustedX + adjustedWidth )) &&
+                (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
+                clickedLineIdx = line;
+            }
     })
-    return clickedLine;
+    console.log(clickedLineIdx)
+    return clickedLineIdx;
 
 }
