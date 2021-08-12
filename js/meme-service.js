@@ -2,6 +2,7 @@
 
 const gKeyWords = {};
 const gImgs = []
+let gSavedMemes = [];
 let gIdx = 1;
 let gMeme = {};
 let gFilterBy = ''
@@ -27,6 +28,7 @@ const memeInit = () => {
             drag: false
         }]
     };
+    loadSavedMemes()
 }
 const createImgs = () => {
     for (let i = 0; i < 18; i++) {
@@ -162,4 +164,12 @@ const getFilteredImgs = filter => {
             }))
             return true
     })
+}
+const saveMeme = () => {
+    gSavedMemes.push(gMeme)
+    saveToStorage('memeDb',gSavedMemes)
+}
+const loadSavedMemes= () => {
+    gSavedMemes = loadFromStorage('memeDb')
+    if (gSavedMemes === null ) gSavedMemes = []
 }

@@ -111,27 +111,28 @@ ul {
 .main-header ul li {
     display: flex;
     align-items: center;
-    flex-direction: column;
+    text-align: center;
 }
 
 .main-header ul li a {
     font-family: mont-med;
     font-size: 19px;
-    width: 75px;
-    text-align: left;
+    width: 85px;
+    text-align: center;
     color: #ffffff;
-    padding: 22px 0;
     cursor: pointer;
+    padding: 22px 0px;
 
 }
 
 .main-header ul li a.active {
     color: #040a2c;
-    box-shadow: 0px -4px #040a2c
+    box-shadow: inset 0px -5px 0 #040a2c;
 }
 
-.main-header ul li:last-of-type a {
+.main-header ul li:nth-of-type(2){
     border-inline-start: 1px solid #8a8a8a;
+    border-inline-end: 1px solid #8a8a8a;
     text-align: right;
 }
 
@@ -374,6 +375,20 @@ footer {
     grid-column: 5;
 }
 
+.editor .tools .large-btn {
+    background-color: #ff7f00;
+    color: white;
+    width: 100%;
+
+}
+.editor .tools .share {
+    grid-row: 5;
+    grid-column: 4/6;
+}
+.editor .tools .save {
+    grid-row: 5;
+    grid-column: 1/3;
+}
 /*end of grid ordering*/
 
 .tool-btn.bottom {
@@ -388,13 +403,6 @@ footer {
     border: 2px solid #ff7f00;
 }
 
-.editor .tools .share {
-    grid-row: 5;
-    grid-column: 4/6;
-    width: 100%;
-    background-color: #ff7f00;
-    color: white;
-}
 
 .editor input[type=color] {
     visibility: hidden;
@@ -420,6 +428,9 @@ body.editor-open .editor {
     .canvas-container {
         width: 380px;
         height: 380px;
+    }
+    .search-icon {
+        left:305px;
     }
 }
 @media (min-width :700px) {
@@ -470,7 +481,7 @@ body.editor-open .editor {
     }
     .editor {
         position: absolute;
-            top:63px;
+            top:66px;
             height: 90.9vh;
         }
         

@@ -2,7 +2,7 @@
 
 const onInit = () => {
     createImgs()
-    renderImgs()
+    renderImgs(gImgs)
     canvasInit()
     addListeners()
     memeInit()
@@ -10,16 +10,16 @@ const onInit = () => {
 
 }
 
-const renderImgs = () => {
-    let imgsToRender = gImgs;
+const renderImgs = (imgs) => {
+    // let imgsToRender = gImgs;
     let strHTMLs = []
     if (gFilterBy) {
-        imgsToRender = getFilteredImgs(gFilterBy)
+        imgs = getFilteredImgs(gFilterBy)
     }
-    if (!imgsToRender || !imgsToRender.length) {
+    if (!imgs || !imgs.length || imgs === null) {
         strHTMLs[0] = `<h2> no images found 😔 </h2>`
     } else {
-        strHTMLs = imgsToRender.map((img) => {
+        strHTMLs = imgs.map((img) => {
             return `        
                     <div class="meme-card" onclick="onClickImg(${img.id})">
                     <img src="./imgs/square/${img.id}.jpg" />
@@ -92,8 +92,11 @@ const onChangeStroke = color => changeStroke(color)
 
 const onSwitchAlign = (alignTo) => switchAlign(alignTo)
 
-const onCloseEditor = () => {
+const onGalleryClick = (el) => {
     document.querySelector('body').classList.remove('editor-open')
+    document.querySelectorAll('ul li a').forEach((el)=> el.classList.remove('active'))
+    el.classList.add('active')
+    renderImgs(gImgs)
 }
 
 const onFilterByWord = (elWord) => {
@@ -110,4 +113,14 @@ const onSearchFilter = str => {
     document.querySelectorAll('.keywords p').forEach((p) => p.classList.remove('active'))
     setFilter(str)
     renderImgs()
+}
+const onSaveMeme =()=> {
+    saveMeme()
+}
+const onShowSavedMemes = (el) => {
+    document.querySelector('body').classList.remove('editor-open')
+    document.querySelectorAll('ul li a').forEach((el)=> el.classList.remove('active'))
+    el.classList.add('active')
+    console.log(gSavedMemes)
+    renderImgs(gSavedMemes)
 }
