@@ -139,12 +139,20 @@ ul {
 .top-bar {
     font-family: mont-reg;
     display: flex;
+    position: relative;
     flex-direction: column;
     max-width: 100%;
     align-items: center;
     justify-content: space-between;
 }
 
+.search-icon {
+    height:20%;
+    width:auto;
+    position: absolute;
+    left:275px;
+    top:6px;
+}
 .search {
     width: 260px;
     border: none;
@@ -309,6 +317,7 @@ footer {
     transition: border .1s;
 }
 
+
 /*grid ordering mostly*/
 .editor .tools .switch {
     grid-row: 2;
@@ -419,6 +428,9 @@ body.editor-open .editor {
         width: 450px;
         height: 450px;
     }
+    .search-icon {
+        left:385px;
+    }
 }
 /* desktop */
 @media (min-width :1000px) {
@@ -433,6 +445,10 @@ body.editor-open .editor {
         width: 100%;
         align-items: center;
         justify-content: space-between;
+    }
+    .search-icon {
+        left:230px;
+        top:unset;
     }
     .keywords {
         gap: 20px;

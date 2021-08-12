@@ -47,7 +47,7 @@ const setMeme = (id) => {
 
 const getMeme = () => gMeme;
 
-const getSelectedLine = () =>{
+const getSelectedLine = () => {
     return gMeme.lines[gMeme.selectedLineIdx];
 }
 const changeText = (val) => {
@@ -74,7 +74,7 @@ const addLine = () => {
     if (gMeme.lines.length === 1)
         newLine.pos.y = gElCanvas.height - 50;
     if (gMeme.lines.length >= 2)
-        newLine.pos.y = gElCanvas.height /2;
+        newLine.pos.y = gElCanvas.height / 2;
 
     gMeme.selectedLineIdx++;
     gMeme.lines.push(newLine)
@@ -82,12 +82,12 @@ const addLine = () => {
 }
 
 const switchText = (idx) => {
-    if(idx > -1) {
+    if (idx > -1) {
         gMeme.selectedLineIdx = idx;
     } else {
         if (gMeme.lines.length === gMeme.selectedLineIdx + 1) {
             gMeme.selectedLineIdx = 0;
-    
+
         } else {
             gMeme.selectedLineIdx++;
         }
@@ -147,7 +147,7 @@ const setFilter = filterBy => {
 const setLineWidth = width => gMeme.lines[gMeme.selectedLineIdx].width = width;
 
 const setIsDrag = isDrag => {
-    if(!gMeme.lines[gMeme.selectedLineIdx]) return;
+    if (!gMeme.lines[gMeme.selectedLineIdx]) return;
     if ((isDrag || isDrag === false))
         gMeme.lines[gMeme.selectedLineIdx].drag = isDrag
     return gMeme.lines[gMeme.selectedLineIdx].drag;
@@ -157,7 +157,9 @@ const setIsDrag = isDrag => {
 const getFilteredImgs = filter => {
     return gImgs.filter(img => {
         let kws = img.keyWords
-        if (kws.some((kw) => { return kw === filter}))
+        if (kws.some((kw) => {
+                return kw === filter
+            }))
             return true
     })
 }

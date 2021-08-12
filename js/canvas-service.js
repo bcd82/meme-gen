@@ -36,12 +36,12 @@ const renderTexts = () => {
         let width = gCtx.measureText(line.txt).width
         let x = line.pos.x;
         setLineWidth(width)
-        
+
         if (line.align === 'center') {
-            x = gElCanvas.width /2 ;
+            x = gElCanvas.width / 2;
             rectDiff = -width / 2
         } else if (line.align === 'right') {
-            x = gElCanvas.width -5
+            x = gElCanvas.width - 5
             rectDiff = -width
         }
         if (idx === memes.selectedLineIdx) {
@@ -88,20 +88,20 @@ function getEvPos(ev) {
         ev = ev.changedTouches[0]
         var source = ev.touches ? ev.touches[0] : ev;
         const {
-          clientX,
-          clientY
+            clientX,
+            clientY
         } = source;
         const {
-          left,
-          top
+            left,
+            top
         } = gElCanvas.getBoundingClientRect();
-      
+
         const x = clientX - left;
         const y = clientY - top;
-      
+
         return {
-          x,
-          y
+            x,
+            y
         };
     }
     return pos
@@ -111,14 +111,14 @@ const onDown = ev => {
     if (getMeme().lines.length < 1 || !getSelectedLine()) return;
     const pos = getEvPos(ev);
     let lineIdx = getClickedLineIdx(pos)
-    if (lineIdx > -1) { 
+    if (lineIdx > -1) {
         switchText(lineIdx)
         setIsDrag(true)
     }
 }
 const onMove = ev => {
     const pos = getEvPos(ev);
-    if(setIsDrag()){
+    if (setIsDrag()) {
         dragLine(pos)
     }
 }
@@ -136,20 +136,20 @@ const dragLine = (pos) => {
 const getClickedLineIdx = (pos) => {
     let lines = getMeme().lines
     let clickedLineIdx;
-    lines.forEach((line ,idx) => {
+    lines.forEach((line, idx) => {
         let adjustedX = line.pos.x;
         let adjustedWidth = line.width;
         if (line.align === 'center') {
-            adjustedX = line.pos.x + gElCanvas.width /2;
-            adjustedWidth = line.width /2;
+            adjustedX = line.pos.x + gElCanvas.width / 2;
+            adjustedWidth = line.width / 2;
         }
         if (line.align === 'right') {
-            adjustedX = line.pos.x + gElCanvas.width -5;
+            adjustedX = line.pos.x + gElCanvas.width - 5;
         }
-        if ((pos.x >= (adjustedX - adjustedWidth)) && (pos.x <= (adjustedX + adjustedWidth )) &&
-                (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
-                clickedLineIdx = idx;
-            }
+        if ((pos.x >= (adjustedX - adjustedWidth)) && (pos.x <= (adjustedX + adjustedWidth)) &&
+            (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
+            clickedLineIdx = idx;
+        }
     })
     return clickedLineIdx;
 }
