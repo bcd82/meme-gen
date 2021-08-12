@@ -4,6 +4,7 @@ const onInit = () => {
     createImgs()
     renderImgs()
     canvasInit()
+    addListeners()
     memeInit()
     renderWords()
 

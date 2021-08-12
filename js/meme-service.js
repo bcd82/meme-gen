@@ -17,12 +17,14 @@ const memeInit = () => {
             size: 55,
             align: 'center',
             color: 'white',
+            lineWidth: 0,
             font: 'impact',
             strokeClr: 'black',
             pos: {
                 x: 10,
                 y: 100
-            }
+            },
+            drag: false
         }]
     };
 }
@@ -56,12 +58,14 @@ const addText = () => {
         size: 55,
         align: 'center',
         color: 'white',
+        lineWidth: 0,
         font: 'impact',
         strokeClr: 'black',
         pos: {
             x: 10,
             y: 100
-        }
+        },
+        drag: false
     }
 
     if (gMeme.lines.length === 1)
@@ -114,7 +118,7 @@ const changeColor = color => {
 }
 
 const changeStroke = (color) => {
-    gMeme.lines[gMeme.selectedLineIdx].strokeClr =  color;
+    gMeme.lines[gMeme.selectedLineIdx].strokeClr = color;
     renderCanvas()
 }
 
@@ -137,6 +141,13 @@ const setFilter = filterBy => {
     gKeyWords[filterBy]++;
 
 }
+const setLineWidth = width => gMeme.lines[gMeme.selectedLineIdx].lineWidth = width;
+
+const setIsDrag = isDrag => {
+    if (isDrag)
+        gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+    return gMeme.lines[gMeme.selectedLineIdx].isDrag;
+};
 
 const getFilteredImgs = filter => {
     return gImgs.filter(img => {

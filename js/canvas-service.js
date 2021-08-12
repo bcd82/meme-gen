@@ -2,11 +2,11 @@
 let gElCanvas;
 let gCtx;
 let gImg;
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 const canvasInit = () => {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    // addListeners()
 }
 
 // const resizeCanvas = () => {
@@ -31,9 +31,10 @@ const renderTexts = () => {
     const lines = memes.lines;
     lines.forEach((line, idx) => {
         gCtx.font = `${line.size}px ${line.font}`;
-        let x = line.pos.x;
         let rectDiff = 0;
         let width = gCtx.measureText(line.txt).width
+        let x = line.pos.x;
+        setLineWidth(width)
         if (line.align === 'center') {
             x = 275;
             rectDiff = -width / 2
@@ -51,15 +52,65 @@ const renderTexts = () => {
         gCtx.textAlign = line.align;
         gCtx.fillStyle = line.color;
         gCtx.fillSize = line.size;
+        gCtx.lineJoin = 'round';
         gCtx.strokeStyle = line.strokeClr;
         gCtx.lineWidth = 8;
         gCtx.strokeText(line.txt, x, line.pos.y);
         gCtx.fillText(line.txt, x, line.pos.y);
     })
 }
-// const saveCanvas = () => {
-//     gCtx.save()
-// }
-// const restoreCanvas = () => {
-//     gCtx.restore()
-// }
+
+const addListeners = () => {
+    addMouseListeners()
+    // addTouchListeners()
+}
+const addMouseListeners = () => {
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mouseup', onUp)
+}
+
+const addTouchListeners = () => {
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchend', onUp)
+}
+
+function getEvPos(ev) {
+    var pos = {
+        x: ev.offsetX,
+        y: ev.offsetY
+    }
+    if (gTouchEvs.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+        }
+    }
+    return pos
+}
+
+const onDown = ev => {
+    const pos = getEvPos(ev);
+    getClickedLine(pos)
+    setIsDrag(true)
+}
+const onMove = ev => {
+    if (!setIsDrag()) return;
+    const pos = getEvPos(ev);
+    dragLine(pos)
+}
+
+const onUp = () => {
+    setIsDrag(false)
+}
+
+const dragLine = (pos) => { 
+
+}
+
+const getClickedLine = (pos) => { 
+    console.log('check if line clicked')
+}
