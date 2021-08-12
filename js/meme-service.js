@@ -13,7 +13,7 @@ const memeInit = () => {
         selectedImgId: 1,
         selectedLineIdx: 0,
         lines: [{
-            txt: 'Change me(me)',
+            txt: 'Change me',
             size: 55,
             align: 'center',
             color: 'white',
@@ -57,7 +57,7 @@ const changeText = (val) => {
 
 const addLine = () => {
     const newLine = {
-        txt: 'Change me(me)',
+        txt: 'Change me',
         size: 55,
         align: 'center',
         color: 'white',

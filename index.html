@@ -32,7 +32,20 @@
     </div>
 
     <main class="main-content">
-        <div class="editor ">
+        <div class="editor">
+            <header>
+                <div class="main-header main-layout">
+                    <div class="logo">
+                        <img src="./imgs/Logo2.png" alt="logo" />
+                    </div>
+                    <nav>
+                        <ul>
+                            <li><a onclick="onCloseEditor()" class="active">Gallery</a></li>
+                            <li><a>About</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
             <div class="editor-container main-layout">
                 <div class="canvas-container">
                     <canvas width="550" height="550"></canvas>
@@ -71,13 +84,13 @@
                     <label for="stroke" class="tool-btn stroke">
                         <img src="./imgs/ICONS/text stroke.png">
                     </label>
-                    <input id="stroke" type="color" onchange="onChangeStroke(this.value)">
+                    <input id="stroke" type="color" onchange="onChangeStroke(this.value) ">
                     <label for="color" class="tool-btn color">
                         <img src="./imgs/ICONS/paint-board-and-brush.png">
                     </label>
                     <input id="color"type="color" onchange="onChangeColor(this.value)">
                     <div class="stickers"></div>
-                    <button class="tool-btn share"  onclick="" >Share</button>
+                    <button class="tool-btn share" onclick="" >Share</button>
                 </div>
             </div>
     
