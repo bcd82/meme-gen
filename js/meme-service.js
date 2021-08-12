@@ -47,6 +47,9 @@ const setMeme = (id) => {
 
 const getMeme = () => gMeme;
 
+const getSelectedLine = () =>{
+    return gMeme.lines[gMeme.selectedLineIdx];
+}
 const changeText = (val) => {
     gMeme.lines[gMeme.selectedLineIdx].txt = val;
     renderCanvas()
@@ -85,7 +88,6 @@ const moveText = diff => {
 
 const switchText = (idx) => {
     if(idx > -1) {
-        console.log(idx)
         gMeme.selectedLineIdx = idx;
     } else {
         if (gMeme.lines.length === gMeme.selectedLineIdx + 1) {
@@ -150,9 +152,10 @@ const setFilter = filterBy => {
 const setLineWidth = width => gMeme.lines[gMeme.selectedLineIdx].width = width;
 
 const setIsDrag = isDrag => {
-    if (isDrag)
-        gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
-    return gMeme.lines[gMeme.selectedLineIdx].isDrag;
+    if ((isDrag || isDrag === false))
+    gMeme.lines[gMeme.selectedLineIdx].drag = isDrag
+    return gMeme.lines[gMeme.selectedLineIdx].drag;
+
 };
 
 const getFilteredImgs = filter => {

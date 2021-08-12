@@ -71,7 +71,7 @@ const onSwitchText = () => {
     document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 }
 const renderInput =()=>{
-    
+    document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 }
 const onDeleteText = () => {
     deleteText()

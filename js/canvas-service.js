@@ -35,6 +35,7 @@ const renderTexts = () => {
         let width = gCtx.measureText(line.txt).width
         let x = line.pos.x;
         setLineWidth(width)
+        
         if (line.align === 'center') {
             x = 275;
             rectDiff = -width / 2
@@ -98,21 +99,25 @@ const onDown = ev => {
     console.log(lineIdx)
     if (lineIdx > -1) { 
         switchText(lineIdx)
+        setIsDrag(true)
     }
-    // setIsDrag(true)
 }
 const onMove = ev => {
-    if (!setIsDrag()) return;
+    console.log(setIsDrag())
     const pos = getEvPos(ev);
-    // dragLine(pos)
+    if(setIsDrag()){
+        dragLine(pos)
+    }
 }
 
 const onUp = () => {
-    // setIsDrag(false)
+    setIsDrag(false)
 }
 
 const dragLine = (pos) => {
-
+    let line = getSelectedLine()
+    line.pos.y = pos.y;
+    renderCanvas()
 }
 
 const getClickedLineIdx = (pos) => {
