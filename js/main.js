@@ -54,8 +54,8 @@ const onChangeText = str => {
 
 }
 
-const onAddText = () => {
-    addText();
+const onAddLine = () => {
+    addLine();
     let meme = getMeme()
     document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 }

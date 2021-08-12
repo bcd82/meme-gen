@@ -7,13 +7,14 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 const canvasInit = () => {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
+    resizeCanvas()
 }
 
-// const resizeCanvas = () => {
-//     const elContainer = document.querySelector('.canvas-container')
-//     gElCanvas.width = elContainer.offsetWidth
-//     gElCanvas.height = elContainer.offsetHeight
-// }
+const resizeCanvas = () => {
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
+}
 
 const setMemeImg = url => {
     const image = new Image();
@@ -63,7 +64,7 @@ const renderTexts = () => {
 
 const addListeners = () => {
     addMouseListeners()
-    // addTouchListeners()
+    addTouchListeners()
 }
 const addMouseListeners = () => {
     gElCanvas.addEventListener('mousemove', onMove)
@@ -94,16 +95,15 @@ function getEvPos(ev) {
 }
 
 const onDown = ev => {
+    if (getMeme().lines.length < 1 || !getSelectedLine()) return;
     const pos = getEvPos(ev);
     let lineIdx = getClickedLineIdx(pos)
-    console.log(lineIdx)
     if (lineIdx > -1) { 
         switchText(lineIdx)
         setIsDrag(true)
     }
 }
 const onMove = ev => {
-    console.log(setIsDrag())
     const pos = getEvPos(ev);
     if(setIsDrag()){
         dragLine(pos)

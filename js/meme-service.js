@@ -55,7 +55,7 @@ const changeText = (val) => {
     renderCanvas()
 }
 
-const addText = () => {
+const addLine = () => {
     const newLine = {
         txt: 'Change me(me)',
         size: 55,
@@ -152,8 +152,9 @@ const setFilter = filterBy => {
 const setLineWidth = width => gMeme.lines[gMeme.selectedLineIdx].width = width;
 
 const setIsDrag = isDrag => {
+    if(!gMeme.lines[gMeme.selectedLineIdx]) return;
     if ((isDrag || isDrag === false))
-    gMeme.lines[gMeme.selectedLineIdx].drag = isDrag
+        gMeme.lines[gMeme.selectedLineIdx].drag = isDrag
     return gMeme.lines[gMeme.selectedLineIdx].drag;
 
 };
