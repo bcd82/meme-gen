@@ -128,21 +128,38 @@ ul {
 
 /*        TOP-BAR           */
 .top-bar {
-    height: 100px;
+    font-family: mont-reg;
+
+    height:100px;
+    max-height: 100px;
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
 }
+.search {
+    width:260px;
+    border:none;
+    border-bottom:2px solid #040a2c;
+    font-family: mont-reg;
+    font-size: 1.187rem;
+    padding: 5px 7px;
 
+}
+.search::placeholder {
+    color:#7a7a7a;
+}
 .keywords {
     display: flex;
     gap: 20px;
-    font-family: mont-reg;
 }
 .keywords p { 
     cursor: pointer;
     user-select: none;
+}
+.keywords p.active { 
+    font-family: mont-med;
+    color:#ff7f00;
 }
 
 /* GALLERY */

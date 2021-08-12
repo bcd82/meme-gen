@@ -12,17 +12,23 @@ const onInit = () => {
 
 const renderImgs = () => {
     let imgsToRender = gImgs;
+    let strHTMLs = []
     if (gFilterBy) {
         imgsToRender = getFilteredImgs(gFilterBy)
     }
-    const strHTMLs = imgsToRender.map((img) => {
-        return `        
-            <div class="meme-card" onclick="onClickImg(${img.id})">
-            <img src="./imgs/square/${img.id}.jpg" />
-            </div>`
-    })
+    if (!imgsToRender || !imgsToRender.length) {
+        strHTMLs[0] = `<h2> no images found 😔 </h2>`
+    } else {
+        strHTMLs = imgsToRender.map((img) => {
+            return `        
+                    <div class="meme-card" onclick="onClickImg(${img.id})">
+                    <img src="./imgs/square/${img.id}.jpg" />
+                    </div>`
+        })
+    }
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
 }
+
 
 const renderWords = () => {
     const words = getKeywordMap()
@@ -91,11 +97,15 @@ const onCloseEditor = () => {
 const onFilterByWord = (elWord) => {
     let fontSize = +elWord.style.fontSize.replace(/\D/g, '');
     elWord.style.fontSize = `${fontSize + 1}px `
+    document.querySelectorAll('.keywords p').forEach((p) => p.classList.remove('active'))
+    elWord.classList.add('active')
     const word = elWord.textContent;
     setFilter(word);
     renderImgs()
 }
 
 const onSearchFilter = str => {
-
+    document.querySelectorAll('.keywords p').forEach((p) => p.classList.remove('active'))
+    setFilter(str)
+    renderImgs()
 }

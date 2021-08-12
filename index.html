@@ -25,7 +25,7 @@
         </div>
     </header>
     <div class="top-bar main-layout">
-        <input type="search">
+        <input type="search" oninput="onSearchFilter(this.value)" class="search" placeholder="Enter search Keyword">
         <div class="keywords">
             words will be around here
         </div>
@@ -72,9 +72,7 @@
                         <option value="impact">Impact</option>
                         <option value="arial">Arial</option>
                     </select>
-                    <!-- <button class="tool-btn stroke"  onclick="onToggleStroke()">
-                        <img src="./imgs/ICONS/text stroke.png" alt="">
-                    </button> -->
+
                     <label for="stroke" class="tool-btn stroke">
                         <img src="./imgs/ICONS/text stroke.png">
                     </label>

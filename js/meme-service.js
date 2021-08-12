@@ -151,8 +151,8 @@ const setIsDrag = isDrag => {
 
 const getFilteredImgs = filter => {
     return gImgs.filter(img => {
-        let kwsStr = img.keyWords.join()
-        if (kwsStr.includes(filter))
+        let kws = img.keyWords
+        if (kws.some((kw) => { return kw === filter}))
             return true
     })
 }
