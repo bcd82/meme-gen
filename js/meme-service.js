@@ -84,7 +84,7 @@ const moveText = diff => {
 }
 
 const switchText = (idx) => {
-    if(idx) {
+    if(idx > -1) {
         console.log(idx)
         gMeme.selectedLineIdx = idx;
     } else {

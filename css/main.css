@@ -152,6 +152,7 @@ ul {
 .keywords {
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 .keywords p { 
     cursor: pointer;
