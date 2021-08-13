@@ -150,7 +150,7 @@ const getKeywordMap = () => {
 }
 
 const setFilter = filterBy => {
-    gFilterBy = filterBy;
+    gFilterBy = filterBy.toLowerCase();
     gKeyWords[filterBy]++;
 
 }
@@ -173,6 +173,7 @@ const getFilteredImgs = filter => {
             return true
     })
 }
+
 const saveMeme = () => {
     let memeIdx = gSavedMemes.findIndex(meme => meme.id === gMeme.id);
     gIsDownloading = true;
@@ -188,7 +189,6 @@ const saveMeme = () => {
     saveToStorage('memeDb', gSavedMemes)
     alert('meme saved')
     renderCanvas()
-
 }
 
 const loadSavedMemes = () => {

@@ -763,4 +763,7 @@ body.show-share-menu .screen ,body.show-menu .screen {
         right:500px;
         transform: translateX(550%);
     }
+    .about-me .about-info {
+        align-items: flex-start ;
+    }
 }
