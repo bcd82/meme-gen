@@ -33,11 +33,12 @@ const renderSavedMemes = () => {
     let memes = gSavedMemes;
     let strHTMLs = []
     if (!memes || !memes.length || memes === null) {
-        strHTMLs[0] = `<h2> no images found 😔 </h2>`
+        strHTMLs[0] = `<h2> no saved memes found 😔</h2>`
     } else {
         strHTMLs = memes.map((meme) => {
             return `        
-                    <div class="meme-card" onclick="onClickSavedMeme(${meme.id},true)">
+                    <div class="meme-card" onclick="onClickSavedMeme(${meme.id})">
+                    <p class="saved-meme-text">${meme.lines.length ? meme.lines[0].txt : ''} </p>
                     <img src="./imgs/square/${meme.selectedImgId}.jpg" />
                     </div>`
         })
@@ -63,7 +64,8 @@ const onClickImg = id => {
 const onClickSavedMeme = id => {
     setMeme(id, true);
     let meme = getMeme()
-    document.querySelector('input[type=text]').value = meme.lines[0].txt;
+    if(meme.lines.length > 0) 
+        document.querySelector('input[type=text]').value = meme.lines[0].txt;
     document.querySelector('body').classList.add('editor-open')
 }
 
@@ -200,23 +202,4 @@ const onClickShare = ()=> {
     renderCanvas();
     clickShare() 
     gIsDownloading = false;
-}
-async function clickShare()  {
-    const dataUrl = gElCanvas.toDataURL();
-    const blob = await (await fetch(dataUrl)).blob();
-    const filesArray = [
-        new File(
-            [blob],
-            'animation.png', {
-                type: blob.type,
-                lastModified: new Date().getTime()
-            }
-        )
-    ];
-
-    const shareData = {
-        files: filesArray,
-    };
-    navigator.share(shareData);
-
 }
