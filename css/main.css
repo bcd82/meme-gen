@@ -85,6 +85,16 @@ label {
     display: block;
 }
 
+.screen {
+    position: fixed;
+    inset: 0;
+    background-color: #f5c08b75;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity .2s;
+    pointer-events: none;
+}
+
 /* HEADER */
 
 header {
@@ -183,7 +193,7 @@ body.editor-open .main-header ul li:nth-of-type(3) {
     height: 20%;
     width: auto;
     position: absolute;
-    left: 275px;
+    right: 50px;
     top: 6px;
 }
 
@@ -234,11 +244,8 @@ body.editor-open .main-header ul li:nth-of-type(3) {
     padding: 5px;
     margin-top: 20px;
     display: grid;
-    /* width:90%; */
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    /* overflow-y: scroll; */
-
 }
 
 .meme-card {
@@ -255,8 +262,9 @@ body.editor-open .main-header ul li:nth-of-type(3) {
 
 .gallery h2 {
     font-family: mont-reg;
-    font-size: 50px;
-    width: 100%;
+    font-size: 35px;
+    width: 200%;
+    
 }
 .saved-meme-delete { 
     position: absolute;
@@ -556,16 +564,6 @@ body.show-share-menu .share-menu {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.screen {
-    position: fixed;
-    inset: 0;
-    background-color: #f5c08b75;
-    z-index: 2;
-    opacity: 0;
-    transition: opacity .2s;
-    pointer-events: none;
-}
-
 body.show-share-menu .screen ,body.show-menu .screen {
     opacity: 1;
     pointer-events: all;
@@ -637,7 +635,7 @@ body.show-share-menu .screen ,body.show-menu .screen {
 }
 
 /* desktop */
-@media (min-width :1000px) {
+@media (min-width :1120px) {
     .main-layout {
         max-width: 1100px;
         margin: 0 auto;
@@ -660,7 +658,7 @@ body.show-share-menu .screen ,body.show-menu .screen {
     .keywords {
         gap: 20px;
         width: 60%;
-        overflow-x: unset;
+        overflow-x: hidden;
         padding: unset;
 
     }

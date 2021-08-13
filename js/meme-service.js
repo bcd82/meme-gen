@@ -187,7 +187,6 @@ const saveMeme = () => {
         gSavedMemes.push(gMeme)
         
     saveToStorage('memeDb', gSavedMemes)
-    alert('meme saved')
     renderCanvas()
 }
 

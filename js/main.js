@@ -94,6 +94,7 @@ const onSwitchText = () => {
 const renderInput = () => {
     document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 }
+
 const onDeleteText = () => {
     deleteText()
 }
@@ -125,6 +126,9 @@ const onFilterByWord = (elWord) => {
     let fontSize = +elWord.style.fontSize.replace(/\D/g, '');
     elWord.style.fontSize = `${fontSize + 1}px `
     document.querySelectorAll('.keywords p').forEach((p) => p.classList.remove('active'))
+    document.querySelector('ul li a.active').classList.remove('active')
+    document.querySelector('ul li a:first-of-type').classList.add('active')
+
     elWord.classList.add('active')
     const word = elWord.textContent;
     setFilter(word);
@@ -140,6 +144,7 @@ const onSaveMeme = () => {
     saveMeme()
     loadSavedMemes()
     renderSavedMemes()
+    document.querySelector('body').classList.remove('editor-open')
 }
 
 const onShowSavedMemes = (el) => {
