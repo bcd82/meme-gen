@@ -162,6 +162,7 @@ const downloadCanvas = elLink => {
     const data = gElCanvas.toDataURL('image/jpeg')
     elLink.href = data
     gIsDownloading = false;
+    renderCanvas()
 
 }
 

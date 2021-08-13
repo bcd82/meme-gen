@@ -175,11 +175,24 @@ const getFilteredImgs = filter => {
 }
 const saveMeme = () => {
     let memeIdx = gSavedMemes.findIndex(meme => meme.id === gMeme.id);
+    gIsDownloading = true;
+    renderCanvas()
+    gIsDownloading = false;
+    let img = gElCanvas.toDataURL('image/jpeg',0.5);
+    gMeme.img = img
     if (memeIdx > -1)
         gSavedMemes[memeIdx] = gMeme;
     else
         gSavedMemes.push(gMeme)
+        
     saveToStorage('memeDb', gSavedMemes)
+    alert('meme saved')
+    renderCanvas()
+
+}
+
+const deleteMeme = () => { 
+
 }
 const loadSavedMemes = () => {
     gSavedMemes = loadFromStorage('memeDb')

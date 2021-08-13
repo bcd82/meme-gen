@@ -260,7 +260,7 @@ body.editor-open .main-header ul li:nth-of-type(3) {
 }
 .saved-meme-text { 
     position: absolute;
-    top:45%;
+    top:95%;
     font-family: impact;
     color:white;
     -webkit-text-stroke: 2px black;
