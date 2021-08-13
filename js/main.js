@@ -38,7 +38,7 @@ const renderSavedMemes = () => {
         strHTMLs = memes.map((meme) => {
             return `        
                     <div class="meme-card" onclick="onClickSavedMeme(${meme.id})">
-                    <p class="saved-meme-text">delete </p>
+                    <img  class="saved-meme-delete" onclick=""onDeleteMeme(${meme.id}) src="./imgs/ICONS/trash.png" alt="">
                     <img src="${meme.img}" />
                     </div>`
         })
