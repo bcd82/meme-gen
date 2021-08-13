@@ -110,8 +110,14 @@ header {
 ul {
     list-style: none;
     margin: 0;
+    top:66px;
+    height:100vh;
+    right:0;
     display: flex;
     flex-direction: column;
+    position:fixed;
+    z-index:10;
+    background-color: #ff7f00;
 }
 
 .main-header ul li {
@@ -128,11 +134,11 @@ ul {
     text-align: center;
     color: #ffffff;
     cursor: pointer;
-    padding: 22px 0px;
+    padding: 21px 0px;
+    transition: box-shadow .2s , color .2s;
 
 }
-
-.main-header ul li a.active {
+.main-header ul li a:hover, .main-header ul li a.active  {
     color: #040a2c;
     box-shadow: inset 0px -5px 0 #040a2c;
 }
@@ -549,6 +555,11 @@ body.show-share-menu .screen {
         margin: 0;
         display: flex;
         flex-direction: row;
+        height: unset;
+        background-color: transparent;
+        position:relative;
+        top:unset;
+
     }
     .canvas-container {
         width: 450px;

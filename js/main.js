@@ -142,7 +142,6 @@ const onShowSavedMemes = (el) => {
     document.querySelector('body').classList.remove('editor-open')
     document.querySelectorAll('ul li a').forEach((el) => el.classList.remove('active'))
     el.classList.add('active')
-    console.log(gSavedMemes)
     renderSavedMemes(gSavedMemes)
 }
 const onToggleShare = () => { 
