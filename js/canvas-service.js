@@ -135,8 +135,7 @@ const onDown = ev => {
     }
     if (stickerIdx > -1) {
         gMeme.selectedStickerIdx = stickerIdx;
-        gMeme.stickers[stickerIdx].drag = true;
-        console.log(stickerIdx, gMeme.stickers[stickerIdx])
+        setStickerDrag(true)
     }
 }
 const onMove = ev => {
@@ -144,19 +143,17 @@ const onMove = ev => {
     if (setLineDrag()) {
         dragLine(pos)
     }
-    if (getMeme.selectedStickerIdx  === -1 || !(getMeme().stickers[getMeme().selectedStickerIdx]   ))return
-    
-    if (getMeme().stickers[getMeme().selectedStickerIdx].drag === true)
-        console.log('fucking hell')
-    
+    if (getMeme.selectedStickerIdx  === -1 || !(getMeme().stickers[getMeme().selectedStickerIdx])) return
+    if (!setStickerDrag()) return
         dragSticker(pos)
 }
 
 const onUp = () => {
     setLineDrag(false)
-    if (!getMeme().stickers.length || getMeme().selectedStickerIdx === -1) return
-    getMeme().stickers[getMeme().selectedStickerIdx].drag = false;
-    gMeme.selectedStickerIdx = -1
+    console.log(getMeme().sel)
+    if (getMeme().selectedStickerIdx === -1) return
+    setStickerDrag(false)
+    getMeme().selectedStickerIdx = -1
 }
 
 const dragLine = (pos) => {
@@ -165,7 +162,7 @@ const dragLine = (pos) => {
     renderCanvas()
 }
 const dragSticker = (pos) => {
-    let sticker = getMeme().stickers[gMeme.selectedStickerIdx]
+    let sticker = getMeme().stickers[getMeme().selectedStickerIdx]
     sticker.pos = pos;
 
     renderCanvas()

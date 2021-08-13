@@ -165,11 +165,11 @@ const setLineDrag = (isDrag) => {
     return gMeme.lines[gMeme.selectedLineIdx].drag;
 };
 
-// const setStickerDrag = (isDrag) => {
-//     if (isDrag || isDrag === false)
-//         gMeme.stickers[gMeme.selectedStickerIdx].drag = isDrag
-//     return gMeme.stickers[gMeme.selectedStickerIdx].drag;
-// };
+const setStickerDrag = (isDrag) => {
+    if (isDrag || isDrag === false)
+        gMeme.stickers[gMeme.selectedStickerIdx].drag = isDrag
+    return gMeme.stickers[gMeme.selectedStickerIdx].drag;
+};
 
 const getFilteredImgs = filter => {
     return gImgs.filter(img => {
