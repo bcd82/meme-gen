@@ -30,14 +30,13 @@ const renderCanvas = () => {
     renderTexts();
 }
 
-
 const renderStickers = () => {
     const meme = getMeme()
     if (meme.stickers.length) {
         meme.stickers.forEach(sticker => {
             const image = new Image();
             image.src = `../imgs/stickers/${sticker.name}.png`;
-            gCtx.drawImage(image, sticker.pos.x, sticker.pos.x, 150, 150);
+            gCtx.drawImage(image, sticker.pos.x, sticker.pos.y,150,150);
         })
     }
 }
@@ -122,20 +121,22 @@ function getEvPos(ev) {
 }
 
 const onDown = ev => {
-    if (getMeme().lines.length < 1 || !getSelectedLine()) return;
     const pos = getEvPos(ev);
-    let lineIdx = getClickedLineIdx(pos)
-    let stickerIdx;
-    if(getMeme().stickers.length){
-         stickerIdx = getClickedStickerIdx(pos)
+    let stickerIdx = -1;
+    if (getMeme().lines.length > 1 || getSelectedLine()) {
+        let lineIdx = getClickedLineIdx(pos)
+        if (lineIdx > -1) {
+            switchText(lineIdx)
+            setLineDrag(true)
+        }
     }
-    if (lineIdx > -1) {
-        switchText(lineIdx)
-        setLineDrag(true)
+    if (getMeme().stickers.length) {
+        stickerIdx = getClickedStickerIdx(pos)
     }
     if (stickerIdx > -1) {
-        console.log(stickerIdx)
-        setStickerDrag(true,stickerIdx)
+        gMeme.selectedStickerIdx = stickerIdx;
+        gMeme.stickers[stickerIdx].drag = true;
+        console.log(stickerIdx, gMeme.stickers[stickerIdx])
     }
 }
 const onMove = ev => {
@@ -143,25 +144,28 @@ const onMove = ev => {
     if (setLineDrag()) {
         dragLine(pos)
     }
-    // if(setStickerDrag() !== undefined ){
-    //     dragSticker(pos,stickerIdx)
-    //     console.log(setStickerDrag())
-    // }
+    if (getMeme.selectedStickerIdx  === -1 || !(getMeme().stickers[getMeme().selectedStickerIdx]   ))return
+    
+    if (getMeme().stickers[getMeme().selectedStickerIdx].drag === true)
+        console.log('fucking hell')
+    
+        dragSticker(pos)
 }
 
 const onUp = () => {
     setLineDrag(false)
-    // setStickerDrag(false)
+    if (!getMeme().stickers.length || getMeme().selectedStickerIdx === -1) return
+    getMeme().stickers[getMeme().selectedStickerIdx].drag = false;
+    gMeme.selectedStickerIdx = -1
 }
 
 const dragLine = (pos) => {
     let line = getSelectedLine()
     line.pos.y = pos.y;
-
     renderCanvas()
 }
-const dragSticker = (pos,idx) => {
-    let sticker = getMeme().stickers[idx]
+const dragSticker = (pos) => {
+    let sticker = getMeme().stickers[gMeme.selectedStickerIdx]
     sticker.pos = pos;
 
     renderCanvas()
@@ -191,8 +195,8 @@ const getClickedStickerIdx = (pos) => {
     let stickers = getMeme().stickers
     let clickedStickerId;
     stickers.forEach((sticker, idx) => {
-        if ((pos.x >= sticker.pos.x - 75) && (sticker.pos.x <= (sticker.pos.x + 75)) &&
-            ((pos.y <= sticker.pos.y + 75) && (pos.y >= sticker.pos.y - 75))) {
+        if ((pos.x >= sticker.pos.x) && (pos.x <= (sticker.pos.x + 150)) &&
+            ((pos.y <= sticker.pos.y + 150) && (pos.y >= sticker.pos.y))) {
             clickedStickerId = idx;
         }
     })

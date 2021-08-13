@@ -13,6 +13,7 @@ const memeInit = () => {
     gMeme = {
         selectedImgId: 1,
         selectedLineIdx: 0,
+        selectedStickerIdx:-1,
         id: makeId(),
         lines: [{
             txt: 'Change me',
@@ -164,12 +165,11 @@ const setLineDrag = (isDrag) => {
     return gMeme.lines[gMeme.selectedLineIdx].drag;
 };
 
-const setStickerDrag = (isDrag,idx) => {
-    if ( idx < 0 ) return;
-    if ((isDrag || isDrag === false))
-        gMeme.stickers[idx].drag = isDrag
-    return gMeme.stickers[idx].drag;
-};
+// const setStickerDrag = (isDrag) => {
+//     if (isDrag || isDrag === false)
+//         gMeme.stickers[gMeme.selectedStickerIdx].drag = isDrag
+//     return gMeme.stickers[gMeme.selectedStickerIdx].drag;
+// };
 
 const getFilteredImgs = filter => {
     return gImgs.filter(img => {
@@ -209,14 +209,13 @@ const deleteMeme = id => {
 }
 
 const addSticker = (name) => {
-    console.log(name)
     gMeme.stickers.push({
         id: makeId(),
         name,
         drag: false,
         pos: {
-            x: gElCanvas.width / 2,
-            y: gElCanvas.width / 2
+            x: 200,
+            y: 200
         }
     })
     renderCanvas()
