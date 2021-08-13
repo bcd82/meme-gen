@@ -191,10 +191,13 @@ const saveMeme = () => {
 
 }
 
-const deleteMeme = () => { 
-
-}
 const loadSavedMemes = () => {
     gSavedMemes = loadFromStorage('memeDb')
     if (gSavedMemes === null) gSavedMemes = []
+}
+
+const deleteMeme = (id) => {
+    gSavedMemes.splice(gSavedMemes.findIndex(meme => id === +meme.id),1) 
+    saveToStorage('memeDb', gSavedMemes)
+    renderSavedMemes();
 }

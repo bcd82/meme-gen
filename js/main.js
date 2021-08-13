@@ -38,8 +38,8 @@ const renderSavedMemes = () => {
         strHTMLs = memes.map((meme) => {
             return `        
                     <div class="meme-card" onclick="onClickSavedMeme(${meme.id})">
-                    <img  class="saved-meme-delete" onclick=""onDeleteMeme(${meme.id}) src="./imgs/ICONS/trash.png" alt="">
                     <img src="${meme.img}" />
+                    <img  class="saved-meme-delete" onclick="onDeleteMeme(event,${meme.id})" src="./imgs/ICONS/trash.png" alt="">
                     </div>`
         })
     }
@@ -207,4 +207,9 @@ const onResizeCanvas = () => {
     resizeCanvas()
     if (document.querySelector('body').classList.contains('editor-open'))
         renderCanvas()
+}
+
+const onDeleteMeme = (event, id) => {
+    event.stopPropagation();
+    deleteMeme(id)
 }

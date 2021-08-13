@@ -264,10 +264,15 @@ body.editor-open .main-header ul li:nth-of-type(3) {
     right:5%;
     height:40px;
     width:40px;
-    color:red;
     font-size:2rem;
     padding:4px;
-    background-color: rgb(255, 253, 253);
+    background-color: #f8a24c;
+    transition:filter .4s;
+    border:2px solid rgb(0, 0, 0);
+    box-shadow: 0 0 5px black;
+}
+.saved-meme-delete:hover { 
+    filter:invert(1)
 }
 
 /* ABOUT */
