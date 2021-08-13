@@ -118,6 +118,7 @@ ul {
     position:fixed;
     z-index:10;
     background-color: #ff7f00;
+    width:50%;
 }
 
 .main-header ul li {
@@ -125,18 +126,19 @@ ul {
     align-items: center;
     text-align: center;
     flex-direction: column;
+    width: 100%;
+
 }
 
 .main-header ul li a {
     font-family: mont-med;
     font-size: 19px;
-    width: 85px;
-    text-align: center;
+    width: 100%;
+    text-align: left;
     color: #ffffff;
     cursor: pointer;
     padding: 21px 0px;
     transition: box-shadow .2s , color .2s;
-
 }
 .main-header ul li a:hover, .main-header ul li a.active  {
     color: #040a2c;
@@ -144,9 +146,8 @@ ul {
 }
 
 .main-header ul li:nth-of-type(2) {
-    border-inline-start: 1px solid #8a8a8a;
-    border-inline-end: 1px solid #8a8a8a;
-    text-align: right;
+    border-block-start: 1px solid #8a8a8a;
+    border-block-end: 1px solid #8a8a8a;
 }
 .mobile-menu-btn { 
     background-color:transparent;
@@ -559,7 +560,21 @@ body.show-share-menu .screen {
         background-color: transparent;
         position:relative;
         top:unset;
+        width:unset;
 
+    }
+    .main-header ul li a {
+        font-size: 19px;
+        width: 85px;
+        color: #ffffff;
+        padding: 21px 0px;
+        text-align: center;
+    }
+    .main-header ul li:nth-of-type(2) {
+        border-inline-start: 1px solid #8a8a8a;
+        border-inline-end: 1px solid #8a8a8a;
+        border-block-start:unset;
+        border-block-end: unset;
     }
     .canvas-container {
         width: 450px;
