@@ -28,7 +28,7 @@ const memeInit = () => {
             },
             drag: false,
         }],
-        stickers:[]
+        stickers: []
     };
     loadSavedMemes()
 }
@@ -157,12 +157,18 @@ const setFilter = filterBy => {
 }
 const setLineWidth = width => gMeme.lines[gMeme.selectedLineIdx].width = width;
 
-const setIsDrag = isDrag => {
+const setLineDrag = (isDrag) => {
     if (!gMeme.lines[gMeme.selectedLineIdx]) return;
     if ((isDrag || isDrag === false))
         gMeme.lines[gMeme.selectedLineIdx].drag = isDrag
     return gMeme.lines[gMeme.selectedLineIdx].drag;
+};
 
+const setStickerDrag = (isDrag,idx) => {
+    if ( idx < 0 ) return;
+    if ((isDrag || isDrag === false))
+        gMeme.stickers[idx].drag = isDrag
+    return gMeme.stickers[idx].drag;
 };
 
 const getFilteredImgs = filter => {
@@ -180,13 +186,13 @@ const saveMeme = () => {
     gIsDownloading = true;
     renderCanvas()
     gIsDownloading = false;
-    let img = gElCanvas.toDataURL('image/jpeg',0.5);
+    let img = gElCanvas.toDataURL('image/jpeg', 0.5);
     gMeme.img = img
     if (memeIdx > -1)
         gSavedMemes[memeIdx] = gMeme;
     else
         gSavedMemes.push(gMeme)
-        
+
     saveToStorage('memeDb', gSavedMemes)
     renderCanvas()
 }
@@ -197,22 +203,21 @@ const loadSavedMemes = () => {
 }
 
 const deleteMeme = id => {
-    gSavedMemes.splice(gSavedMemes.findIndex(meme => id === +meme.id),1) 
+    gSavedMemes.splice(gSavedMemes.findIndex(meme => id === +meme.id), 1)
     saveToStorage('memeDb', gSavedMemes)
     renderSavedMemes();
 }
 
 const addSticker = (name) => {
-    console.log(name) 
-    gMeme.stickers.push(
-        {
-            id:makeId(),
-            name,
-            pos:{
-                x:gElCanvas.width /2,
-                y:gElCanvas.width /2
-            }
-    }
-    )
+    console.log(name)
+    gMeme.stickers.push({
+        id: makeId(),
+        name,
+        drag: false,
+        pos: {
+            x: gElCanvas.width / 2,
+            y: gElCanvas.width / 2
+        }
+    })
     renderCanvas()
 }

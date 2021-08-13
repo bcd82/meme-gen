@@ -26,14 +26,14 @@ const setMemeImg = url => {
 
 const renderCanvas = () => {
     gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height);
-    renderTexts();
     renderStickers()
+    renderTexts();
 }
 
 
-const renderStickers = () => { 
+const renderStickers = () => {
     const meme = getMeme()
-    if(meme.stickers.length){
+    if (meme.stickers.length) {
         meme.stickers.forEach(sticker => {
             const image = new Image();
             image.src = `../imgs/stickers/${sticker.name}.png`;
@@ -125,25 +125,44 @@ const onDown = ev => {
     if (getMeme().lines.length < 1 || !getSelectedLine()) return;
     const pos = getEvPos(ev);
     let lineIdx = getClickedLineIdx(pos)
+    let stickerIdx;
+    if(getMeme().stickers.length){
+         stickerIdx = getClickedStickerIdx(pos)
+    }
     if (lineIdx > -1) {
         switchText(lineIdx)
-        setIsDrag(true)
+        setLineDrag(true)
+    }
+    if (stickerIdx > -1) {
+        console.log(stickerIdx)
+        setStickerDrag(true,stickerIdx)
     }
 }
 const onMove = ev => {
     const pos = getEvPos(ev);
-    if (setIsDrag()) {
+    if (setLineDrag()) {
         dragLine(pos)
     }
+    // if(setStickerDrag() !== undefined ){
+    //     dragSticker(pos,stickerIdx)
+    //     console.log(setStickerDrag())
+    // }
 }
 
 const onUp = () => {
-    setIsDrag(false)
+    setLineDrag(false)
+    // setStickerDrag(false)
 }
 
 const dragLine = (pos) => {
     let line = getSelectedLine()
     line.pos.y = pos.y;
+
+    renderCanvas()
+}
+const dragSticker = (pos,idx) => {
+    let sticker = getMeme().stickers[idx]
+    sticker.pos = pos;
 
     renderCanvas()
 }
@@ -167,6 +186,17 @@ const getClickedLineIdx = (pos) => {
         }
     })
     return clickedLineIdx;
+}
+const getClickedStickerIdx = (pos) => {
+    let stickers = getMeme().stickers
+    let clickedStickerId;
+    stickers.forEach((sticker, idx) => {
+        if ((pos.x >= sticker.pos.x - 75) && (sticker.pos.x <= (sticker.pos.x + 75)) &&
+            ((pos.y <= sticker.pos.y + 75) && (pos.y >= sticker.pos.y - 75))) {
+            clickedStickerId = idx;
+        }
+    })
+    return clickedStickerId;
 }
 
 const downloadCanvas = elLink => {

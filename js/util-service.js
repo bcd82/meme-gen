@@ -9,6 +9,7 @@ const getRandomKWs = () => {
         keyWordBank.splice(getRandomInt(0, keyWordBank.length), 1)[0]
     ]
 }
+
 function makeId(length = 5) {
     var txt = '';
     var possible = '0123456789';

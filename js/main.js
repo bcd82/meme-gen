@@ -171,34 +171,6 @@ const onToggleMenu = () => {
     el.classList.toggle('show-menu')
 }
 
-const dataURItoBlob = (dataURI) => {
-    let byteString = atob(dataURI.split(',')[1]);
-    let ab = new ArrayBuffer(byteString.length);
-    let ia = new Uint8Array(ab);
-    for (let i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ia], {
-        type: 'image/jpeg'
-    });
-}
-
-const upload = async (response, page_token) => {
-    let canvas = document.getElementById('canvas');
-    let dataURL = canvas.toDataURL('image/jpeg', 1.0);
-    let blob = dataURItoBlob(dataURL);
-    let formData = new FormData();
-    formData.append('access_token', response.authResponse.accessToken);
-    formData.append('source', blob);
-
-    let responseFB = await fetch(`https://graph.facebook.com/me/photos?access_token=${page_token}`, {
-        body: formData,
-        method: 'post'
-    });
-    responseFB = await responseFB.json();
-    console.log(responseFB);
-};
-
 const onClickShare = () => {
     gIsDownloading = true;
     renderCanvas();
