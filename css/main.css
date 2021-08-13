@@ -92,6 +92,9 @@ header {
     display: flex;
     justify-content: center;
     background-color: #ff7f00;
+    z-index:3;
+    position:fixed;
+
 }
 
 .main-header {
@@ -106,7 +109,10 @@ header {
     padding: 20px 5px;
     width:132px;
 }
+body.show-menu ul{ 
+    transform: translate(0%);
 
+}
 ul {
     list-style: none;
     margin: 0;
@@ -119,6 +125,8 @@ ul {
     z-index:10;
     background-color: #ff7f00;
     width:50%;
+    transform: translate(100%);
+    transition: transform .3s 
 }
 
 .main-header ul li {
@@ -127,7 +135,6 @@ ul {
     text-align: center;
     flex-direction: column;
     width: 100%;
-
 }
 
 .main-header ul li a {
@@ -145,15 +152,19 @@ ul {
     box-shadow: inset 0px -5px 0 #040a2c;
 }
 
-.main-header ul li:nth-of-type(2) {
+ .main-header ul li:nth-of-type(2) {
     border-block-start: 1px solid #8a8a8a;
     border-block-end: 1px solid #8a8a8a;
+}
+body.editor-open .main-header ul li:nth-of-type(3) {
+    display: none;
 }
 .mobile-menu-btn { 
     background-color:transparent;
     border:none;
     font-size:20px;
     color:white;
+    margin-inline-end: 10px;
 }
 
 /*        TOP-BAR           */
@@ -165,6 +176,7 @@ ul {
     max-width: 100%;
     align-items: center;
     justify-content: space-between;
+    margin-top:70px
 }
 
 .search-icon {
@@ -320,10 +332,10 @@ footer {
     width: 100%;
     height: 100vh;
     opacity: 0;
-    top: 0;
-    pointer-events: none;
+    top:66px;
     transition: opacity .2s;
     justify-content: center;
+    pointer-events: none;
 }
 
 .editor .editor-container {
@@ -528,9 +540,8 @@ body.show-share-menu .share-menu {
     pointer-events: none;
 }
 
-body.show-share-menu .screen {
+body.show-share-menu .screen ,body.show-menu .screen {
     opacity: 1;
-
     pointer-events: all;
 }
 
@@ -548,8 +559,14 @@ body.show-share-menu .screen {
 }
 
 @media (min-width :700px) {
+    header { 
+        position: unset;
+    }
     .mobile-menu-btn { 
         display: none;
+    }
+    .top-bar { 
+        margin-top:unset;
     }
     ul {
         list-style: none;
@@ -561,6 +578,8 @@ body.show-share-menu .screen {
         position:relative;
         top:unset;
         width:unset;
+        transform: unset;
+
 
     }
     .main-header ul li a {

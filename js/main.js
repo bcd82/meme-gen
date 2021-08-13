@@ -115,6 +115,7 @@ const onGalleryClick = (el) => {
     document.querySelector('body').classList.remove('editor-open')
     document.querySelectorAll('ul li a').forEach((el) => el.classList.remove('active'))
     el.classList.add('active')
+    closeScreen()
     renderImgs()
 }
 
@@ -143,13 +144,21 @@ const onShowSavedMemes = (el) => {
     document.querySelectorAll('ul li a').forEach((el) => el.classList.remove('active'))
     el.classList.add('active')
     renderSavedMemes(gSavedMemes)
+    closeScreen()
 }
-const onToggleShare = () => { 
+const onToggleShare = () => {
     document.querySelector('body').classList.toggle('show-share-menu');
 }
-const closeScreen = () => { 
+const closeScreen = () => {
     document.querySelector('body').classList.remove('show-share-menu')
+    document.querySelector('body').classList.remove('show-menu')
 }
 const onDownloadCanvas = (el) => {
     downloadCanvas(el)
+}
+const onToggleMenu = (it)=>{
+    let el = document.querySelector('body')
+    console.log(it)
+    document.querySelectorAll('.mobile-meny-btn')
+    el.classList.toggle('show-menu')
 }
