@@ -122,6 +122,7 @@ const resizeFont = diff => {
 const changeFont = font => {
     gMeme.lines[gMeme.selectedLineIdx].font = font;
     renderCanvas()
+    renderCanvas()
 }
 
 const changeColor = color => {

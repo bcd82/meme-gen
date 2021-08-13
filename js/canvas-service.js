@@ -131,6 +131,7 @@ const onUp = () => {
 const dragLine = (pos) => {
     let line = getSelectedLine()
     line.pos.y = pos.y;
+
     renderCanvas()
 }
 
