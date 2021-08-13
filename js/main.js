@@ -201,7 +201,7 @@ async function clickShare()  {
     const filesArray = [
         new File(
             [blob],
-            'meme.png', {
+            'animation.png', {
                 type: blob.type,
                 lastModified: new Date().getTime()
             }
@@ -211,4 +211,5 @@ async function clickShare()  {
         files: filesArray,
     };
     navigator.share(shareData);
+
 }
