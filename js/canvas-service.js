@@ -163,7 +163,8 @@ const dragLine = (pos) => {
 }
 const dragSticker = (pos) => {
     let sticker = getMeme().stickers[getMeme().selectedStickerIdx]
-    sticker.pos = pos;
+    sticker.pos.x = pos.x - 75;
+    sticker.pos.y = pos.y - 75;
 
     renderCanvas()
 }
