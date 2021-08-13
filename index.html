@@ -19,7 +19,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#"onclick="onGalleryClick(this)" class="active">Gallery</a></li>
+                    <li><a href="#" onclick="onGalleryClick(this)" class="active">Gallery</a></li>
                     <li><a href="#" onclick="onShowSavedMemes(this)">Memes</a></li>
                     <li><a href="#about" onclick="closeScreen()">About</a></li>
                 </ul>
@@ -94,8 +94,10 @@
         </div>
     </main>
     <div class="share-menu">
-        <a href="#" onclick="onDownloadCanvas(this)" download="myMeme"><button
-                class="download-btn">download</button></a>
+        <a href="#" onclick="onDownloadCanvas(this)" download="myMeme" >
+            <button class="share-menu-btn" >download</button>
+        </a>
+        <button class="share-menu-btn" onclick="clickShare()">share</button>
     </div>
     <section id="about" class="main-layout">
         <div class="about-me">

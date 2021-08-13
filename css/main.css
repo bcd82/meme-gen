@@ -506,6 +506,7 @@ body.editor-open .editor {
     width: 100%;
     height: 150px;
     bottom: 0;
+    gap:10px;
     background-color: #ff7f00;
     color: white;
     transform: translateY(+200%);
@@ -514,9 +515,16 @@ body.editor-open .editor {
     justify-content: center;
     transition: transform .3s;
     z-index: 13;
+    padding: 0 10px ;
 
 }
-
+.share-menu a { 
+    width:100%;
+}
+.share-menu .share-menu-btn { 
+    width:100%;
+    padding:20px;
+}
 body.show-share-menu .share-menu {
     transform: translateY(0);
 }
@@ -530,7 +538,7 @@ body.show-share-menu .share-menu {
 .screen {
     position: fixed;
     inset: 0;
-    background-color: #7a7a7a69;
+    background-color: #f5c08b75;
     z-index: 2;
     opacity: 0;
     transition: opacity .2s;

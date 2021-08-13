@@ -139,6 +139,7 @@ const onSaveMeme = () => {
     loadSavedMemes()
     renderSavedMemes()
 }
+
 const onShowSavedMemes = (el) => {
     document.querySelector('body').classList.remove('editor-open')
     document.querySelectorAll('ul li a').forEach((el) => el.classList.remove('active'))
@@ -149,16 +150,75 @@ const onShowSavedMemes = (el) => {
 const onToggleShare = () => {
     document.querySelector('body').classList.toggle('show-share-menu');
 }
+
 const closeScreen = () => {
     document.querySelector('body').classList.remove('show-share-menu')
     document.querySelector('body').classList.remove('show-menu')
 }
+
 const onDownloadCanvas = (el) => {
     downloadCanvas(el)
 }
-const onToggleMenu = (it)=>{
+
+const onToggleMenu = (it) => {
     let el = document.querySelector('body')
     console.log(it)
     document.querySelectorAll('.mobile-meny-btn')
     el.classList.toggle('show-menu')
+}
+
+const dataURItoBlob = (dataURI) => {
+    let byteString = atob(dataURI.split(',')[1]);
+    let ab = new ArrayBuffer(byteString.length);
+    let ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ia], {
+        type: 'image/jpeg'
+    });
+}
+
+const upload = async (response, page_token) => {
+    let canvas = document.getElementById('canvas');
+    let dataURL = canvas.toDataURL('image/jpeg', 1.0);
+    let blob = dataURItoBlob(dataURL);
+    let formData = new FormData();
+    formData.append('access_token', response.authResponse.accessToken);
+    formData.append('source', blob);
+
+    let responseFB = await fetch(`https://graph.facebook.com/me/photos?access_token=${page_token}`, {
+        body: formData,
+        method: 'post'
+    });
+    responseFB = await responseFB.json();
+    console.log(responseFB);
+};
+async function clickShare()  {
+    const dataUrl = gElCanvas.toDataURL();
+    const blob = await (await fetch(dataUrl)).blob();
+    const filesArray = [
+        new File(
+            [blob],
+            'animation.png', {
+                type: blob.type,
+                lastModified: new Date().getTime()
+            }
+        )
+    ];
+    const shareData = {
+        files: filesArray,
+    };
+    navigator.share(shareData);
+    // if (navigator.share) {
+    //     navigator.share({
+    //             title: title.value,
+    //             text: text.value,
+    //             url: url.value,
+    //         })
+    //         .then(() => console.log('Successful share'))
+    //         .catch((error) => console.log('Error sharing', error));
+    // } else {
+    //     console.log("Web Share API is not supported in your browser.")
+    // }
 }
