@@ -159,7 +159,7 @@ const getClickedLineIdx = (pos) => {
 const downloadCanvas = elLink => {
     gIsDownloading = true;
     renderCanvas()
-    const data = gElCanvas.toDataURL()
+    const data = gElCanvas.toDataURL('image/jpeg')
     elLink.href = data
     gIsDownloading = false;
 

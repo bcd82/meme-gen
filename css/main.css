@@ -245,6 +245,8 @@ body.editor-open .main-header ul li:nth-of-type(3) {
     cursor: pointer;
     filter: brightness(1);
     transition: filter .4s;
+    display:flex;
+    justify-content: center;
 }
 
 .meme-card:hover {
@@ -263,6 +265,7 @@ body.editor-open .main-header ul li:nth-of-type(3) {
     color:white;
     -webkit-text-stroke: 2px black;
     font-size:2rem;
+
 }
 
 /* ABOUT */
@@ -532,6 +535,13 @@ body.editor-open .editor {
 .share-menu .share-menu-btn { 
     width:100%;
     padding:20px;
+    background-color:transparent;
+    border:none;
+}
+.share-menu .share-menu-btn img{ 
+    width:50px;
+    height:50px;
+    filter: invert(1);
 }
 body.show-share-menu .share-menu {
     transform: translateY(0);
@@ -722,12 +732,16 @@ body.show-share-menu .screen ,body.show-menu .screen {
     }
 
     .share-menu {
-        display: none;
+        display: flex;
+        width:30%;
+        right:unset;
+        left:35%;
     }
 
     .screen {
-        display: none
+        opacity: 0;
     }
+    
     .about-me {
         width: 915px;
         flex-direction: row;
