@@ -194,31 +194,26 @@ const upload = async (response, page_token) => {
     responseFB = await responseFB.json();
     console.log(responseFB);
 };
-async function clickShare()  {
+
+async function onClickShare()  {
+    gIsDownloading = true;
+    renderCanvas()
     const dataUrl = gElCanvas.toDataURL();
     const blob = await (await fetch(dataUrl)).blob();
     const filesArray = [
         new File(
             [blob],
-            'animation.png', {
+            'meme.png', {
                 type: blob.type,
                 lastModified: new Date().getTime()
             }
         )
     ];
+    gIsDownloading = false;
+
     const shareData = {
         files: filesArray,
     };
     navigator.share(shareData);
-    // if (navigator.share) {
-    //     navigator.share({
-    //             title: title.value,
-    //             text: text.value,
-    //             url: url.value,
-    //         })
-    //         .then(() => console.log('Successful share'))
-    //         .catch((error) => console.log('Error sharing', error));
-    // } else {
-    //     console.log("Web Share API is not supported in your browser.")
-    // }
+
 }
