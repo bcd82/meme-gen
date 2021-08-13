@@ -195,7 +195,9 @@ const upload = async (response, page_token) => {
     console.log(responseFB);
 };
 
-async function onClickShare()  {
+async function clickShare()  {
+    gIsDownloading = true;
+    renderCanvas()
     const dataUrl = gElCanvas.toDataURL();
     const blob = await (await fetch(dataUrl)).blob();
     const filesArray = [
@@ -207,6 +209,7 @@ async function onClickShare()  {
             }
         )
     ];
+    gIsDownloading = false;
     const shareData = {
         files: filesArray,
     };
