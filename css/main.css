@@ -514,8 +514,8 @@ footer {
 .editor input[type=color] {
     visibility: hidden;
     position: relative;
-    top: 550px;
-    transform: translateX(550%);
+    top: 350px;
+    right:-20px;
 }
 
 body.editor-open .editor {
@@ -567,6 +567,25 @@ body.show-share-menu .share-menu {
 body.show-share-menu .screen ,body.show-menu .screen {
     opacity: 1;
     pointer-events: all;
+}
+/* Stickers */
+.stickers {
+    position:fixed;
+    height:150px;
+    width:500px;
+    display: flex;
+    background-color:white;
+    justify-content: center;
+    align-self: center;
+    z-index: 2;
+    border-top:  #ff7f00 solid;
+    bottom:0;
+    border-radius:2em 2em 0 0 ;
+    padding:10px;
+}
+.sticker { 
+    height:85%;
+    width: auto;  
 }
 
 @media (min-width :400px) {
@@ -737,7 +756,8 @@ body.show-share-menu .screen ,body.show-menu .screen {
         display: flex;
         width:30%;
         right:unset;
-        left:35%;
+        align-self: center;
+
     }
 
     .screen {
@@ -758,8 +778,7 @@ body.show-share-menu .screen ,body.show-menu .screen {
         visibility: hidden;
         position: absolute;
         top: 380px;
-        right:500px;
-        transform: translateX(550%);
+        right:200px; 
     }
     .about-me .about-info {
         align-items: flex-start ;

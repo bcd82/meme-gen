@@ -27,7 +27,8 @@ const memeInit = () => {
                 y: 100
             },
             drag: false,
-        }]
+        }],
+        stickers:[]
     };
     loadSavedMemes()
 }
@@ -195,8 +196,23 @@ const loadSavedMemes = () => {
     if (gSavedMemes === null) gSavedMemes = []
 }
 
-const deleteMeme = (id) => {
+const deleteMeme = id => {
     gSavedMemes.splice(gSavedMemes.findIndex(meme => id === +meme.id),1) 
     saveToStorage('memeDb', gSavedMemes)
     renderSavedMemes();
+}
+
+const addSticker = (name) => {
+    console.log(name) 
+    gMeme.stickers.push(
+        {
+            id:makeId(),
+            name,
+            pos:{
+                x:gElCanvas.width /2,
+                y:gElCanvas.width /2
+            }
+    }
+    )
+    renderCanvas()
 }

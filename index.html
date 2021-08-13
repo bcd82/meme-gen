@@ -45,7 +45,6 @@
                 </div>
                 <div class="tools">
                     <input class="text-input" oninput="onChangeText(this.value)" type="text" />
-
                     <button class="tool-btn switch" onclick="onSwitchText()">
                         <img src="./imgs/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
                     </button>
@@ -82,7 +81,6 @@
                         <img src="./imgs/ICONS/paint-board-and-brush.png">
                     </label>
                     <input id="color" type="color" onchange="onChangeColor(this.value)">
-                    <div class="stickers"></div>
                     <button class="tool-btn large-btn save" onclick="onSaveMeme()">Save</button>
                     <button class="tool-btn large-btn share" onclick="onToggleShare()">Share</button>
                 </div>
@@ -102,6 +100,12 @@
         <button class="share-menu-btn" onclick="onClickShare()">  
             <img src="./imgs/ICONS/share.png" alt="">
         </button>
+    </div>
+    <div class="stickers">
+        <div class="sticker-container">
+            <img class="sticker" id="" src="./imgs/stickers/nothing.png"  onclick="onAddSticker('nothing')">
+            <img class="sticker" id="" src="./imgs/stickers/skull.png" onclick="onAddSticker('skull')">
+        </div>
     </div>
     <section id="about" class="main-layout">
         <div class="about-me">

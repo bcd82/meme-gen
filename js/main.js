@@ -11,12 +11,11 @@ const onInit = () => {
 }
 
 const renderImgs = () => {
-    // let imgsToRender = gImgs;
     let strHTMLs = []
     let imgs = gImgs
-    if (gFilterBy && gFilterBy !== 'all') {
+    if (gFilterBy && gFilterBy !== 'all')
         imgs = getFilteredImgs(gFilterBy)
-    }
+
     if (!imgs || !imgs.length || imgs === null) {
         strHTMLs[0] = `<h2> no images found 😔 </h2>`
     } else {
@@ -29,17 +28,19 @@ const renderImgs = () => {
     }
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
 }
+
 const renderSavedMemes = () => {
     let memes = gSavedMemes;
     let strHTMLs = []
     if (!memes || !memes.length || memes === null) {
-        strHTMLs[0] = `<h2> no saved memes found 😔</h2>`
+        strHTMLs[0] = `<h2> no saved memes found 😔 save some memes !</h2>`
     } else {
         strHTMLs = memes.map((meme) => {
             return `        
                     <div class="meme-card" onclick="onClickSavedMeme(${meme.id})">
                     <img src="${meme.img}" />
-                    <img  class="saved-meme-delete" onclick="onDeleteMeme(event,${meme.id})" src="./imgs/ICONS/trash.png" alt="">
+                    <img  class="saved-meme-delete" onclick="onDeleteMeme(event,${meme.id})" 
+                    src="./imgs/ICONS/trash.png" alt="">
                     </div>`
         })
     }
@@ -112,9 +113,9 @@ const onChangeColor = color => {
 
 const onChangeStroke = color => changeStroke(color)
 
-const onSwitchAlign = (alignTo) => switchAlign(alignTo)
+const onSwitchAlign = alignTo => switchAlign(alignTo)
 
-const onGalleryClick = (el) => {
+const onGalleryClick = el => {
     document.querySelector('body').classList.remove('editor-open')
     document.querySelectorAll('ul li a').forEach((el) => el.classList.remove('active'))
     el.classList.add('active')
@@ -122,7 +123,7 @@ const onGalleryClick = (el) => {
     renderImgs()
 }
 
-const onFilterByWord = (elWord) => {
+const onFilterByWord = elWord => {
     let fontSize = +elWord.style.fontSize.replace(/\D/g, '');
     elWord.style.fontSize = `${fontSize + 1}px `
     document.querySelectorAll('.keywords p').forEach((p) => p.classList.remove('active'))
@@ -147,29 +148,25 @@ const onSaveMeme = () => {
     document.querySelector('body').classList.remove('editor-open')
 }
 
-const onShowSavedMemes = (el) => {
+const onShowSavedMemes = el => {
     document.querySelector('body').classList.remove('editor-open')
     document.querySelectorAll('ul li a').forEach((el) => el.classList.remove('active'))
     el.classList.add('active')
     renderSavedMemes(gSavedMemes)
     closeScreen()
 }
-const onToggleShare = () => {
-    document.querySelector('body').classList.toggle('show-share-menu');
-}
+const onToggleShare = () => document.querySelector('body').classList.toggle('show-share-menu');
 
 const closeScreen = () => {
     document.querySelector('body').classList.remove('show-share-menu')
     document.querySelector('body').classList.remove('show-menu')
 }
 
-const onDownloadCanvas = (el) => {
-    downloadCanvas(el)
-}
+const onDownloadCanvas = (el) => downloadCanvas(el)
 
-const onToggleMenu = (it) => {
+
+const onToggleMenu = () => {
     let el = document.querySelector('body')
-    console.log(it)
     document.querySelectorAll('.mobile-meny-btn')
     el.classList.toggle('show-menu')
 }
@@ -218,3 +215,5 @@ const onDeleteMeme = (event, id) => {
     event.stopPropagation();
     deleteMeme(id)
 }
+
+const onAddSticker = stickerName => addSticker(stickerName)

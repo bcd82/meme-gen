@@ -27,10 +27,23 @@ const setMemeImg = url => {
 const renderCanvas = () => {
     gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height);
     renderTexts();
+    renderStickers()
+}
+
+
+const renderStickers = () => { 
+    const meme = getMeme()
+    if(meme.stickers.length){
+        meme.stickers.forEach(sticker => {
+            const image = new Image();
+            image.src = `../imgs/stickers/${sticker.name}.png`;
+            gCtx.drawImage(image, sticker.pos.x, sticker.pos.x, 150, 150);
+        })
+    }
 }
 const renderTexts = () => {
-    const memes = getMeme();
-    const lines = memes.lines;
+    const meme = getMeme();
+    const lines = meme.lines;
     lines.forEach((line, idx) => {
         gCtx.font = `${line.size}px ${line.font}`;
         let rectDiff = 0;
@@ -45,7 +58,7 @@ const renderTexts = () => {
             x = gElCanvas.width - 5
             rectDiff = -width
         }
-        if (idx === memes.selectedLineIdx && !gIsDownloading) {
+        if (idx === meme.selectedLineIdx && !gIsDownloading) {
             gCtx.fillStyle = '#ff7f00';
             gCtx.fillRect(x + rectDiff, line.pos.y + line.size * 0.15, width, 8);
             gCtx.fillRect(x + rectDiff, line.pos.y - line.size, width, 8);
