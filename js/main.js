@@ -47,7 +47,7 @@ const renderSavedMemes = () => {
 
 const renderWords = () => {
     const words = getKeywordMap()
-    const strHTMLs = ['<p class="active" onclick="onFilterByWord(this)" style="font-size:30px">all</p>`']
+    const strHTMLs = ['<p class="active" onclick="onFilterByWord(this)" style="font-size:30px">all</p>']
     for (const key in words) {
         strHTMLs.push(`
         <p onclick="onFilterByWord(this)" style="font-size:${16 + (words[key] * 2)}px">${key}</p>`)

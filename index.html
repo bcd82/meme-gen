@@ -21,8 +21,12 @@
                 <ul>
                     <li><a onclick="onGalleryClick(this)" class="active">Gallery</a></li>
                     <li><a onclick="onShowSavedMemes(this)">Memes</a></li>
+                    <li><a href="#about">About</a></li>
                 </ul>
             </nav>
+            <button class="mobile-menu-btn">
+                ☰
+            </button>
         </div>
     </header>
     <div class="top-bar main-layout">
@@ -103,11 +107,29 @@
         </div>
     </main>
     <div class="share-menu">
-        <a href="#" onclick="onDownloadCanvas(this)" download="myMeme"><button class="download-btn">download</button></a>
+        <a href="#" onclick="onDownloadCanvas(this)" download="myMeme"><button
+                class="download-btn">download</button></a>
+    </div>
+    <section id="about" class="main-layout">
+        <div class="about-me">
+            <img class="my-img" src="./imgs/2.jpg">
+            <div class="about-info">
+                <h3>Barak Sidi</h3>
+                <p>Full Stack Ninja</p>
+                <div class="icon-row">
+                    <div class="social-icon">
+                        <img src="./imgs/ICONS/linkedin-logo.png">
+                    </div>
+                    <div class="social-icon">
+                        <img src="./imgs/ICONS/facebook-logo.png">
+                    </div>
+                    <div class="social-icon">
+                        <img src="./imgs/ICONS/github-logo.png">
+                    </div>
+                </div>
+            </div>
         </div>
-    <!-- <section class="about-me main-layout">
-
-    </section> -->
+    </section>
     <footer>
         <div class="logo">
             <img src="./imgs/Logo2.png" alt="logo" />
