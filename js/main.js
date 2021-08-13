@@ -64,7 +64,7 @@ const onClickImg = id => {
 const onClickSavedMeme = id => {
     setMeme(id, true);
     let meme = getMeme()
-    if(meme.lines.length > 0) 
+    if (meme.lines.length > 0)
         document.querySelector('input[type=text]').value = meme.lines[0].txt;
     document.querySelector('body').classList.add('editor-open')
 }
@@ -197,9 +197,14 @@ const upload = async (response, page_token) => {
     console.log(responseFB);
 };
 
-const onClickShare = ()=> { 
+const onClickShare = () => {
     gIsDownloading = true;
     renderCanvas();
-    clickShare() 
+    clickShare()
     gIsDownloading = false;
+}
+const onResizeCanvas = () => {
+    resizeCanvas()
+    if (document.querySelector('body').classList.contains('editor-open'))
+        renderCanvas()
 }

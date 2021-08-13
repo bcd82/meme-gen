@@ -165,7 +165,7 @@ const downloadCanvas = elLink => {
 
 }
 
-async function clickShare()  {
+async function clickShare() {
     const dataUrl = gElCanvas.toDataURL();
     const blob = await (await fetch(dataUrl)).blob();
     const filesArray = [

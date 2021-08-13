@@ -10,7 +10,7 @@
 </head>
 
 
-<body onload="onInit()" class="">
+<body onload="onInit()" class="" onresize="onResizeCanvas()">
     <div class="screen " onclick="closeScreen()"></div>
     <header>
         <div class="main-header main-layout">
@@ -40,7 +40,7 @@
     <main class="main-content">
         <div class="editor">
             <div class="editor-container main-layout">
-                <div class="canvas-container">
+                <div class="canvas-container" >
                     <canvas width="550" height="550"></canvas>
                 </div>
                 <div class="tools">

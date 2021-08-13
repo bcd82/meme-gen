@@ -503,10 +503,6 @@ footer {
     transform: translateX(550%);
 }
 
-.editor .share-btn-save {
-    display: none;
-}
-
 body.editor-open .editor {
     opacity: 1;
     pointer-events: all;
@@ -685,7 +681,7 @@ body.show-share-menu .screen ,body.show-menu .screen {
     }
 
     .editor .canvas-container {
-        width: 550px;
+        width: 550px ;
         height: 550px;
     }
 
@@ -696,6 +692,7 @@ body.show-share-menu .screen ,body.show-menu .screen {
     .editor .tools {
         gap: 0px 20px;
         height: 550px;
+        width:530px;
     }
 
     .editor .tool-btn {
