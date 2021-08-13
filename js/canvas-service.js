@@ -163,3 +163,22 @@ const downloadCanvas = elLink => {
     gIsDownloading = false;
 
 }
+
+async function clickShare()  {
+    const dataUrl = gElCanvas.toDataURL();
+    const blob = await (await fetch(dataUrl)).blob();
+    const filesArray = [
+        new File(
+            [blob],
+            'animation.png', {
+                type: blob.type,
+                lastModified: new Date().getTime()
+            }
+        )
+    ];
+
+    const shareData = {
+        files: filesArray,
+    };
+    navigator.share(shareData);
+}
