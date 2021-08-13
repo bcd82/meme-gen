@@ -730,6 +730,11 @@ body.show-share-menu .screen ,body.show-menu .screen {
         height: 325px;
         width: 325px; 
     }
-
-    
+    .editor input[type=color] {
+        visibility: hidden;
+        position: absolute;
+        top: 380px;
+        right:500px;
+        transform: translateX(550%);
+    }
 }
