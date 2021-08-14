@@ -180,16 +180,7 @@ const getClickedLineIdx = (pos) => {
     let lines = getMeme().lines
     let clickedLineIdx;
     lines.forEach((line, idx) => {
-        let adjustedX = line.pos.x;
-        let adjustedWidth = line.width;
-        // if (line.align === 'center') {
-        //     adjustedX = line.pos.x + gElCanvas.width / 2;
-        //     adjustedWidth = line.width / 2;
-        // }
-        // if (line.align === 'right') {
-        //     adjustedX = line.pos.x + gElCanvas.width - 5;
-        // }
-        if ((pos.x >= (adjustedX - adjustedWidth)) && (pos.x <= (adjustedX + adjustedWidth)) &&
+        if ((pos.x >= (line.pos.x - line.width)) && (pos.x <= (line.pos.x + line.width)) &&
             (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
             clickedLineIdx = idx;
         }
