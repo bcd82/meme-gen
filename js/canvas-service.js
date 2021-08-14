@@ -37,7 +37,7 @@ const renderStickers = () => {
         meme.stickers.forEach(sticker => {
             const image = new Image();
             image.src = `./imgs/stickers/${sticker.name}.png`;
-            gCtx.drawImage(image, sticker.pos.x, sticker.pos.y,150,150);
+                gCtx.drawImage(image, sticker.pos.x, sticker.pos.y,150,150);
         })
     }
 }

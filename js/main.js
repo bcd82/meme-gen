@@ -195,6 +195,8 @@ const onAddSticker = stickerName => {
     addSticker(stickerName)
     renderCanvas()
     closeScreen()
+    renderCanvas()
+
 }
 
 const onShowStickers = () => {
