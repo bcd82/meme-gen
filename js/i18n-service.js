@@ -35,16 +35,28 @@ const gTrans = {
         en: 'Enter search keyword',
         he: 'חיפוש לפי מילות מפתח',
     },
+    'no-images': {
+        en: 'no images found 😔',
+        he: '😔 לא נמצאו תמונות ',
+    },
+    'no-saved': {
+        en: 'no saved memes found 😔',
+        he: '😔 לא נמצאו ממים שמורים ',
+    },
+    more: {
+        en: 'more...',
+        he: 'עוד...',
+    },
 }
 
-const toggleTransLang= ()=> {
-    gCurrLang === 'en'? gCurrLang = 'he' :gCurrLang = 'en';
+const toggleTransLang = () => {
+    gCurrLang === 'en' ? gCurrLang = 'he' : gCurrLang = 'en';
 }
 
 const getTrans = transKey => {
     var keyTrans = gTrans[transKey]
     // if key doesn't exist
-    if(!keyTrans) return 'does not exist'
+    if (!keyTrans) return 'does not exist'
     //get translation from key
     var txt = keyTrans[gCurrLang]
     // if no translation use english

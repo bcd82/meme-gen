@@ -67,9 +67,7 @@ body {
     align-content: center;
     scroll-behavior: smooth;
 }
-.rtl { 
-    direction: rtl;
-}
+
 .main-layout {
     max-width: 700px;
     margin: 0 auto;
@@ -168,12 +166,12 @@ ul {
     box-shadow: inset 0px -5px 0 #040a2c;
 }
 
-.main-header ul li:nth-of-type(2) {
+.main-header ul li:nth-of-type(odd) {
     border-block-start: 1px solid #8a8a8a;
     border-block-end: 1px solid #8a8a8a;
 }
 
-body.editor-open .main-header ul li:nth-of-type(3) {
+body.editor-open .main-header ul li:nth-of-type(4) {
     display: none;
 }
 
@@ -294,8 +292,9 @@ body.editor-open .main-header ul li:nth-of-type(3) {
 
 .gallery h2 {
     font-family: mont-reg, sans-serif;
-    font-size: 35px;
+    font-size: 25px;
     width: 200%;
+    padding:20px;
 
 }
 

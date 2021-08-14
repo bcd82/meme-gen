@@ -16,7 +16,7 @@ const renderImgs = () => {
         imgs = getFilteredImgs(gFilterBy)
 
     if (!imgs || !imgs.length || imgs === null) {
-        strHTMLs[0] = `<h2> no images found 😔 </h2>`
+        strHTMLs[0] = `<h2 data-trans="no-images"> no images found 😔 </h2>`
     } else {
         strHTMLs = imgs.map((img) => {
             return `        
@@ -26,13 +26,15 @@ const renderImgs = () => {
         })
     }
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
+    doTrans()
+
 }
 
 const renderSavedMemes = () => {
     let memes = gSavedMemes;
     let strHTMLs = []
     if (!memes || !memes.length || memes === null) {
-        strHTMLs[0] = `<h2> no saved memes found 😔 save some memes !</h2>`
+        strHTMLs[0] = `<h2 data-trans="no-saved"> no saved memes found 😔 save some memes !</h2>`
     } else {
         strHTMLs = memes.map((meme) => {
             return `        
@@ -44,6 +46,8 @@ const renderSavedMemes = () => {
         })
     }
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
+    doTrans()
+
 }
 
 const renderWords = () => {
@@ -57,8 +61,10 @@ const renderWords = () => {
          <span onclick="onFilterByWord(this)" style="font-size:${23 + (words[key] * 2)}px">${key}</span>`)
     }
     strHTMLs.push('</p>')
-    strHTMLs.splice(6, 0, `<span class="more-kw" onclick="onShowMore(this)">more...</span><br>`)
+    strHTMLs.splice(6, 0, `<span class="more-kw" data-trans="more" onclick="onShowMore(this)">more...</span><br>`)
     document.querySelector('.keywords').innerHTML = strHTMLs.join('');
+    doTrans()
+
 }
 
 const onClickImg = id => {
@@ -154,6 +160,7 @@ const onFilterByWord = elWord => {
     const word = elWord.textContent;
     setFilter(word);
     renderImgs()
+    doTrans()
 }
 
 const onSearchFilter = str => {
@@ -232,7 +239,11 @@ const onShowMore = el => {
 
 const onDoTrans = () => {
     toggleTransLang()
+    doTrans()
 
+    // document.querySelector('body').classList.toggle('rtl')
+}
+const doTrans = () => {
     const els = document.querySelectorAll('[data-trans]');
     els.forEach((el) => {
         let txt = getTrans(el.dataset.trans)
@@ -242,5 +253,4 @@ const onDoTrans = () => {
             el.innerText = txt
         }
     })
-    document.querySelector('body').classList.toggle('rtl')
 }
