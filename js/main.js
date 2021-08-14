@@ -143,8 +143,9 @@ const onSearchFilter = str => {
 }
 const onSaveMeme = () => {
     saveMeme()
-    loadSavedMemes()
     renderSavedMemes()
+    document.querySelectorAll('ul li a').forEach((el) => el.classList.remove('active'))
+    document.querySelector('ul li:nth-of-type(2) a').classList.add('active')
     document.querySelector('body').classList.remove('editor-open')
 }
 

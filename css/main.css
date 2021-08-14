@@ -732,7 +732,7 @@ body.show-stickers .stickers {
     .keywords {
         width: 60%;
         padding: unset;
-        padding-top:20px;
+        padding-top:25px;
         align-self: flex-start;
 
     }
