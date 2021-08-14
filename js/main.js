@@ -231,10 +231,8 @@ const onShowMore = el => {
 }
 
 const onDoTrans = () => {
-    if (gCurrLang === 'en')
-        gCurrLang = 'he';
-        else 
-            gCurrLang = 'en';
+    toggleTransLang()
+
     const els = document.querySelectorAll('[data-trans]');
     els.forEach((el) => {
         let txt = getTrans(el.dataset.trans)

@@ -10,8 +10,7 @@
     <title>Barak Sidi - MemeGen</title>
 </head>
 
-
-<body onload="onInit()" class="" onresize="onResizeCanvas()" >
+<body onload="onInit()" class="" onresize="onResizeCanvas()">
     <div class="screen " onclick="closeScreen()"></div>
     <header>
         <div class="main-header main-layout">
@@ -20,11 +19,11 @@
             </div>
             <nav>
                 <ul>
-                    <li><img class="i18" src="./imgs/ICONS/lang.png" onClick="onDoTrans()"/>
+                    <li><img class="i18" src="./imgs/ICONS/lang.png" onClick="onDoTrans()" />
                     </li>
                     <li><a href="#" data-trans="gallery" onclick="onGalleryClick(this)" class="active">Gallery</a></li>
                     <li><a href="#" data-trans="memes" onclick="onShowSavedMemes(this)">Memes</a></li>
-                    <li><a href="#about"  data-trans="about" onclick="closeScreen()">About</a></li>
+                    <li><a href="#about" data-trans="about" onclick="closeScreen()">About</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn" onclick="onToggleMenu()">
@@ -34,16 +33,15 @@
     </header>
     <div class="top-bar main-layout">
         <img src="./imgs/ICONS/search-icon.png" class="search-icon"></img>
-        <input type="search" oninput="onSearchFilter(this.value)" class="search" placeholder="Enter search Keyword">
+        <input type="search" oninput="onSearchFilter(this.value)" class="search" data-trans="search" placeholder="Enter search Keyword">
         <div class="keywords">
             words will be around here
         </div>
     </div>
-
-    <main class="main-content" >
+    <main class="main-content">
         <div class="editor">
             <div class="editor-container main-layout">
-                <div class="canvas-container" >
+                <div class="canvas-container">
                     <canvas width="550" height="550"></canvas>
                 </div>
                 <div class="tools">
@@ -78,7 +76,6 @@
                         <option value="impact">Impact</option>
                         <option value="arial">Arial</option>
                     </select>
-
                     <label for="stroke" class="tool-btn stroke">
                         <img src="./imgs/ICONS/text stroke.png">
                     </label>
@@ -95,22 +92,21 @@
 
         </div>
         <div class="gallery main-layout">
-
         </div>
     </main>
     <div class="share-menu">
-        <a href="#" onclick="onDownloadCanvas(this)" download="myMeme" >
-            <button class="share-menu-btn" >
+        <a href="#" onclick="onDownloadCanvas(this)" download="myMeme">
+            <button class="share-menu-btn">
                 <img src="./imgs/ICONS/download.png" alt="">
             </button>
         </a>
-        <button class="share-menu-btn" onclick="onClickShare()">  
+        <button class="share-menu-btn" onclick="onClickShare()">
             <img src="./imgs/ICONS/share.png" alt="">
         </button>
     </div>
     <div class="stickers">
         <div class="sticker-container">
-            <img class="sticker" id="" src="./imgs/stickers/nothing.png"  onclick="onAddSticker('nothing')">
+            <img class="sticker" id="" src="./imgs/stickers/nothing.png" onclick="onAddSticker('nothing')">
             <img class="sticker" id="" src="./imgs/stickers/skull.png" onclick="onAddSticker('skull')">
             <img class="sticker" id="" src="./imgs/stickers/cat.png" onclick="onAddSticker('cat')">
             <img class="sticker" id="" src="./imgs/stickers/thing.png" onclick="onAddSticker('thing')">
@@ -122,18 +118,24 @@
         <div class="about-me">
             <img class="my-img" src="./imgs/2.jpg">
             <div class="about-info">
-                <h3 data-trans="my-name" >Barak Sidi</h3>
-                <p data-trans="my-desc" >Full Stack Ninja</p>
+                <h3 data-trans="my-name">Barak Sidi</h3>
+                <p data-trans="my-desc">Full Stack Ninja</p>
                 <div class="icon-row">
-                    <div class="social-icon">
-                        <img src="./imgs/ICONS/linkedin-logo.png">
-                    </div>
+                    <a href ="https://www.linkedin.com/in/barak-sidi-4632003a/" target="blank">
+                        <div class="social-icon">
+                            <img src="./imgs/ICONS/linkedin-logo.png">
+                        </div>
+                    </a>
+                    <a href ="https://www.facebook.com/barak.sidi" target="blank">
                     <div class="social-icon">
                         <img src="./imgs/ICONS/facebook-logo.png">
                     </div>
+                    </a>
+                    <a href ="https://github.com/bcd82" target="blank">
                     <div class="social-icon">
-                        <img src="./imgs/ICONS/github-logo.png">
+                        <img src="./imgs/ICONS/github-logo.png" >
                     </div>
+                    </a>
                 </div>
             </div>
         </div>

@@ -31,8 +31,15 @@ const gTrans = {
         en: 'Full Stack Ninja',
         he: 'נינג\'ת פול סטאק',
     },
+    search: {
+        en: 'Enter search keyword',
+        he: 'חיפוש לפי מילות מפתח',
+    },
 }
 
+const toggleTransLang= ()=> {
+    gCurrLang === 'en'? gCurrLang = 'he' :gCurrLang = 'en';
+}
 
 const getTrans = transKey => {
     var keyTrans = gTrans[transKey]
