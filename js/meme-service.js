@@ -221,7 +221,7 @@ const addSticker = (name) => {
 
 const dragLine = (pos) => {
     let line = getSelectedLine()
-    line.pos.y = pos.y;
+    line.pos.y = pos.y + line.size/2;
     let x = pos.x;
     if (line.align === 'left') {
         x = pos.x - line.width / 2
