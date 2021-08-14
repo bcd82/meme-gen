@@ -661,7 +661,9 @@ body.show-stickers .stickers {
     header {
         position: unset;
     }
-
+    .main-header ul li:nth-of-type(n+2) {
+        border-block-start: none
+    }
     .mobile-menu-btn {
         display: none;
     }
