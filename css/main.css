@@ -820,8 +820,12 @@ body.show-stickers .stickers {
         overflow-y: scroll;
         height: 80vh;
         padding: none;
+        opacity:1;
+        transition:opacity .3s; 
     }
-
+    body.editor-open .gallery { 
+        opacity:0;
+    }
     .editor {
         position: absolute;
         top: 66px;
