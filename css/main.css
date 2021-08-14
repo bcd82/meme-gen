@@ -422,8 +422,9 @@ footer {
     align-self: start;
 }
 
+/*grid ordering mostly*/
 .editor .tools .text-input {
-    grid-column: 1/6;
+    grid-column: 1/5;
     height: 40px;
     outline: none;
     border: none;
@@ -434,8 +435,6 @@ footer {
     transition: border .1s;
 }
 
-
-/*grid ordering mostly*/
 .editor .tools .switch {
     grid-row: 2;
     grid-column: 2;
@@ -449,6 +448,10 @@ footer {
 .editor .tools .del {
     grid-row: 2;
     grid-column: 4;
+}
+.editor .tools .stickers-btn {
+    grid-row: 1;
+    grid-column: 5;
 }
 
 .editor .tools .f-down {
@@ -765,15 +768,12 @@ body.show-stickers .stickers {
         height: 550px;
     }
 
-    .editor header {
-        display: none;
-    }
-
     .editor .tools {
         gap: 0px 20px;
         height: 550px;
         width:530px;
     }
+
 
     .editor .tool-btn {
         width: 60px;

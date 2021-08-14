@@ -193,6 +193,7 @@ const onDeleteMeme = (event, id) => {
 
 const onAddSticker = stickerName => {
     addSticker(stickerName)
+    renderCanvas()
     closeScreen()
 }
 
