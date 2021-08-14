@@ -244,4 +244,5 @@ const onDoTrans = () => {
             el.innerText = txt
         }
     })
+    document.querySelector('body').classList.toggle('rtl')
 }
