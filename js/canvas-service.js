@@ -158,10 +158,14 @@ const onUp = () => {
 const dragLine = (pos) => {
     let line = getSelectedLine()
     line.pos.y = pos.y;
-    // if(line.align === 'left') {
-    //     let x = pos.x + line.width /2
-    // }
-    line.pos.x = pos.x;
+    let x = pos.x;
+    if(line.align === 'left') {
+         x = pos.x - line.width /2
+    }
+    if(line.align === 'right') {
+         x = pos.x + line.width /2
+    }
+    line.pos.x = x;
     renderCanvas()
 }
 const dragSticker = (pos) => {
