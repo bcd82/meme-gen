@@ -24,7 +24,7 @@ const memeInit = () => {
             font: 'impact',
             strokeClr: 'black',
             pos: {
-                x: 10,
+                x: gElCanvas.width / 2,
                 y: 100
             },
             drag: false,
@@ -138,7 +138,16 @@ const changeStroke = (color) => {
 }
 
 const switchAlign = alignTo => {
-    gMeme.lines[gMeme.selectedLineIdx].align = alignTo
+    let line = gMeme.lines[gMeme.selectedLineIdx]
+    line.align = alignTo
+    if (line.align === 'center') {
+        line.pos.x = gElCanvas.width / 2;
+        
+    } else if (line.align === 'right') {
+        line.pos.x = gElCanvas.width
+    } else { 
+        line.pos.x = 0
+    }
     renderCanvas()
 }
 
