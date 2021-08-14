@@ -152,7 +152,6 @@ const onMove = ev => {
     } else { 
         document.querySelector('.canvas-container').classList.remove('cursor-grab');
     }       
-
     if (setLineDrag()) {
         dragLine(pos)
     }

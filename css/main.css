@@ -94,8 +94,12 @@ label {
     transition: opacity .2s;
     pointer-events: none;
 }
-.cursor-grab { 
+
+.cursor-grab {
     cursor: grab;
+}
+.cursor-grab .grabbing {
+    cursor: grabbing;
 }
 
 /* HEADER */
@@ -251,7 +255,7 @@ body.editor-open .main-header ul li:nth-of-type(4) {
     transform: scale(0.9);
 }
 
- span.more-kw {
+span.more-kw {
     display: none;
     text-shadow: 1px 1px 1px#ff7f00;
     flex-grow: 1;
@@ -298,7 +302,7 @@ body.editor-open .main-header ul li:nth-of-type(4) {
     font-family: mont-reg, sans-serif;
     font-size: 25px;
     width: 200%;
-    padding:20px;
+    padding: 20px;
 }
 
 .saved-meme-delete {
@@ -666,9 +670,11 @@ body.show-stickers .stickers {
     header {
         position: unset;
     }
+
     .main-header ul li:nth-of-type(n+2) {
         border-block-start: none
     }
+
     .mobile-menu-btn {
         display: none;
     }
@@ -685,6 +691,7 @@ body.show-stickers .stickers {
     body.editor-open .main-header ul li:nth-of-type(4) {
         display: unset;
     }
+
     .main-header ul li:nth-of-type(even) {
         border-block-start: 1px solid #e3e3e3;
     }
@@ -772,7 +779,7 @@ body.show-stickers .stickers {
         align-items: flex-start;
         justify-content: space-evenly;
         overflow-y: hidden;
-        gap:10%;
+        gap: 10%;
     }
 
     .top-bar.show {
@@ -801,10 +808,10 @@ body.show-stickers .stickers {
         padding: unset;
         padding-top: 25px;
         align-self: flex-start;
-        flex:1;
-        right:-100px;
+        flex: 1;
+        right: -100px;
         position: relative;
-        
+
     }
 
     .keywords p {
@@ -816,7 +823,7 @@ body.show-stickers .stickers {
 
     span.more-kw {
         display: inline-block;
-        top:35px;
+        top: 35px;
         position: relative;
     }
 
@@ -828,12 +835,14 @@ body.show-stickers .stickers {
         overflow-y: scroll;
         height: 80vh;
         padding: none;
-        opacity:1;
-        transition:opacity .3s; 
+        opacity: 1;
+        transition: opacity .3s;
     }
-    body.editor-open .gallery { 
-        opacity:0;
+
+    body.editor-open .gallery {
+        opacity: 0;
     }
+
     .editor {
         position: absolute;
         top: 66px;
