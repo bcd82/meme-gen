@@ -248,8 +248,10 @@ body.editor-open .main-header ul li:nth-of-type(4) {
     transform: scale(0.9);
 }
 
-.keywords span.more-kw {
+ span.more-kw {
     display: none;
+    text-shadow: 1px 1px 1px#ff7f00;
+    flex-grow: 1;
 }
 
 .keywords span.active {
@@ -764,9 +766,10 @@ body.show-stickers .stickers {
         height: 80px;
         flex-direction: row;
         width: 100%;
-        align-items: center;
-        justify-content: space-between;
+        align-items: flex-start;
+        justify-content: space-evenly;
         overflow-y: hidden;
+        gap:10%;
     }
 
     .top-bar.show {
@@ -784,7 +787,6 @@ body.show-stickers .stickers {
         margin-top: 25px;
         align-self: flex-start;
 
-
     }
 
     .search-icon {
@@ -793,23 +795,26 @@ body.show-stickers .stickers {
     }
 
     .keywords {
-        width: 60%;
         padding: unset;
         padding-top: 25px;
         align-self: flex-start;
-
+        flex:1;
+        right:-100px;
+        position: relative;
+        
     }
 
     .keywords p {
         flex-wrap: wrap;
         overflow-x: hidden;
         align-items: center;
-        justify-items: flex-end;
         overflow: hidden;
     }
 
-    .keywords span.more-kw {
+    span.more-kw {
         display: inline-block;
+        top:35px;
+        position: relative;
     }
 
     .gallery {

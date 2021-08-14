@@ -59,7 +59,6 @@ const renderWords = () => {
          <span onclick="onFilterByWord(this)" style="font-size:${23 + (words[key] * 2)}px">${key}</span>`)
     }
     strHTMLs.push('</p>')
-    strHTMLs.splice(6, 0, `<span class="more-kw" data-trans="more" onclick="onShowMore(this)">more...</span><br>`)
     document.querySelector('.keywords').innerHTML = strHTMLs.join('');
     doTrans()
 
@@ -157,6 +156,7 @@ const onFilterByWord = elWord => {
     elWord.classList.add('active')
     const word = elWord.textContent;
     setFilter(word);
+    document.querySelector('.top-bar').classList.remove('show');
     renderImgs()
     doTrans()
 }
@@ -228,11 +228,14 @@ const onShowStickers = () => {
 }
 
 const onShowMore = el => {
-    if (el.innerText === 'more...')
-        el.innerText = 'less';
-    else
-        el.innerText = 'more...';
+    if (el.dataset.trans === 'more'){
+        el.setAttribute('data-trans','less')
+    } else {
+        el.setAttribute('data-trans','more')
+    }
     document.querySelector('.top-bar').classList.toggle('show');
+    doTrans()
+
 }
 
 const onDoTrans = () => {

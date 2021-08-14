@@ -45,8 +45,12 @@ const gTrans = {
     },
     more: {
         en: 'more...',
-        he: 'עוד...',
+        he: '...עוד',
     },
+    less: {
+        en: 'less',
+        he: 'פחות',
+    }
 }
 
 const toggleTransLang = () => {
