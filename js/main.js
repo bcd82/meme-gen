@@ -157,6 +157,7 @@ const onFilterByWord = elWord => {
     const word = elWord.textContent;
     setFilter(word);
     document.querySelector('.top-bar').classList.remove('show');
+    document.querySelector('.more-kw').setAttribute('data-trans','more')
     renderImgs()
     doTrans()
 }
@@ -228,10 +229,10 @@ const onShowStickers = () => {
 }
 
 const onShowMore = el => {
-    if (el.dataset.trans === 'more'){
-        el.setAttribute('data-trans','less')
+    if (el.dataset.trans === 'more') {
+        el.setAttribute('data-trans', 'less')
     } else {
-        el.setAttribute('data-trans','more')
+        el.setAttribute('data-trans', 'more')
     }
     document.querySelector('.top-bar').classList.toggle('show');
     doTrans()
