@@ -84,9 +84,7 @@ const onAddLine = () => {
     document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
 }
 
-const onMoveText = diff => {
-    moveText(diff)
-}
+// const onMoveText = diff =>  moveText(diff)
 
 const onSwitchText = () => {
     let meme = getMeme()
@@ -193,10 +191,8 @@ const onDeleteMeme = (event, id) => {
 
 const onAddSticker = stickerName => {
     addSticker(stickerName)
-    renderCanvas()
     closeScreen()
     renderCanvas()
-
 }
 
 const onShowStickers = () => {

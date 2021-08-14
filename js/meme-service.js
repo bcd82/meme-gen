@@ -76,7 +76,7 @@ const addLine = () => {
         font: 'impact',
         strokeClr: 'black',
         pos: {
-            x: 10,
+            x: gElCanvas.width /2,
             y: 100
         },
         drag: false,
