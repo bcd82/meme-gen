@@ -142,7 +142,7 @@ const onMove = ev => {
     if (setLineDrag()) {
         dragLine(pos)
     }
-    if (getMeme.selectedStickerIdx  === -1 || !(getMeme().stickers[getMeme().selectedStickerIdx])) return
+    if (getMeme().selectedStickerIdx  === -1 || !(getMeme().stickers[getMeme().selectedStickerIdx])) return
     if (!setStickerDrag()) return
         dragSticker(pos)
 }
