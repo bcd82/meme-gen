@@ -160,6 +160,7 @@ const onToggleShare = () => document.querySelector('body').classList.toggle('sho
 const closeScreen = () => {
     document.querySelector('body').classList.remove('show-share-menu')
     document.querySelector('body').classList.remove('show-menu')
+    document.querySelector('body').classList.remove('show-stickers')
 }
 
 const onDownloadCanvas = (el) => downloadCanvas(el)
@@ -189,3 +190,7 @@ const onDeleteMeme = (event, id) => {
 }
 
 const onAddSticker = stickerName => addSticker(stickerName)
+
+const onShowStickers = () => {
+    document.querySelector('body').classList.toggle('show-stickers');
+}

@@ -22,6 +22,7 @@ const setMemeImg = url => {
     image.src = url;
     gImg = image;
     renderCanvas()
+
 }
 
 const renderCanvas = () => {
