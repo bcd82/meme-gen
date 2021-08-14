@@ -911,7 +911,7 @@ body.show-stickers .stickers {
         visibility: hidden;
         position: absolute;
         top: 380px;
-        right: 200px;
+        right: 30%;
     }
 
     .about-me .about-info {
