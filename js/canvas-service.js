@@ -22,7 +22,6 @@ const setMemeImg = url => {
     image.src = url;
     gImg = image;
     renderCanvas()
-
 }
 
 const renderCanvas = () => {
@@ -41,6 +40,7 @@ const renderStickers = () => {
         })
     }
 }
+
 const renderTexts = () => {
     const meme = getMeme();
     const lines = meme.lines;
@@ -137,6 +137,7 @@ const onDown = ev => {
         setStickerDrag(true)
     }
 }
+
 const onMove = ev => {
     const pos = getEvPos(ev);
     if (setLineDrag()) {
@@ -149,54 +150,9 @@ const onMove = ev => {
 
 const onUp = () => {
     setLineDrag(false)
-    console.log(getMeme().sel)
     if (getMeme().selectedStickerIdx === -1) return
     setStickerDrag(false)
     getMeme().selectedStickerIdx = -1
-}
-
-const dragLine = (pos) => {
-    let line = getSelectedLine()
-    line.pos.y = pos.y;
-    let x = pos.x;
-    if (line.align === 'left') {
-        x = pos.x - line.width / 2
-    }
-    if (line.align === 'right') {
-        x = pos.x + line.width / 2
-    }
-    line.pos.x = x;
-    renderCanvas()
-}
-const dragSticker = (pos) => {
-    let sticker = getMeme().stickers[getMeme().selectedStickerIdx]
-    sticker.pos.x = pos.x - 75;
-    sticker.pos.y = pos.y - 75;
-
-    renderCanvas()
-}
-
-const getClickedLineIdx = (pos) => {
-    let lines = getMeme().lines
-    let clickedLineIdx;
-    lines.forEach((line, idx) => {
-        if ((pos.x >= (line.pos.x - line.width)) && (pos.x <= (line.pos.x + line.width)) &&
-            (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
-            clickedLineIdx = idx;
-        }
-    })
-    return clickedLineIdx;
-}
-const getClickedStickerIdx = (pos) => {
-    let stickers = getMeme().stickers
-    let clickedStickerId;
-    stickers.forEach((sticker, idx) => {
-        if ((pos.x >= sticker.pos.x) && (pos.x <= (sticker.pos.x + 150)) &&
-            ((pos.y <= sticker.pos.y + 150) && (pos.y >= sticker.pos.y))) {
-            clickedStickerId = idx;
-        }
-    })
-    return clickedStickerId;
 }
 
 const downloadCanvas = elLink => {
@@ -206,7 +162,6 @@ const downloadCanvas = elLink => {
     elLink.href = data
     gIsDownloading = false;
     renderCanvas()
-
 }
 
 async function clickShare() {
@@ -227,3 +182,5 @@ async function clickShare() {
     };
     navigator.share(shareData);
 }
+
+const getCanvas = () => gElCanvas;

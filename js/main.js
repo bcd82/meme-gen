@@ -49,21 +49,26 @@ const renderSavedMemes = () => {
 
 const renderWords = () => {
     const words = getKeywordMap()
-    const strHTMLs = ['<p> <span class="active" onclick="onFilterByWord(this)" style="font-size:30px">all</span>']
+    const strHTMLs = [`<p> 
+                        <span class="active" onclick="onFilterByWord(this)" style="font-size:30px">
+                        all
+                        </span>`]
     for (const key in words) {
         strHTMLs.push(`
-         <span onclick="onFilterByWord(this)" style="font-size:${20 + (words[key] * 2)}px">${key}</span>`)
+         <span onclick="onFilterByWord(this)" style="font-size:${23 + (words[key] * 2)}px">${key}</span>`)
     }
     strHTMLs.push('</p>')
     strHTMLs.splice(6, 0, `<span class="more-kw" onclick="onShowMore(this)">more...</span><br>`)
     document.querySelector('.keywords').innerHTML = strHTMLs.join('');
 }
+
 const onClickImg = id => {
     setMeme(id);
     let meme = getMeme()
     document.querySelector('input[type=text]').value = meme.lines[0].txt;
     document.querySelector('body').classList.add('editor-open')
 }
+
 const onClickSavedMeme = id => {
     setMeme(id, true);
     let meme = getMeme()
@@ -75,43 +80,61 @@ const onClickSavedMeme = id => {
 const onChangeText = str => {
     changeText(str)
     let meme = getMeme()
-    renderInput(meme)    
+    renderInput(meme)
+    renderCanvas()
+
 }
 
 const onAddLine = () => {
     addLine();
     let meme = getMeme()
-    renderInput(meme)    
+    renderInput(meme)
+    renderCanvas()
 }
 
 const onSwitchText = () => {
     let meme = getMeme()
     if (!meme.lines.length) return
     switchText();
-    renderInput(meme)    
+    renderInput(meme)
+    renderCanvas()
 }
+
 const renderInput = (meme) => {
     document.querySelector('input[type=text]').value = meme.lines[meme.selectedLineIdx].txt;
 }
 
 const onDeleteText = () => {
     deleteText()
+    renderCanvas()
 }
 
 const onFontResize = diff => {
     resizeFont(diff)
+    renderCanvas()
 }
 
-const onChangeFont = font => changeFont(font)
+const onChangeFont = font => {
+    changeFont(font)
+    renderCanvas()
+    renderCanvas()
+}
 
 const onChangeColor = color => {
     changeColor(color)
     renderCanvas()
 }
 
-const onChangeStroke = color => changeStroke(color)
+const onChangeStroke = color => {
+    changeStroke(color)
+    renderCanvas()
+}
 
-const onSwitchAlign = alignTo => switchAlign(alignTo)
+const onSwitchAlign = alignTo =>{ 
+    switchAlign(alignTo)
+    renderCanvas()
+
+}
 
 const onGalleryClick = el => {
     document.querySelector('body').classList.remove('editor-open')
@@ -154,6 +177,7 @@ const onShowSavedMemes = el => {
     renderSavedMemes(gSavedMemes)
     closeScreen()
 }
+
 const onToggleShare = () => document.querySelector('body').classList.toggle('show-share-menu');
 
 const closeScreen = () => {
@@ -186,11 +210,13 @@ const onResizeCanvas = () => {
 const onDeleteMeme = (event, id) => {
     event.stopPropagation();
     deleteMeme(id)
+    renderSavedMemes();
 }
 
 const onAddSticker = stickerName => {
     addSticker(stickerName)
     closeScreen()
+    renderCanvas()
 }
 
 const onShowStickers = () => {

@@ -24,7 +24,7 @@ const memeInit = () => {
             font: 'impact',
             strokeClr: 'black',
             pos: {
-                x: gElCanvas.width / 2,
+                x: getCanvas().width / 2,
                 y: 100
             },
             drag: false,
@@ -63,7 +63,6 @@ const getSelectedLine = () => {
 }
 const changeText = (val) => {
     gMeme.lines[gMeme.selectedLineIdx].txt = val;
-    renderCanvas()
 }
 
 const addLine = () => {
@@ -76,20 +75,19 @@ const addLine = () => {
         font: 'impact',
         strokeClr: 'black',
         pos: {
-            x: gElCanvas.width / 2,
+            x: getCanvas().width / 2,
             y: 100
         },
         drag: false,
     }
 
     if (gMeme.lines.length === 1)
-        newLine.pos.y = gElCanvas.height - 50;
+        newLine.pos.y = getCanvas().height - 50;
     if (gMeme.lines.length >= 2)
-        newLine.pos.y = gElCanvas.height / 2;
+        newLine.pos.y = getCanvas().height / 2;
 
     gMeme.selectedLineIdx++;
     gMeme.lines.push(newLine)
-    renderCanvas()
 }
 
 const switchText = (idx) => {
@@ -104,7 +102,6 @@ const switchText = (idx) => {
         }
     }
     document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
-    renderCanvas()
 }
 
 const deleteText = () => {
@@ -113,42 +110,36 @@ const deleteText = () => {
         gMeme.selectedLineIdx = -1;
     else
         gMeme.selectedLineIdx = 0;
-    renderCanvas()
 }
 
 const resizeFont = diff => {
     gMeme.lines[gMeme.selectedLineIdx].size += diff;
-    renderCanvas()
 }
 
 const changeFont = font => {
     gMeme.lines[gMeme.selectedLineIdx].font = font;
-    renderCanvas()
-    renderCanvas()
+
 }
 
 const changeColor = color => {
     gMeme.lines[gMeme.selectedLineIdx].color = color;
-    renderCanvas()
 }
 
 const changeStroke = (color) => {
     gMeme.lines[gMeme.selectedLineIdx].strokeClr = color;
-    renderCanvas()
 }
 
 const switchAlign = alignTo => {
     let line = gMeme.lines[gMeme.selectedLineIdx]
     line.align = alignTo
     if (line.align === 'center') {
-        line.pos.x = gElCanvas.width / 2;
+        line.pos.x = getCanvas().width / 2;
 
     } else if (line.align === 'right') {
-        line.pos.x = gElCanvas.width
+        line.pos.x = getCanvas().width
     } else {
         line.pos.x = 0
     }
-    renderCanvas()
 }
 
 const getKeywordMap = () => {
@@ -165,6 +156,7 @@ const setFilter = filterBy => {
     gKeyWords[filterBy]++;
 
 }
+
 const setLineWidth = width => gMeme.lines[gMeme.selectedLineIdx].width = width;
 
 const setLineDrag = (isDrag) => {
@@ -195,7 +187,7 @@ const saveMeme = () => {
     gIsDownloading = true;
     renderCanvas()
     gIsDownloading = false;
-    let img = gElCanvas.toDataURL('image/jpeg', 0.5);
+    let img = getCanvas().toDataURL('image/jpeg', 0.2);
     gMeme.img = img
     if (memeIdx > -1)
         gSavedMemes[memeIdx] = gMeme;
@@ -203,7 +195,6 @@ const saveMeme = () => {
         gSavedMemes.push(gMeme)
 
     saveToStorage('memeDb', gSavedMemes)
-    renderCanvas()
 }
 
 const loadSavedMemes = () => {
@@ -214,7 +205,6 @@ const loadSavedMemes = () => {
 const deleteMeme = id => {
     gSavedMemes.splice(gSavedMemes.findIndex(meme => id === +meme.id), 1)
     saveToStorage('memeDb', gSavedMemes)
-    renderSavedMemes();
 }
 
 const addSticker = (name) => {
@@ -223,9 +213,54 @@ const addSticker = (name) => {
         name,
         drag: false,
         pos: {
-            x: (gElCanvas.width - 150) / 2,
-            y: (gElCanvas.width - 150) / 2
+            x: (getCanvas().width - 150) / 2,
+            y: (getCanvas().width - 150) / 2
         }
     })
+}
+
+const dragLine = (pos) => {
+    let line = getSelectedLine()
+    line.pos.y = pos.y;
+    let x = pos.x;
+    if (line.align === 'left') {
+        x = pos.x - line.width / 2
+    }
+    if (line.align === 'right') {
+        x = pos.x + line.width / 2
+    }
+    line.pos.x = x;
     renderCanvas()
+}
+
+const dragSticker = (pos) => {
+    let sticker = gMeme.stickers[gMeme.selectedStickerIdx]
+    sticker.pos.x = pos.x - 75;
+    sticker.pos.y = pos.y - 75;
+
+    renderCanvas()
+}
+
+const getClickedLineIdx = (pos) => {
+    let lines = gMeme.lines
+    let clickedLineIdx;
+    lines.forEach((line, idx) => {
+        if ((pos.x >= (line.pos.x - line.width)) && (pos.x <= (line.pos.x + line.width)) &&
+            (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
+            clickedLineIdx = idx;
+        }
+    })
+    return clickedLineIdx;
+}
+
+const getClickedStickerIdx = (pos) => {
+    let stickers = gMeme.stickers
+    let clickedStickerId;
+    stickers.forEach((sticker, idx) => {
+        if ((pos.x >= sticker.pos.x) && (pos.x <= (sticker.pos.x + 150)) &&
+            ((pos.y <= sticker.pos.y + 150) && (pos.y >= sticker.pos.y))) {
+            clickedStickerId = idx;
+        }
+    })
+    return clickedStickerId;
 }
