@@ -214,8 +214,8 @@ const addSticker = (name) => {
         name,
         drag: false,
         pos: {
-            x: 200,
-            y: 200
+            x: (gElCanvas.width - 150 )/2,
+            y: (gElCanvas.width - 150 )/2
         }
     })
     renderCanvas()

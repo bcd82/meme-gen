@@ -186,11 +186,13 @@ body.editor-open .main-header ul li:nth-of-type(3) {
     max-width: 100%;
     align-items: center;
     justify-content: space-between;
-    margin-top:70px
+    margin-top:70px;
+    transition: height .2s;
+
 }
 
 .search-icon {
-    height: 20%;
+    height: 20px;
     width: auto;
     position: absolute;
     right: 50px;
@@ -212,25 +214,34 @@ body.editor-open .main-header ul li:nth-of-type(3) {
     color: #7a7a7a;
 }
 
+
 .keywords {
-    display: flex;
-    gap: 5px;
-    align-items: center;
     width: 100%;
-    overflow-x: scroll;
     padding: 10px 5px;
 }
-
 .keywords p {
+    display: flex;
+    flex-wrap: nowrap;
+    width:100%;
+    gap:10px;
+    overflow-x: scroll;
+    align-items: center;  
+}
+
+.keywords span {
     cursor: pointer;
     user-select: none;
     transform: scale(0.9);
 }
 
-.keywords p.active {
+.keywords span.more-kw { 
+    display:none;
+}
+.keywords span.active {
     font-family: mont-med;
     color: #ff7f00;
 }
+
 
 
 /* GALLERY */
@@ -603,7 +614,7 @@ body.show-stickers .stickers {
     }
 
     .search-icon {
-        left: 305px;
+        right: 30%;
     }
 
 }
@@ -656,7 +667,7 @@ body.show-stickers .stickers {
         padding: 20px 0;
     }
     .search-icon {
-        left: 385px;
+        left: 465px;
     }
     .stickers {
         width:600px;
@@ -684,27 +695,49 @@ body.show-stickers .stickers {
     }
 
     .top-bar {
-        height: 100px;
-        max-height: 100px;
+        height: 80px;
         flex-direction: row;
         width: 100%;
         align-items: center;
         justify-content: space-between;
+        overflow-y: hidden;
     }
-
+    .top-bar.show { 
+        height:150px;
+    }
+    .search {
+        width: 260px;
+        border: none;
+        border-bottom: 2px solid #040a2c;
+        font-family: mont-reg;
+        font-size: 1.187rem;
+        padding: 5px 7px;
+        color: #040a2c;
+    
+    }
     .search-icon {
         left: 230px;
         top: unset;
     }
 
     .keywords {
-        gap: 20px;
         width: 60%;
-        overflow-x: hidden;
         padding: unset;
+        padding-top:20px;
+        align-self: flex-start;
 
     }
+    .keywords p {
+        flex-wrap: wrap;
+        overflow-x: hidden;
+        align-items: center;
+        justify-items: flex-end;
+        overflow: hidden;
+    }
 
+    .keywords span.more-kw { 
+        display:inline-block;
+    }
     .gallery {
         padding-top: 20px;
         grid-template-columns: repeat(4, 1fr);
@@ -806,4 +839,5 @@ body.show-stickers .stickers {
     .about-me .about-info {
         align-items: flex-start ;
     }
+
 }

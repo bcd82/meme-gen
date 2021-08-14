@@ -49,11 +49,13 @@ const renderSavedMemes = () => {
 
 const renderWords = () => {
     const words = getKeywordMap()
-    const strHTMLs = ['<p class="active" onclick="onFilterByWord(this)" style="font-size:30px">all</p>']
+    const strHTMLs = ['<p> <span class="active" onclick="onFilterByWord(this)" style="font-size:30px">all</span>']
     for (const key in words) {
         strHTMLs.push(`
-        <p onclick="onFilterByWord(this)" style="font-size:${16 + (words[key] * 2)}px">${key}</p>`)
+         <span onclick="onFilterByWord(this)" style="font-size:${20 + (words[key] * 2)}px">${key}</span>`)
     }
+    strHTMLs.push('</p>')
+    strHTMLs.splice(6, 0, `<span class="more-kw" onclick="onShowMore(this)">more...</span><br>`)
     document.querySelector('.keywords').innerHTML = strHTMLs.join('');
 }
 const onClickImg = id => {
@@ -126,7 +128,7 @@ const onGalleryClick = el => {
 const onFilterByWord = elWord => {
     let fontSize = +elWord.style.fontSize.replace(/\D/g, '');
     elWord.style.fontSize = `${fontSize + 1}px `
-    document.querySelectorAll('.keywords p').forEach((p) => p.classList.remove('active'))
+    document.querySelectorAll('.keywords span').forEach((p) => p.classList.remove('active'))
     document.querySelector('ul li a.active').classList.remove('active')
     document.querySelector('ul li a:first-of-type').classList.add('active')
 
@@ -189,8 +191,19 @@ const onDeleteMeme = (event, id) => {
     deleteMeme(id)
 }
 
-const onAddSticker = stickerName => addSticker(stickerName)
+const onAddSticker = stickerName => {
+    addSticker(stickerName)
+    closeScreen()
+}
 
 const onShowStickers = () => {
     document.querySelector('body').classList.toggle('show-stickers');
+}
+
+const onShowMore = el => {
+    if (el.innerText === 'more...')
+        el.innerText = 'less';
+    else
+        el.innerText = 'more...';
+    document.querySelector('.top-bar').classList.toggle('show');
 }
