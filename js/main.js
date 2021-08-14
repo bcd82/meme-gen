@@ -7,7 +7,6 @@ const onInit = () => {
     addListeners()
     memeInit()
     renderWords()
-
 }
 
 const renderImgs = () => {
@@ -130,7 +129,7 @@ const onChangeStroke = color => {
     renderCanvas()
 }
 
-const onSwitchAlign = alignTo =>{ 
+const onSwitchAlign = alignTo => {
     switchAlign(alignTo)
     renderCanvas()
 
@@ -229,4 +228,20 @@ const onShowMore = el => {
     else
         el.innerText = 'more...';
     document.querySelector('.top-bar').classList.toggle('show');
+}
+
+const onDoTrans = () => {
+    if (gCurrLang === 'en')
+        gCurrLang = 'he';
+        else 
+            gCurrLang = 'en';
+    const els = document.querySelectorAll('[data-trans]');
+    els.forEach((el) => {
+        let txt = getTrans(el.dataset.trans)
+        if (el.nodeName === 'INPUT') {
+            el.setAttribute('placeholder', txt)
+        } else {
+            el.innerText = txt
+        }
+    })
 }
