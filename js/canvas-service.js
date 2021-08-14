@@ -37,7 +37,7 @@ const renderStickers = () => {
         meme.stickers.forEach(sticker => {
             const image = new Image();
             image.src = `./imgs/stickers/${sticker.name}.png`;
-                gCtx.drawImage(image, sticker.pos.x, sticker.pos.y,150,150);
+            gCtx.drawImage(image, sticker.pos.x, sticker.pos.y, 150, 150);
         })
     }
 }
@@ -133,7 +133,7 @@ const onDown = ev => {
         stickerIdx = getClickedStickerIdx(pos)
     }
     if (stickerIdx > -1) {
-        gMeme.selectedStickerIdx = stickerIdx;
+        getMeme().selectedStickerIdx = stickerIdx;
         setStickerDrag(true)
     }
 }
@@ -142,9 +142,9 @@ const onMove = ev => {
     if (setLineDrag()) {
         dragLine(pos)
     }
-    if (getMeme().selectedStickerIdx  === -1 || !(getMeme().stickers[getMeme().selectedStickerIdx])) return
+    if (getMeme().selectedStickerIdx === -1 || !(getMeme().stickers[getMeme().selectedStickerIdx])) return
     if (!setStickerDrag()) return
-        dragSticker(pos)
+    dragSticker(pos)
 }
 
 const onUp = () => {
@@ -159,11 +159,11 @@ const dragLine = (pos) => {
     let line = getSelectedLine()
     line.pos.y = pos.y;
     let x = pos.x;
-    if(line.align === 'left') {
-         x = pos.x - line.width /2
+    if (line.align === 'left') {
+        x = pos.x - line.width / 2
     }
-    if(line.align === 'right') {
-         x = pos.x + line.width /2
+    if (line.align === 'right') {
+        x = pos.x + line.width / 2
     }
     line.pos.x = x;
     renderCanvas()

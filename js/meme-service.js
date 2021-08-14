@@ -13,7 +13,7 @@ const memeInit = () => {
     gMeme = {
         selectedImgId: 1,
         selectedLineIdx: 0,
-        selectedStickerIdx:-1,
+        selectedStickerIdx: -1,
         id: makeId(),
         lines: [{
             txt: 'Change me',
@@ -76,7 +76,7 @@ const addLine = () => {
         font: 'impact',
         strokeClr: 'black',
         pos: {
-            x: gElCanvas.width /2,
+            x: gElCanvas.width / 2,
             y: 100
         },
         drag: false,
@@ -142,10 +142,10 @@ const switchAlign = alignTo => {
     line.align = alignTo
     if (line.align === 'center') {
         line.pos.x = gElCanvas.width / 2;
-        
+
     } else if (line.align === 'right') {
         line.pos.x = gElCanvas.width
-    } else { 
+    } else {
         line.pos.x = 0
     }
     renderCanvas()
@@ -223,8 +223,8 @@ const addSticker = (name) => {
         name,
         drag: false,
         pos: {
-            x: (gElCanvas.width - 150 )/2,
-            y: (gElCanvas.width - 150 )/2
+            x: (gElCanvas.width - 150) / 2,
+            y: (gElCanvas.width - 150) / 2
         }
     })
     renderCanvas()

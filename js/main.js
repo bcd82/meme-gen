@@ -75,25 +75,23 @@ const onClickSavedMeme = id => {
 const onChangeText = str => {
     changeText(str)
     let meme = getMeme()
-    document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
+    renderInput(meme)    
 }
 
 const onAddLine = () => {
     addLine();
     let meme = getMeme()
-    document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
+    renderInput(meme)    
 }
-
-// const onMoveText = diff =>  moveText(diff)
 
 const onSwitchText = () => {
     let meme = getMeme()
     if (!meme.lines.length) return
     switchText();
-    document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
+    renderInput(meme)    
 }
-const renderInput = () => {
-    document.querySelector('input[type=text]').value = meme.lines[gMeme.selectedLineIdx].txt;
+const renderInput = (meme) => {
+    document.querySelector('input[type=text]').value = meme.lines[meme.selectedLineIdx].txt;
 }
 
 const onDeleteText = () => {
@@ -193,7 +191,6 @@ const onDeleteMeme = (event, id) => {
 const onAddSticker = stickerName => {
     addSticker(stickerName)
     closeScreen()
-    renderCanvas()
 }
 
 const onShowStickers = () => {
