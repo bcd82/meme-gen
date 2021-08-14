@@ -94,6 +94,9 @@ label {
     transition: opacity .2s;
     pointer-events: none;
 }
+.cursor-grab { 
+    cursor: grab;
+}
 
 /* HEADER */
 

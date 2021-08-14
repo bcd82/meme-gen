@@ -140,12 +140,26 @@ const onDown = ev => {
 
 const onMove = ev => {
     const pos = getEvPos(ev);
+    let lineIdx
+    let stickerIdx;
+    if (getMeme().stickers.length) {
+        stickerIdx = getClickedStickerIdx(pos)
+    }
+    if (getMeme().lines.length)
+         lineIdx = getClickedLineIdx(pos)
+    if(lineIdx > -1 || stickerIdx > -1){
+        document.querySelector('.canvas-container').classList.add('cursor-grab');
+    } else { 
+        document.querySelector('.canvas-container').classList.remove('cursor-grab');
+    }       
+
     if (setLineDrag()) {
         dragLine(pos)
     }
     if (getMeme().selectedStickerIdx === -1 || !(getMeme().stickers[getMeme().selectedStickerIdx])) return
     if (!setStickerDrag()) return
     dragSticker(pos)
+
 }
 
 const onUp = () => {
