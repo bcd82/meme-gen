@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+img,
+input,
+body {
+    margin: 0;
+    user-select: none;
+}
+
+a,
+ul {
+    display: inline-block;
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    align-content: center;
+    scroll-behavior: smooth;
+}
+
+.main-layout {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+p {
+    font-family: mont-reg, sans-serif;
+}
+
+img {
+    width: 100%
+}
+
+label {
+    display: block;
+}
+
+.screen {
+    position: fixed;
+    inset: 0;
+    background-color: #f5c08b75;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity .2s;
+    pointer-events: none;
+}
+
+.cursor-grab {
+    cursor: grab;
+}
+
+.cursor-grab .grabbing {
+    cursor: grabbing;
+}

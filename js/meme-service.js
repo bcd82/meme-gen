@@ -7,8 +7,6 @@ let gIdx = 1;
 let gMeme = {};
 let gFilterBy = ''
 
-
-
 const memeInit = () => {
     gMeme = {
         selectedImgId: 1,
@@ -61,6 +59,7 @@ const getMeme = () => gMeme;
 const getSelectedLine = () => {
     return gMeme.lines[gMeme.selectedLineIdx];
 }
+
 const changeText = (val) => {
     gMeme.lines[gMeme.selectedLineIdx].txt = val;
 }
@@ -118,12 +117,9 @@ const resizeFont = diff => {
 
 const changeFont = font => {
     gMeme.lines[gMeme.selectedLineIdx].font = font;
-
 }
 
-const changeColor = color => {
-    gMeme.lines[gMeme.selectedLineIdx].color = color;
-}
+const changeColor = color =>  gMeme.lines[gMeme.selectedLineIdx].color = color;
 
 const changeStroke = (color) => {
     gMeme.lines[gMeme.selectedLineIdx].strokeClr = color;
@@ -154,7 +150,6 @@ const getKeywordMap = () => {
 const setFilter = filterBy => {
     gFilterBy = filterBy.toLowerCase();
     gKeyWords[filterBy]++;
-
 }
 
 const setLineWidth = width => gMeme.lines[gMeme.selectedLineIdx].width = width;
@@ -183,11 +178,11 @@ const getFilteredImgs = filter => {
 }
 
 const saveMeme = () => {
-    let memeIdx = gSavedMemes.findIndex(meme => meme.id === gMeme.id);
+    const memeIdx = gSavedMemes.findIndex(meme => meme.id === gMeme.id);
     gIsDownloading = true;
     renderCanvas()
     gIsDownloading = false;
-    let img = getCanvas().toDataURL('image/jpeg', 0.2);
+    const img = getCanvas().toDataURL('image/jpeg', 0.2);
     gMeme.img = img
     if (memeIdx > -1)
         gSavedMemes[memeIdx] = gMeme;
@@ -219,7 +214,7 @@ const addSticker = (name) => {
     })
 }
 
-const dragLine = (pos) => {
+const dragLine = pos => {
     let line = getSelectedLine()
     line.pos.y = pos.y + line.size / 2;
     let x = pos.x;
@@ -237,7 +232,6 @@ const dragSticker = (pos) => {
     let sticker = gMeme.stickers[gMeme.selectedStickerIdx]
     sticker.pos.x = pos.x - 75;
     sticker.pos.y = pos.y - 75;
-
     renderCanvas()
 }
 

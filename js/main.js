@@ -27,7 +27,6 @@ const renderImgs = () => {
     }
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
     doTrans()
-
 }
 
 const renderSavedMemes = () => {
@@ -41,13 +40,12 @@ const renderSavedMemes = () => {
                     <div class="meme-card" onclick="onClickSavedMeme(${meme.id})">
                     <img src="${meme.img}" />
                     <img  class="saved-meme-delete" onclick="onDeleteMeme(event,${meme.id})" 
-                    src="./imgs/ICONS/trash.png" alt="">
+                    src="./imgs/icons/trash.png" alt="">
                     </div>`
         })
     }
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
     doTrans()
-
 }
 
 const renderWords = () => {
@@ -81,21 +79,20 @@ const onClickSavedMeme = id => {
 
 const onChangeText = str => {
     changeText(str)
-    let meme = getMeme()
+    const meme = getMeme()
     renderInput(meme)
     renderCanvas()
-
 }
 
 const onAddLine = () => {
     addLine();
-    let meme = getMeme()
+    const meme = getMeme()
     renderInput(meme)
     renderCanvas()
 }
 
 const onSwitchText = () => {
-    let meme = getMeme()
+    const meme = getMeme()
     if (!meme.lines.length) return
     switchText();
     renderInput(meme)
@@ -152,7 +149,6 @@ const onFilterByWord = elWord => {
     document.querySelectorAll('.keywords span').forEach((p) => p.classList.remove('active'))
     document.querySelector('ul li a.active').classList.remove('active')
     document.querySelector('ul li a:first-of-type').classList.add('active')
-
     elWord.classList.add('active')
     const word = elWord.textContent;
     setFilter(word);
@@ -167,6 +163,7 @@ const onSearchFilter = str => {
     setFilter(str)
     renderImgs()
 }
+
 const onSaveMeme = () => {
     saveMeme()
     renderSavedMemes()
@@ -193,7 +190,6 @@ const closeScreen = () => {
 
 const onDownloadCanvas = (el) => downloadCanvas(el)
 
-
 const onToggleMenu = () => {
     let el = document.querySelector('body')
     document.querySelectorAll('.mobile-meny-btn')
@@ -206,6 +202,7 @@ const onClickShare = () => {
     clickShare()
     gIsDownloading = false;
 }
+
 const onResizeCanvas = () => {
     resizeCanvas()
     if (document.querySelector('body').classList.contains('editor-open'))
@@ -242,9 +239,8 @@ const onShowMore = el => {
 const onDoTrans = () => {
     toggleTransLang()
     doTrans()
-
-    // document.querySelector('body').classList.toggle('rtl')
 }
+
 const doTrans = () => {
     const els = document.querySelectorAll('[data-trans]');
     els.forEach((el) => {

@@ -1,0 +1,92 @@
+header {
+    position: unset;
+}
+
+.main-header ul li:nth-of-type(n+2) {
+    border-block-start: none
+}
+
+.mobile-menu-btn {
+    display: none;
+}
+
+.i18 {
+    width: 25px;
+    position: relative;
+    top: 20px;
+    margin-inline-end: 10px;
+    margin-block-end: 0px;
+    cursor: pointer;
+}
+
+body.editor-open .main-header ul li:nth-of-type(4) {
+    display: unset;
+}
+
+.main-header ul li:nth-of-type(even) {
+    border-block-start: 1px solid #e3e3e3;
+}
+
+.top-bar {
+    margin-top: unset;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    height: unset;
+    background-color: transparent;
+    position: relative;
+    top: unset;
+    width: unset;
+    transform: unset;
+}
+
+.main-header ul li a {
+    font-size: 19px;
+    width: 85px;
+    color: #ffffff;
+    padding: 21px 0px;
+    text-align: center;
+}
+
+.main-header ul li:nth-of-type(even) {
+    border-inline-start: 1px solid #e3e3e3;
+    border-inline-end: 1px solid #e3e3e3;
+    border-block-start: unset;
+    border-block-end: unset;
+}
+
+.canvas-container {
+    width: 450px;
+    height: 450px;
+}
+
+.main-header .logo img {
+    padding: 20px 0;
+}
+
+.search-icon {
+    left: 465px;
+}
+
+.stickers {
+    width: 600px;
+    align-items: center;
+    justify-content: center;
+}
+
+body.show-stickers .stickers {
+    transform: translateY(0%);
+}
+
+.sticker {
+    height: 90px;
+    width: auto;
+}
+
+.editor .tools .large-btn {
+    width: 100%;
+}
