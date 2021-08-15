@@ -122,7 +122,7 @@ function getEvPos(ev) {
 const onDown = ev => {
     const pos = getEvPos(ev);
     let stickerIdx = -1;
-    if (getMeme().lines.length >= 1 || getSelectedLine()) {
+    if (getMeme().lines.length > 1 || getSelectedLine()) {
         let lineIdx = getClickedLineIdx(pos)
         if (lineIdx > -1) {
             switchLine(lineIdx)
@@ -136,6 +136,7 @@ const onDown = ev => {
         getMeme().selectedStickerIdx = stickerIdx;
         setStickerDrag(true)
     }
+    renderCanvas()
 }
 
 const onMove = ev => {
