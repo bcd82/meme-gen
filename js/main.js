@@ -204,11 +204,11 @@ const onToggleShare = () => {
     document.querySelector('.bottom-modal').innerHTML = `
         <a href="#" onclick="onDownloadCanvas(this)" download="myMeme">
             <button class="bottom-modal-btn">
-                <img src="./imgs/ICONS/download.png" alt="">
+                <img src="./imgs/icons/download.png" alt="">
             </button>
         </a>
         <button class="bottom-modal-btn" onclick="onClickShare()">
-            <img src="./imgs/ICONS/share.png" alt="">
+            <img src="./imgs/icons/share.png" alt="">
         </button>`
     document.querySelector('body').classList.toggle('show-bottom-modal')
 };
