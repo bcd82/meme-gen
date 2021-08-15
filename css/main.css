@@ -427,11 +427,13 @@ footer {
 .editor .tools .switch {
     grid-row: 2;
     grid-column: 2;
+    justify-self: end;
 }
 
 .editor .tools .add {
     grid-row: 2;
     grid-column: 3;
+    
 }
 
 .editor .tools .del {
@@ -447,11 +449,15 @@ footer {
 .editor .tools .f-down {
     grid-row: 3;
     grid-column: 1;
+    justify-self: end;
+
 }
 
 .editor .tools .f-up {
     grid-row: 3;
     grid-column: 2;
+    justify-self: end;
+
 }
 
 .editor .tools .al-left {
@@ -490,19 +496,14 @@ footer {
     background-color: #ff7f00;
     color: white;
     width: 100%;
-    ;
 }
-
-.editor .tools .save {
-    grid-row: 5;
-    grid-column: 1/3;
-    justify-self: flex-start;
-    width: auto;
-}
-
-.editor .tools .share {
-    grid-row: 5;
-    grid-column: 4/6;
+.editor .tools .bottom-btns { 
+    grid-column: 1/6;
+    grid-row:5;
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    gap:20px;
 }
 
 /*end of grid ordering*/
