@@ -194,6 +194,9 @@ body.editor-open .main-header ul li:nth-of-type(4) {
     padding: 5px 7px;
     color: #040a2c;
 }
+.search::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
 
 .search::placeholder {
     color: #7a7a7a;
@@ -805,10 +808,11 @@ body.show-stickers .stickers {
         color: #040a2c;
         margin-top: 25px;
         align-self: flex-start;
+        
     }
 
     .search-icon {
-        left: 230px;
+        left: 240px;
         top: unset;
     }
 
