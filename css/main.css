@@ -383,9 +383,9 @@ footer {
 
 .editor .tools {
     display: grid;
-    grid-template-columns: repeat(1fr, 5);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     align-items: center;
-    align-content: flex-start;
+    align-content: center;
     justify-content: center;
     justify-items: center;
     gap: 7px 10px;
@@ -427,13 +427,12 @@ footer {
 .editor .tools .switch {
     grid-row: 2;
     grid-column: 2;
-    justify-self: end;
 }
 
 .editor .tools .add {
     grid-row: 2;
     grid-column: 3;
-    
+
 }
 
 .editor .tools .del {
@@ -449,14 +448,12 @@ footer {
 .editor .tools .f-down {
     grid-row: 3;
     grid-column: 1;
-    justify-self: end;
 
 }
 
 .editor .tools .f-up {
     grid-row: 3;
     grid-column: 2;
-    justify-self: end;
 
 }
 
@@ -497,13 +494,14 @@ footer {
     color: white;
     width: 100%;
 }
-.editor .tools .bottom-btns { 
+
+.editor .tools .bottom-btns {
     grid-column: 1/6;
-    grid-row:5;
+    grid-row: 5;
     display: flex;
     justify-content: space-between;
-    width:100%;
-    gap:20px;
+    width: 100%;
+    gap: 20px;
 }
 
 /*end of grid ordering*/
@@ -711,10 +709,7 @@ body.show-stickers .stickers {
         width: auto;
     }
 
-    .editor .tools {
-        transform: unset;
-
-    }
+  
 
     .editor .tools .large-btn {
         width: 100%;
@@ -856,12 +851,13 @@ body.show-stickers .stickers {
 
 
     .editor .tools {
-        width: 530px;
+        width: 500px;
         gap: 10px 20px;
         height: 550px;
-        align-items: unset;
+        align-items: center;
         align-content: stretch;
-        justify-items: unset;
+        justify-items: center;
+        grid-template-columns: repeat(5, 1fr) !important;
     }
 
     .editor .tool-btn {
@@ -874,6 +870,8 @@ body.show-stickers .stickers {
         height: 60px;
         padding: 0 20px;
         font-size: 1.25rem;
+        justify-self: stretch;
+
     }
 
     .gallery::-webkit-scrollbar-track {
