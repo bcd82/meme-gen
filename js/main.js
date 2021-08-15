@@ -149,6 +149,7 @@ const onFilterByWord = elWord => {
     document.querySelectorAll('.keywords span').forEach((p) => p.classList.remove('active'))
     document.querySelector('ul li a.active').classList.remove('active')
     document.querySelector('ul li a:first-of-type').classList.add('active')
+
     elWord.classList.add('active')
     const word = elWord.textContent;
     setFilter(word);
@@ -163,7 +164,6 @@ const onSearchFilter = str => {
     setFilter(str)
     renderImgs()
 }
-
 const onSaveMeme = () => {
     saveMeme()
     renderSavedMemes()
@@ -190,6 +190,7 @@ const closeScreen = () => {
 
 const onDownloadCanvas = (el) => downloadCanvas(el)
 
+
 const onToggleMenu = () => {
     let el = document.querySelector('body')
     document.querySelectorAll('.mobile-meny-btn')
@@ -202,7 +203,6 @@ const onClickShare = () => {
     clickShare()
     gIsDownloading = false;
 }
-
 const onResizeCanvas = () => {
     resizeCanvas()
     if (document.querySelector('body').classList.contains('editor-open'))
@@ -239,8 +239,9 @@ const onShowMore = el => {
 const onDoTrans = () => {
     toggleTransLang()
     doTrans()
-}
 
+    // document.querySelector('body').classList.toggle('rtl')
+}
 const doTrans = () => {
     const els = document.querySelectorAll('[data-trans]');
     els.forEach((el) => {
