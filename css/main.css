@@ -282,8 +282,8 @@ span.more-kw {
     padding: 4px;
     background-color: #f8a24c;
     transition: filter .4s;
-    border: 2px solid rgb(0, 0, 0);
-    box-shadow: 0 0 5px black;
+    border: 2px solid rgb(20, 20, 20);
+    box-shadow: 0 0 5px rgb(20, 20, 20);
 }
 
 .saved-meme-delete:hover {
@@ -482,6 +482,7 @@ footer {
     grid-column: 4/6;
     justify-self: flex-start;
     width: 100%;
+    background-color: #ffffff;
 }
 
 .editor .tools .stroke {

@@ -78,7 +78,7 @@ const onClickSavedMeme = id => {
 
 const onChangeLine = str => {
     changeLine(str)
-    const meme = getMeme()
+    let meme = getMeme()
     renderInput(meme)
     renderCanvas()
 }
