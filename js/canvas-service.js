@@ -5,16 +5,27 @@ let gImg;
 let gIsDownloading = false;
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
+const STICKERS = []
+
 const canvasInit = () => {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     resizeCanvas()
+    makeStickers()
 }
 
 const resizeCanvas = () => {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight
+}
+
+const makeStickers = () => {
+    for (let i = 0; i < 6; i++){
+        const image = new Image();
+        image.src = `./imgs/stickers/${i+1}.png`;
+        STICKERS.push(image)
+    }
 }
 
 const setMemeImg = url => {
@@ -34,9 +45,7 @@ const renderStickers = () => {
     const meme = getMeme()
     if (meme.stickers.length) {
         meme.stickers.forEach(sticker => {
-            const image = new Image();
-            image.src = `./imgs/stickers/${sticker.name}.png`;
-            gCtx.drawImage(image, sticker.pos.x, sticker.pos.y, 150, 150);
+            gCtx.drawImage(STICKERS[sticker.imgId -1], sticker.pos.x, sticker.pos.y, 150, 150);
         })
     }
 }

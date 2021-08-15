@@ -88,7 +88,6 @@ const addLine = () => {
         newLine.pos.y = getCanvas().height / 2;
 
         gMeme.lines.push(newLine)
-        // gMeme.selectedLineId = gMeme.lines[1]
         switchLine(gMeme.lines[gMeme.lines.length -1])
 }
 
@@ -210,10 +209,10 @@ const deleteMeme = id => {
     saveToStorage('memeDb', gSavedMemes)
 }
 
-const addSticker = (name) => {
+const addSticker = (imgId) => {
     gMeme.stickers.push({
         id: makeId(),
-        name,
+        imgId,
         drag: false,
         pos: {
             x: (getCanvas().width - 150) / 2,
