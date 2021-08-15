@@ -56,6 +56,8 @@ const setMeme = (id, isSaved) => {
 
 const getMeme = () => gMeme;
 
+const getImgs = () => gImgs;
+
 const getSelectedLine = () => {
     return gMeme.lines[gMeme.selectedLineIdx];
 }
@@ -111,6 +113,11 @@ const deleteLine = () => {
         gMeme.selectedLineIdx = 0;
 }
 
+const clearAll = () => { 
+    gMeme.lines =  [];
+    gMeme.stickers= []
+    gMeme.selectedLineIdx = -1;
+}
 const resizeFont = diff => {
     gMeme.lines[gMeme.selectedLineIdx].size += diff;
 }

@@ -10,11 +10,10 @@ const onInit = () => {
 }
 
 const renderImgs = () => {
+    let imgs = getImgs()
     let strHTMLs = []
-    let imgs = gImgs
     if (gFilterBy && gFilterBy !== 'all')
         imgs = getFilteredImgs(gFilterBy)
-
     if (!imgs || !imgs.length || imgs === null) {
         strHTMLs[0] = `<h2 data-trans="no-images"> no images found 😔 </h2>`
     } else {
@@ -103,9 +102,28 @@ const renderInput = (meme) => {
     document.querySelector('input[type=text]').value = meme.lines[meme.selectedLineIdx].txt;
 }
 
+const onDelete = () => {
+    document.querySelector('.bottom-modal').innerHTML = `
+        <button onclick="onDeleteLine()" class="bottom-modal-btn">
+            Delete Line
+        </button>
+        </a>
+        <button class="bottom-modal-btn" onclick="onClearAll()">
+            Clear All
+        </button>`
+    document.querySelector('body').classList.toggle('show-bottom-modal')
+}
+
 const onDeleteLine = () => {
+    document.querySelector('body').classList.remove('show-bottom-modal')
     deleteLine()
     renderCanvas()
+}
+
+const onClearAll = () => {
+    clearAll()
+    renderCanvas()
+    closeScreen()
 }
 
 const onFontResize = diff => {
@@ -132,7 +150,6 @@ const onChangeStroke = color => {
 const onSwitchAlign = alignTo => {
     switchAlign(alignTo)
     renderCanvas()
-
 }
 
 const onGalleryClick = el => {
@@ -149,12 +166,11 @@ const onFilterByWord = elWord => {
     document.querySelectorAll('.keywords span').forEach((p) => p.classList.remove('active'))
     document.querySelector('ul li a.active').classList.remove('active')
     document.querySelector('ul li a:first-of-type').classList.add('active')
-
     elWord.classList.add('active')
     const word = elWord.textContent;
     setFilter(word);
     document.querySelector('.top-bar').classList.remove('show');
-    document.querySelector('.more-kw').setAttribute('data-trans','more')
+    document.querySelector('.more-kw').setAttribute('data-trans', 'more')
     renderImgs()
     doTrans()
 }
@@ -180,10 +196,21 @@ const onShowSavedMemes = el => {
     closeScreen()
 }
 
-const onToggleShare = () => document.querySelector('body').classList.toggle('show-share-menu');
+const onToggleShare = () => {
+    document.querySelector('.bottom-modal').innerHTML = `
+        <a href="#" onclick="onDownloadCanvas(this)" download="myMeme">
+            <button class="bottom-modal-btn">
+                <img src="./imgs/ICONS/download.png" alt="">
+            </button>
+        </a>
+        <button class="bottom-modal-btn" onclick="onClickShare()">
+            <img src="./imgs/ICONS/share.png" alt="">
+        </button>`
+    document.querySelector('body').classList.toggle('show-bottom-modal')
+};
 
 const closeScreen = () => {
-    document.querySelector('body').classList.remove('show-share-menu')
+    document.querySelector('body').classList.remove('show-bottom-modal')
     document.querySelector('body').classList.remove('show-menu')
     document.querySelector('body').classList.remove('show-stickers')
 }
@@ -239,8 +266,6 @@ const onShowMore = el => {
 const onDoTrans = () => {
     toggleTransLang()
     doTrans()
-
-    // document.querySelector('body').classList.toggle('rtl')
 }
 const doTrans = () => {
     const els = document.querySelectorAll('[data-trans]');

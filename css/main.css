@@ -529,7 +529,7 @@ body.editor-open .editor {
     pointer-events: all;
 }
 
-.share-menu {
+.bottom-modal {
     position: fixed;
     width: 100%;
     height: 150px;
@@ -547,24 +547,30 @@ body.editor-open .editor {
 
 }
 
-.share-menu a {
+.bottom-modal a {
     width: 100%;
 }
 
-.share-menu .share-menu-btn {
+.bottom-modal .bottom-modal-btn {
     width: 100%;
     padding: 20px;
     background-color: transparent;
     border: none;
+    font-size:2.5vh;
+    font-family: mont-bold;
+    color:white;
+}
+.bottom-modal .bottom-modal-btn:nth-child(2) {
+    border-inline-start:1px solid white;
 }
 
-.share-menu .share-menu-btn img {
+.bottom-modal .bottom-modal-btn img {
     width: 50px;
     height: 50px;
     filter: invert(1);
 }
 
-body.show-share-menu .share-menu {
+body.show-bottom-modal .bottom-modal {
     transform: translateY(0);
 }
 
@@ -574,7 +580,7 @@ body.show-share-menu .share-menu {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-body.show-share-menu .screen,
+body.show-bottom-modal .screen,
 body.show-menu .screen,
 body.show-stickers .screen {
     opacity: 1;
@@ -900,7 +906,7 @@ body.show-stickers .stickers {
                 color-stop(0.86, #ff7f00));
     }
 
-    .share-menu {
+    .bottom-modal {
         display: flex;
         width: 30%;
         right: unset;
