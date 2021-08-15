@@ -371,11 +371,11 @@ footer {
 
 .editor .editor-container {
     display: flex;
+    flex-direction: column;
     gap: 15px;
     padding-top: 10px;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
     position: relative;
     overflow: hidden;
     object-fit: contain;
@@ -385,11 +385,11 @@ footer {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     align-items: center;
-    align-content: center;
+    align-content: stretch;
     justify-content: center;
     justify-items: center;
+    height:230px;
     gap: 7px 10px;
-    transform: scale(0.95);
 }
 
 .editor .tool-btn {
@@ -716,15 +716,7 @@ body.show-stickers .stickers {
         height: 80vh;
     }
 
-    .editor .tools {
-        width: 500px;
-        height: 550px;
-        align-items: center;
-        align-content: center;
-        /* justify-content: center; */
-        justify-items: center;
-        grid-template-columns: repeat(5, 1fr) !important;
-    }
+
 
     .editor .tools .large-btn {
         width: 100%;
@@ -864,8 +856,11 @@ body.show-stickers .stickers {
     }
 
     .editor .tools {
+        height: 550px;
+        align-items: center;
         align-content: stretch;
-        justify-content: stretch;
+        justify-items: center;
+        grid-template-columns: repeat(5, 1fr) !important;
     }
 
     .editor .tool-btn {
