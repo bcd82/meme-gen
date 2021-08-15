@@ -87,8 +87,9 @@ const addLine = () => {
     if (gMeme.lines.length >= 2)
         newLine.pos.y = getCanvas().height / 2;
 
-    gMeme.selectedLineIdx++;
-    gMeme.lines.push(newLine)
+        gMeme.lines.push(newLine)
+        // gMeme.selectedLineId = gMeme.lines[1]
+        switchLine(gMeme.lines[gMeme.lines.length -1])
 }
 
 const switchLine = (idx) => {
