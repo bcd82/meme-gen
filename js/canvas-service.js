@@ -142,10 +142,11 @@ const onMove = ev => {
     const pos = getEvPos(ev);
     let lineIdx
     let stickerIdx;
-    if (getMeme().stickers.length) {
+    const meme = getMeme();
+    if (meme.stickers.length) {
         stickerIdx = getClickedStickerIdx(pos)
     }
-    if (getMeme().lines.length)
+    if (meme.lines.length)
          lineIdx = getClickedLineIdx(pos)
     if(lineIdx > -1 || stickerIdx > -1){
         document.querySelector('.canvas-container').classList.add('cursor-grab');
@@ -155,16 +156,18 @@ const onMove = ev => {
     if (setLineDrag()) {
         dragLine(pos)
     }
-    if (getMeme().selectedStickerIdx === -1 || !(getMeme().stickers[getMeme().selectedStickerIdx])) return
+    if (meme.selectedStickerIdx === -1 || !(meme.stickers[meme.selectedStickerIdx])) return
     if (!setStickerDrag()) return
     dragSticker(pos)
 }
 
 const onUp = () => {
     setLineDrag(false)
-    if (getMeme().selectedStickerIdx === -1) return
+    const meme = getMeme();
+
+    if (meme.selectedStickerIdx === -1) return
     setStickerDrag(false)
-    getMeme().selectedStickerIdx = -1
+    meme.selectedStickerIdx = -1
 }
 
 const downloadCanvas = elLink => {

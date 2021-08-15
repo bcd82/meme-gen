@@ -65,8 +65,8 @@ label {
     cursor: grab;
 }
 
-.cursor-grab .grabbing {
-    cursor: grabbing;
+.grabbing {
+    cursor: grabbing !important;
 }
 
 /* HEADER */
@@ -414,14 +414,16 @@ footer {
 .editor .tools .text-input {
     grid-column: 1/4;
     height: 40px;
-    outline: none;
     border: none;
+    outline: none;
     border-radius: 12px;
     padding: 0 10px;
     font-family: mont-reg, sans-serif;
     font-size: 0.855rem;
-    transition: border .1s;
     justify-self: flex-start;
+    box-shadow:unset;
+    
+    transition: box-shadow .2s;
 }
 
 .editor .tools .switch {
@@ -507,11 +509,7 @@ footer {
 /*end of grid ordering*/
 
 .editor .tools .text-input:focus {
-    border: 2px solid #ff7f00;
-}
-
-.editor .tools .text-input:focus {
-    border: 2px solid #ff7f00;
+    box-shadow:inset 0  0px 0px 2px#ff7f00;
 }
 
 .editor input[type=color] {
@@ -715,7 +713,6 @@ body.show-stickers .stickers {
         gap: 20px;
         height: 80vh;
     }
-
 
 
     .editor .tools .large-btn {
