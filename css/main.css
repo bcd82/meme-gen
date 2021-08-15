@@ -535,16 +535,18 @@ body.editor-open .editor {
     height: 150px;
     bottom: 0;
     gap: 10px;
+    border-radius:  12px 12px 0 0;
     background-color: #ff7f00;
     color: white;
     transform: translateY(+200%);
+    border-top: 3px white solid;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform .3s;
-    z-index: 13;
+    box-shadow:0 0px  23px rgba(0, 0, 0, 0.295);
+    z-index: 3;
     padding: 0 10px;
-
 }
 
 .bottom-modal a {
@@ -559,6 +561,7 @@ body.editor-open .editor {
     font-size:2.5vh;
     font-family: mont-bold;
     color:white;
+    cursor: pointer;
 }
 .bottom-modal .bottom-modal-btn:nth-child(2) {
     border-inline-start:1px solid white;
@@ -614,6 +617,7 @@ body.show-stickers .stickers {
 .sticker {
     height: 50px;
     width: auto;
+    cursor: pointer;
 }
 
 @media (min-width :400px) {

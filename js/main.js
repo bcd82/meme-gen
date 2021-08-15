@@ -176,7 +176,11 @@ const onFilterByWord = elWord => {
 }
 
 const onSearchFilter = str => {
-    document.querySelectorAll('.keywords p').forEach((p) => p.classList.remove('active'))
+    document.querySelectorAll('.keywords p span').forEach((el) => {
+        el.classList.remove('active')
+        if(el.innerText === str.toLowerCase())
+        el.classList.add('active')
+    })
     setFilter(str)
     renderImgs()
 }

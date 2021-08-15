@@ -113,9 +113,9 @@ const deleteLine = () => {
         gMeme.selectedLineIdx = 0;
 }
 
-const clearAll = () => { 
-    gMeme.lines =  [];
-    gMeme.stickers= []
+const clearAll = () => {
+    gMeme.lines = [];
+    gMeme.stickers = []
     gMeme.selectedLineIdx = -1;
 }
 const resizeFont = diff => {
@@ -126,7 +126,7 @@ const changeFont = font => {
     gMeme.lines[gMeme.selectedLineIdx].font = font;
 }
 
-const changeColor = color =>  gMeme.lines[gMeme.selectedLineIdx].color = color;
+const changeColor = color => gMeme.lines[gMeme.selectedLineIdx].color = color;
 
 const changeStroke = (color) => {
     gMeme.lines[gMeme.selectedLineIdx].strokeClr = color;
@@ -246,10 +246,23 @@ const getClickedLineIdx = (pos) => {
     let lines = gMeme.lines
     let clickedLineIdx;
     lines.forEach((line, idx) => {
-        if ((pos.x >= (line.pos.x - line.width)) && (pos.x <= (line.pos.x + line.width)) &&
-            (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
-            clickedLineIdx = idx;
+        if (line.align === 'left') {
+            if ((pos.x >= line.pos.x) && (pos.x <= (line.pos.x + line.width)) &&
+                (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
+                clickedLineIdx = idx;
+            }
+        } else if (line.align === 'right') {
+            if ((pos.x >= line.pos.x - line.width) && (pos.x <= (line.pos.x)) &&
+                (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
+                clickedLineIdx = idx;
+            }
+        } else {
+            if ((pos.x >= (line.pos.x - line.width / 2)) && (pos.x <= (line.pos.x + line.width / 2)) &&
+                (pos.y <= line.pos.y && pos.y >= line.pos.y - line.size)) {
+                clickedLineIdx = idx;
+            }
         }
+
     })
     return clickedLineIdx;
 }

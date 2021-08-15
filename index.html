@@ -10,6 +10,20 @@
     <title>Barak Sidi - MemeGen</title>
 </head>
 
+<datalist id="keywords">
+    <option value="all">
+    <option value="funny">
+    <option value="meme">
+    <option value="true">
+    <option value="awesome">
+    <option value="stupid">
+    <option value="goofy">
+    <option value="photo">
+    <option value="boring">
+    <option value="cute">
+    <option value="fun">
+  </datalist>
+
 <body onload="onInit()" class="" onresize="onResizeCanvas()">
     <div class="screen " onclick="closeScreen()"></div>
     <header>
@@ -33,7 +47,7 @@
     </header>
     <div class="top-bar main-layout">
         <img src="./imgs/ICONS/search-icon.png" class="search-icon"></img>
-        <input type="search" oninput="onSearchFilter(this.value)" class="search" data-trans="search"
+        <input type="text" oninput="onSearchFilter(this.value)" list="keywords" class="search" data-trans="search"
             placeholder="Enter search Keyword">
         <div class="keywords">
             words will be around here
