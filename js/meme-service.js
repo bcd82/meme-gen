@@ -60,7 +60,7 @@ const getSelectedLine = () => {
     return gMeme.lines[gMeme.selectedLineIdx];
 }
 
-const changeText = (val) => {
+const changeLine = (val) => {
     gMeme.lines[gMeme.selectedLineIdx].txt = val;
 }
 
@@ -89,7 +89,7 @@ const addLine = () => {
     gMeme.lines.push(newLine)
 }
 
-const switchText = (idx) => {
+const switchLine = (idx) => {
     if (idx > -1) {
         gMeme.selectedLineIdx = idx;
     } else {
@@ -103,7 +103,7 @@ const switchText = (idx) => {
     document.querySelector('input[type=text]').value = gMeme.lines[gMeme.selectedLineIdx].txt;
 }
 
-const deleteText = () => {
+const deleteLine = () => {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     if (!gMeme.lines.length)
         gMeme.selectedLineIdx = -1;

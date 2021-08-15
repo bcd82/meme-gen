@@ -46,16 +46,15 @@
                 <div class="canvas-container">
                     <canvas width="550" height="550"></canvas>
                 </div>
-                <div class="outer-tools">
                 <div class="tools">
-                    <input class="text-input" oninput="onChangeText(this.value)" type="text" />
-                    <button class="tool-btn switch" onclick="onSwitchText()">
+                    <input class="text-input" oninput="onChangeLine(this.value)" type="text" />
+                    <button class="tool-btn switch" onclick="onSwitchLine()">
                         <img src="./imgs/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
                     </button>
                     <button class="tool-btn add" onclick="onAddLine()">
                         <img src="./imgs/ICONS/add.png" alt="">
                     </button>
-                    <button class="tool-btn del " onclick="onDeleteText()">
+                    <button class="tool-btn del " onclick="onDeleteLine()">
                         <img src="./imgs/ICONS/trash.png" alt="">
                     </button>
                     <button class="tool-btn stickers-btn " onclick="onShowStickers()">
@@ -93,7 +92,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
         <div class="gallery main-layout">
         </div>

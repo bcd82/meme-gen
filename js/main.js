@@ -77,8 +77,8 @@ const onClickSavedMeme = id => {
     document.querySelector('body').classList.add('editor-open')
 }
 
-const onChangeText = str => {
-    changeText(str)
+const onChangeLine = str => {
+    changeLine(str)
     const meme = getMeme()
     renderInput(meme)
     renderCanvas()
@@ -91,10 +91,10 @@ const onAddLine = () => {
     renderCanvas()
 }
 
-const onSwitchText = () => {
+const onSwitchLine = () => {
     const meme = getMeme()
     if (!meme.lines.length) return
-    switchText();
+    switchLine();
     renderInput(meme)
     renderCanvas()
 }
@@ -103,8 +103,8 @@ const renderInput = (meme) => {
     document.querySelector('input[type=text]').value = meme.lines[meme.selectedLineIdx].txt;
 }
 
-const onDeleteText = () => {
-    deleteText()
+const onDeleteLine = () => {
+    deleteLine()
     renderCanvas()
 }
 

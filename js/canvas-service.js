@@ -27,7 +27,7 @@ const setMemeImg = url => {
 const renderCanvas = () => {
     gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height);
     renderStickers()
-    renderTexts();
+    renderLines();
 }
 
 const renderStickers = () => {
@@ -41,7 +41,7 @@ const renderStickers = () => {
     }
 }
 
-const renderTexts = () => {
+const renderLines = () => {
     const meme = getMeme();
     const lines = meme.lines;
     lines.forEach((line, idx) => {
@@ -125,7 +125,7 @@ const onDown = ev => {
     if (getMeme().lines.length >= 1 || getSelectedLine()) {
         let lineIdx = getClickedLineIdx(pos)
         if (lineIdx > -1) {
-            switchText(lineIdx)
+            switchLine(lineIdx)
             setLineDrag(true)
         }
     }
